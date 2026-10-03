@@ -18,6 +18,22 @@ function doPost(e) {
 
     const file = folder.createFile(blob);
 
+    const pedidoId = "OM-" + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyyMMdd-HHmmss") + "-" + Math.floor(Math.random() * 1000);
+
+    const sheet = getOrdersSheet_();
+    sheet.appendRow([
+      pedidoId,
+      new Date(),
+      data.firstName || "",
+      data.service || "",
+      data.duration || "",
+      data.amount || "",
+      data.paymentMethod || "",
+      file.getId(),
+      "PENDIENTE",
+      ""
+    ]);
+
     const botToken = PropertiesService.getScriptProperties().getProperty("BOT_TOKEN");
     if (!botToken) {
       throw new Error("Falta configurar BOT_TOKEN en las propiedades del proyecto.");
@@ -62,6 +78,37 @@ function doPost(e) {
       error: error.message
     });
   }
+}
+
+function getOrdersSheet_() {
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+
+  let ss;
+  if (spreadsheetId) {
+    ss = SpreadsheetApp.openById(spreadsheetId);
+  } else {
+    ss = SpreadsheetApp.create("OriginalMas - Pedidos");
+    PropertiesService.getScriptProperties().setProperty("ORDERS_SPREADSHEET_ID", ss.getId());
+  }
+
+  let sheet = ss.getSheetByName("Pedidos");
+  if (!sheet) {
+    sheet = ss.insertSheet("Pedidos");
+    sheet.appendRow([
+      "ID Pedido",
+      "Fecha",
+      "Cliente / Contacto",
+      "Servicio",
+      "Duración",
+      "Importe",
+      "Método de pago",
+      "Comprobante",
+      "Estado",
+      "Acceso"
+    ]);
+  }
+
+  return sheet;
 }
 
 function getUploadFolder_() {
