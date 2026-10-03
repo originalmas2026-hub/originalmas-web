@@ -132,7 +132,9 @@ button:hover {
             Sin actualizaciones de contenido bajo petición.
         </p>
 
-        <button>1 mes — <span class="price">10€</span></button>
+        <button onclick="mostrar('pago-om-1')">
+    1 mes — <span class="price">10€</span>
+</button>
         <button>3 meses — <span class="price">27€</span></button>
         <button>6 meses — <span class="price">40€</span></button>
         <button>12 meses — <span class="price">50€</span></button>
@@ -141,7 +143,39 @@ button:hover {
 
     </div>
 
+<!-- PAGO ORIGINALMAS 1 MES -->
 
+<div id="pago-om-1" class="hidden">
+
+    <h2>💳 ORIGINALMAS — 1 MES</h2>
+
+    <p style="text-align:center;color:#aaa;">
+        Importe: <span class="price">10€</span>
+    </p>
+
+    <p style="text-align:center;color:#aaa;">
+        Selecciona el método de pago:
+    </p>
+
+    <button>
+        💳 Stripe
+    </button>
+
+    <button>
+        🅿️ PayPal
+    </button>
+
+    <button>
+        ₮ USDT TRC20
+    </button>
+
+    <button>
+        🪙 USDC Polygon
+    </button>
+
+    <button class="back" onclick="volver()">⬅ Volver</button>
+
+</div>
     <!-- PREMIUM -->
 
     <div id="premium" class="hidden">
