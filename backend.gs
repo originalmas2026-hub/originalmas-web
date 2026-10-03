@@ -24,14 +24,18 @@ function doPost(e) {
     }
 
     const mensaje =
-      "💳 NUEVO COMPROBANTE DE PAGO\\n\\n" +
-      "Cliente: " + (data.firstName || "No indicado") + "\\n" +
-      "Usuario: " + (data.username ? "@" + data.username : "No indicado") + "\\n" +
-      "ID Telegram: " + (data.telegramId || "No indicado") + "\\n" +
-      "Servicio: " + (data.service || "No indicado") + "\\n" +
-      "Duración: " + (data.duration || "No indicada") + "\\n" +
-      "Importe: " + (data.amount || "No indicado") + "\\n" +
-      "Método: " + (data.paymentMethod || "No indicado") + "\\n\\n" +
+      "💳 NUEVO COMPROBANTE DE PAGO\\n" +
+      "━━━━━━━━━━━━━━━━━━━━\\n\\n" +
+      "👤 CONTACTO\\n" +
+      (data.firstName || "No indicado") + "\\n\\n" +
+      "📺 SERVICIO\\n" +
+      (data.service || "No indicado") + "\\n\\n" +
+      "📅 DURACIÓN\\n" +
+      (data.duration || "No indicada") + "\\n\\n" +
+      "💰 IMPORTE\\n" +
+      (data.amount || "No indicado") + "\\n\\n" +
+      "💳 MÉTODO DE PAGO\\n" +
+      (data.paymentMethod || "No indicado") + "\\n\\n" +
       "📎 Comprobante guardado en Google Drive.";
 
     const telegramUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
