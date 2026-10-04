@@ -31,8 +31,65 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 #menu-principal button:nth-of-type(5){background:linear-gradient(135deg,#211a08,#111);border-color:rgba(240,207,99,.65)}
 #menu-principal button:nth-of-type(7){background:linear-gradient(135deg,#211a08,#0e0e0e);border-color:rgba(212,175,55,.6)}
 @media(max-width:520px){.container{width:calc(100% - 14px);margin:8px auto 22px;padding:25px 14px 27px;border-radius:21px}.logo{font-size:32px;letter-spacing:2.5px}h2{font-size:19px}.subtitle{font-size:12px;margin-bottom:25px}button{padding:16px 15px}}
+
+/* ===== Experiencia OriginalMas: edición impactante ===== */
+.brand-stage{position:relative;margin:0 auto 24px;padding:18px 14px 16px;border:1px solid rgba(212,175,55,.22);border-radius:20px;background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.13),transparent 58%),linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008));overflow:hidden}
+.brand-stage:before{content:"";position:absolute;left:-30%;top:0;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);transform:skewX(-22deg);animation:brandSweep 5.5s ease-in-out infinite}
+.brand-stage .eyebrow{position:relative;text-align:center;color:#d9c77e;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:7px}
+.brand-stage .claim{position:relative;text-align:center;color:#fff;font-size:17px;font-weight:800;line-height:1.25;margin:0}
+.brand-stage .claim span{color:var(--gold2)}
+.brand-stage .microcopy{position:relative;text-align:center;color:#999;font-size:11px;margin:7px 0 0}
+.floating-friends{position:absolute;inset:0;pointer-events:none}
+.friend{position:absolute;font-size:25px;filter:drop-shadow(0 5px 8px rgba(0,0,0,.5));animation:floatFriend 4.5s ease-in-out infinite}
+.friend.one{left:10px;top:19px;animation-delay:-.8s}
+.friend.two{right:10px;top:31px;animation-delay:-2.2s}
+.friend.three{left:17%;bottom:-2px;font-size:18px;animation-delay:-1.4s}
+.friend.four{right:17%;bottom:-3px;font-size:18px;animation-delay:-3.1s}
+.social-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:0 0 23px}
+.proof{padding:10px 6px;text-align:center;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(255,255,255,.025)}
+.proof strong{display:block;color:var(--gold2);font-size:14px}
+.proof small{display:block;color:#888;font-size:9px;letter-spacing:.5px;margin-top:3px}
+#menu-principal h2{position:relative}
+#menu-principal h2:after{content:"";display:block;width:55px;height:2px;margin:9px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+#menu-principal button{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+#menu-principal button:nth-of-type(1){font-size:17px}
+#menu-principal button:nth-of-type(4),#menu-principal button:nth-of-type(5),#menu-principal button:nth-of-type(6),#menu-principal button:nth-of-type(7){min-height:64px}
+#menu-principal button:nth-of-type(4):after{content:"TV + entretenimiento";position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:9px;color:#777;letter-spacing:.5px}
+#menu-principal button:nth-of-type(5):after{content:"La opción completa";position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--gold2);letter-spacing:.5px}
+#menu-principal button:nth-of-type(6):after{content:"Tu biblioteca";position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:9px;color:#777;letter-spacing:.5px}
+#menu-principal button:nth-of-type(7):after{content:"Dos servicios";position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--gold2);letter-spacing:.5px}
+.choice-note{margin:18px 4px 0;padding:13px 14px;border-left:2px solid var(--gold);border-radius:0 12px 12px 0;background:linear-gradient(90deg,rgba(212,175,55,.09),transparent);color:#aaa;font-size:11px;line-height:1.45;text-align:center}
+.choice-note b{color:#fff}
+@keyframes brandSweep{0%,55%{left:-65%}100%{left:125%}}
+@keyframes floatFriend{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-9px) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.brand-stage:before,.friend{animation:none}}
+@media(max-width:520px){
+  .brand-stage{padding:17px 12px 15px;margin-bottom:20px}
+  .brand-stage .claim{font-size:15px}
+  .friend{font-size:21px}
+  #menu-principal button:after{display:none}
+  .social-proof{gap:5px}
+  .proof{padding:9px 3px}
+  .proof strong{font-size:12px}
+  .proof small{font-size:8px}
+}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
+<div class="brand-stage">
+  <div class="floating-friends" aria-hidden="true">
+    <span class="friend one">🍿</span><span class="friend two">🤖</span>
+    <span class="friend three">😎</span><span class="friend four">🕺</span>
+  </div>
+  <div class="eyebrow">BIENVENIDO A ORIGINALMAS</div>
+  <p class="claim">Entra, elige y disfruta.<br><span>Lo difícil era decidirte. 😉</span></p>
+  <p class="microcopy" id="fraseOriginalMas">Tu entretenimiento empieza con un clic.</p>
+</div>
+<div class="social-proof">
+  <div class="proof"><strong>⚡ Fácil</strong><small>ALTA ONLINE</small></div>
+  <div class="proof"><strong>🎁 Prueba</strong><small>ANTES DE DECIDIR</small></div>
+  <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
+</div>
 <div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button><button onclick="mostrar('mis-solicitudes')">📋 Mis solicitudes</button><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
 <div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas — 24 horas</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas Premium — 24 horas</button><button onclick="mostrar('prueba-emby')">🟣 Emby — 2 horas</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><div class="trial-form" data-service="OriginalMas" data-duration="24 horas"></div><button class="back" onclick="mostrar('pruebas')">⬅ Volver</button></div>
@@ -599,4 +656,27 @@ function cargarTarifasWeb(){
 }
 cargarTarifasWeb();
 restaurarPantalla();
-</script></body></html>
+</script><script>
+(function(){
+  var frases=[
+    "Tu entretenimiento empieza con un clic.",
+    "La pregunta no es qué ver. Es por dónde empezar. 😎",
+    "Tú pones el sofá. Nosotros ponemos el entretenimiento. 🍿",
+    "Un buen plan para hoy: darle al botón. 😂",
+    "Si has llegado hasta aquí... ya sabes que quieres mirar. 😉",
+    "Menos buscar. Más disfrutar. 🖤"
+  ];
+  var el=document.getElementById("fraseOriginalMas");
+  if(!el || window.__originalMasFrasesInit) return;
+  window.__originalMasFrasesInit=true;
+  var i=0;
+  setInterval(function(){
+    if(document.hidden) return;
+    i=(i+1)%frases.length;
+    el.style.opacity="0";
+    setTimeout(function(){el.textContent=frases[i];el.style.opacity="1";},180);
+  },4200);
+  el.style.transition="opacity .18s ease";
+})();
+</script>
+</body></html>
