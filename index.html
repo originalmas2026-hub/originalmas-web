@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>OriginalMas</title>
 <style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#050505;color:white;min-height:100vh}.container{width:100%;max-width:500px;margin:auto;padding:25px 18px 40px}.logo{text-align:center;font-size:34px;font-weight:bold;color:#d4af37;margin-top:20px}.subtitle{text-align:center;color:#aaa;margin:8px 0 30px}h2{text-align:center;color:#d4af37;margin-bottom:25px}button{width:100%;padding:17px;margin:8px 0;border:1px solid #d4af37;border-radius:10px;background:#111;color:white;font-size:16px;cursor:pointer}button:hover{background:#1d1d1d}.price{color:#d4af37;font-weight:bold}.hidden{display:none}.back{border-color:#555;color:#aaa;margin-top:25px}</style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
-<div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
+<div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
 <div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas — 24 horas</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas Premium — 24 horas</button><button onclick="mostrar('prueba-emby')">🟣 Emby — 2 horas</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><div class="trial-form" data-service="OriginalMas" data-duration="24 horas"></div><button class="back" onclick="mostrar('pruebas')">⬅ Volver</button></div>
 <div id="prueba-premium" class="hidden"><h2>⭐ PRUEBA ORIGINALMAS PREMIUM</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><div class="trial-form" data-service="OriginalMas Premium" data-duration="24 horas"></div><button class="back" onclick="mostrar('pruebas')">⬅ Volver</button></div>
@@ -14,7 +14,28 @@
 <div id="duo-om" class="hidden"><h2>📺 ORIGINALMAS + EMBY</h2><button onclick="mostrar('duoom-1')">1 mes — <span class="price">18€</span></button><button onclick="mostrar('duoom-3')">3 meses — <span class="price">40€</span></button><button onclick="mostrar('duoom-6')">6 meses — <span class="price">65€</span></button><button onclick="mostrar('duoom-12')">12 meses — <span class="price">90€</span></button><button class="back" onclick="mostrar('pack')">⬅ Volver</button></div>
 <div id="duo-premium" class="hidden"><h2>⭐ PREMIUM + EMBY</h2><button onclick="mostrar('duop-1')">1 mes — <span class="price">25€</span></button><button onclick="mostrar('duop-3')">3 meses — <span class="price">50€</span></button><button onclick="mostrar('duop-6')">6 meses — <span class="price">75€</span></button><button onclick="mostrar('duop-12')">12 meses — <span class="price">100€</span></button><button class="back" onclick="mostrar('pack')">⬅ Volver</button></div>
 <div id="om-1" class="hidden"><h2>💳 ORIGINALMAS — 1 MES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 10€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 10€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','10€')">₮ USDT TRC20 — 10€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','10€')">🪙 USDC Polygon — 10€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-3" class="hidden"><h2>💳 ORIGINALMAS — 3 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">27€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 27€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 27€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','27€')">₮ USDT TRC20 — 27€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','27€')">🪙 USDC Polygon — 27€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-6" class="hidden"><h2>💳 ORIGINALMAS — 6 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 40€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 40€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','40€')">₮ USDT TRC20 — 40€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','40€')">🪙 USDC Polygon — 40€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-12" class="hidden"><h2>💳 ORIGINALMAS — 12 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">50€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 50€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 50€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','50€')">₮ USDT TRC20 — 50€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','50€')">🪙 USDC Polygon — 50€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="omp-1" class="hidden"><h2>💳 ORIGINALMAS PREMIUM — 1 MES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">15€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 15€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 15€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','15€')">₮ USDT TRC20 — 15€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','15€')">🪙 USDC Polygon — 15€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="omp-3" class="hidden"><h2>💳 ORIGINALMAS PREMIUM — 3 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">30€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 30€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 30€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','30€')">₮ USDT TRC20 — 30€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','30€')">🪙 USDC Polygon — 30€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="omp-6" class="hidden"><h2>💳 ORIGINALMAS PREMIUM — 6 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">50€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 50€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 50€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','50€')">₮ USDT TRC20 — 50€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','50€')">🪙 USDC Polygon — 50€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="omp-12" class="hidden"><h2>💳 ORIGINALMAS PREMIUM — 12 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">60€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 60€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 60€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','60€')">₮ USDT TRC20 — 60€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','60€')">🪙 USDC Polygon — 60€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="emby-1" class="hidden"><h2>💳 EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 10€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 10€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','10€')">₮ USDT TRC20 — 10€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','10€')">🪙 USDC Polygon — 10€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="emby-3" class="hidden"><h2>💳 EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">27€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 27€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 27€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','27€')">₮ USDT TRC20 — 27€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','27€')">🪙 USDC Polygon — 27€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="emby-6" class="hidden"><h2>💳 EMBY — 6 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 40€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 40€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','40€')">₮ USDT TRC20 — 40€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','40€')">🪙 USDC Polygon — 40€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="emby-12" class="hidden"><h2>💳 EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">55€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 55€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 55€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','55€')">₮ USDT TRC20 — 55€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','55€')">🪙 USDC Polygon — 55€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-1" class="hidden"><h2>💳 ORIGINALMAS + EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">18€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 18€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 18€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','18€')">₮ USDT TRC20 — 18€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','18€')">🪙 USDC Polygon — 18€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-3" class="hidden"><h2>💳 ORIGINALMAS + EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 40€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 40€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','40€')">₮ USDT TRC20 — 40€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','40€')">🪙 USDC Polygon — 40€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-6" class="hidden"><h2>💳 ORIGINALMAS + EMBY — 6 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">65€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 65€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 65€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','65€')">₮ USDT TRC20 — 65€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','65€')">🪙 USDC Polygon — 65€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-12" class="hidden"><h2>💳 ORIGINALMAS + EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">90€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 90€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 90€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','90€')">₮ USDT TRC20 — 90€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','90€')">🪙 USDC Polygon — 90€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-1" class="hidden"><h2>💳 PREMIUM + EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">25€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 25€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 25€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','25€')">₮ USDT TRC20 — 25€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','25€')">🪙 USDC Polygon — 25€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-3" class="hidden"><h2>💳 PREMIUM + EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">50€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 50€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 50€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','50€')">₮ USDT TRC20 — 50€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','50€')">🪙 USDC Polygon — 50€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-6" class="hidden"><h2>💳 PREMIUM + EMBY — 6 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">75€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 75€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 75€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','75€')">₮ USDT TRC20 — 75€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','75€')">🪙 USDC Polygon — 75€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-12" class="hidden"><h2>💳 PREMIUM + EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Importe: <span class="price">100€</span></p><p style="text-align:center;color:#aaa">Selecciona el método de pago:</p><button type="button" onclick="location.href='https://buy.stripe.com/00w4gA2l10iQ0vX6Fg33W0d'">💳 Pagar con Stripe — 100€</button><button type="button" onclick="location.href='https://www.paypal.me/OriginalMas2026'">🅿️ Pagar con PayPal — 100€</button><button type="button" onclick="copiarCripto('USDT TRC20','TF6nApFnzPfNhDw6P5qxobQXfwwrj8sgYb','100€')">₮ USDT TRC20 — 100€</button><button type="button" onclick="copiarCripto('USDC Polygon','0x59613abCb28B02De8Fb8d4aCAf201cad44E3165b','100€')">🪙 USDC Polygon — 100€</button><button type="button" onclick="mostrarComprobante(this)">✅ He realizado el pago</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Emby</button><button onclick="mostrar('duo-premium')">⭐ Premium + Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="solicitar-contenido" class="hidden">
+<h2>📩 SOLICITAR CONTENIDO</h2>
+<p style="text-align:center;color:#aaa">Selecciona el servicio y el tipo de contenido.</p>
+<button type="button" onclick="seleccionarSolicitudServicio('OriginalMas Premium')">⭐ OriginalMas Premium</button>
+<button type="button" onclick="seleccionarSolicitudServicio('Emby')">🟣 Emby</button>
+<div id="solicitud-tipo" class="hidden">
+<p style="text-align:center;color:#aaa">¿Qué quieres solicitar?</p>
+<button type="button" onclick="seleccionarSolicitudTipo('pelicula')">🎬 Película</button>
+<button type="button" onclick="seleccionarSolicitudTipo('serie')">📺 Serie</button>
+</div>
+<div id="solicitud-busqueda" class="hidden">
+<p id="solicitud-resumen" style="text-align:center;color:#d4af37;font-weight:bold"></p>
+<input id="solicitud-texto" type="text" placeholder="Escribe al menos 2 letras del título" autocomplete="off" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white">
+<div id="solicitud-resultados"></div>
+</div>
+<div id="solicitud-confirmacion" class="hidden" style="margin-top:15px;padding:15px;border:1px solid #555;border-radius:10px;text-align:center">
+<p style="color:#d4af37;font-weight:bold">Contenido seleccionado</p>
+<p id="solicitud-seleccion"></p>
+<button type="button" id="solicitud-enviar">📩 Enviar solicitud</button>
+</div>
+<button class="back" type="button" onclick="volver()">⬅ Volver</button>
+</div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Emby</button><button onclick="mostrar('duo-premium')">⭐ Premium + Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function mostrar(id){
 document.querySelectorAll(".container > div").forEach(function(e){if(e.id)e.classList.add("hidden")});
 var pantalla=document.getElementById(id);
@@ -37,6 +58,225 @@ pantalla.classList.remove("hidden");
 var datos={imageBase64:base64,mimeType:f.type,fileName:f.name,firstName:contacto.value.trim(),username:"",telegramId:"",service:infoPedido&&infoPedido.service?infoPedido.service:(pantalla.id||"Web"),duration:infoPedido&&infoPedido.duration?infoPedido.duration:(titulo?titulo.textContent:""),amount:importe?importe.textContent:"",originalAmount:infoPedido?infoPedido.original:"",finalAmount:infoPedido?infoPedido.final:"",discountName:infoPedido&&infoPedido.promocion?infoPedido.promocion.name:"",discountType:infoPedido&&infoPedido.promocion?infoPedido.promocion.type:"",discountValue:infoPedido&&infoPedido.promocion?infoPedido.promocion.value:"",paymentMethod:(function(){try{return localStorage.getItem("originalmas_metodo")||"No indicado"}catch(e){return"No indicado"}})()};fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(datos),mode:"no-cors"}).then(function(){enviar.textContent="✅ Comprobante enviado";archivo.textContent="Tu comprobante ha sido enviado correctamente.";}).catch(function(){enviar.disabled=false;enviar.textContent="📤 Reintentar";archivo.textContent="❌ No se pudo enviar el comprobante. Inténtalo de nuevo."})};reader.readAsDataURL(f)};boton.disabled=true}document.querySelectorAll(".trial-form").forEach(function(form){form.innerHTML='<p style="text-align:center;color:#aaa">Indica tu nombre y un medio de contacto.</p><input type="text" class="trial-contact" placeholder="Nombre + WhatsApp, Telegram o email" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white"><button type="button" class="trial-send">🎁 Solicitar prueba</button>';form.querySelector(".trial-send").onclick=function(){var contact=form.querySelector(".trial-contact").value.trim();if(!contact){alert("Indica tu nombre y un medio de contacto.");return}var send=this;send.disabled=true;send.textContent="⏳ Enviando...";fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"trialRequest",trialService:form.dataset.service,trialDuration:form.dataset.duration,contact:contact}),mode:"no-cors"}).then(function(){send.textContent="✅ Solicitud enviada";form.querySelector(".trial-contact").disabled=true}).catch(function(){send.disabled=false;send.textContent="🎁 Reintentar";alert("No se pudo enviar la solicitud. Inténtalo de nuevo.")})}});document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var t=(b.textContent||"").trim();if(t.indexOf("Stripe")>=0)registrarMetodo("Stripe");else if(t.indexOf("PayPal")>=0)registrarMetodo("PayPal");else if(t.indexOf("USDT")>=0)registrarMetodo("USDT TRC20");else if(t.indexOf("USDC")>=0)registrarMetodo("USDC Polygon")},true)
 window.originalmasOrderPricing=window.originalmasOrderPricing||{};
 
+
+var ORIGINALMAS_SOLICITUDES_API="https://script.google.com/macros/s/AKfycbx82dsNaTYrt7HMySa7XGmJLtamEwr01Xh1jhYBcX8Iwc0TEaE6NMOafqTT4WQLtps-CQ/exec";
+var solicitudServicio="";
+var solicitudTipo="";
+var solicitudSeleccion=null;
+var solicitudBusquedaTimer=null;
+
+function limpiarSolicitudUI(){
+  solicitudServicio="";
+  solicitudTipo="";
+  solicitudSeleccion=null;
+  var tipo=document.getElementById("solicitud-tipo");
+  var busqueda=document.getElementById("solicitud-busqueda");
+  var confirmacion=document.getElementById("solicitud-confirmacion");
+  var texto=document.getElementById("solicitud-texto");
+  var resultados=document.getElementById("solicitud-resultados");
+  if(tipo) tipo.classList.add("hidden");
+  if(busqueda) busqueda.classList.add("hidden");
+  if(confirmacion) confirmacion.classList.add("hidden");
+  if(texto) texto.value="";
+  if(resultados) resultados.innerHTML="";
+}
+
+function seleccionarSolicitudServicio(servicio){
+  solicitudServicio=servicio;
+  solicitudTipo="";
+  solicitudSeleccion=null;
+  var tipo=document.getElementById("solicitud-tipo");
+  var busqueda=document.getElementById("solicitud-busqueda");
+  var confirmacion=document.getElementById("solicitud-confirmacion");
+  var resumen=document.getElementById("solicitud-resumen");
+  if(tipo) tipo.classList.remove("hidden");
+  if(busqueda) busqueda.classList.add("hidden");
+  if(confirmacion) confirmacion.classList.add("hidden");
+  if(resumen) resumen.textContent=servicio;
+}
+
+function seleccionarSolicitudTipo(tipo){
+  solicitudTipo=tipo;
+  solicitudSeleccion=null;
+  var busqueda=document.getElementById("solicitud-busqueda");
+  var confirmacion=document.getElementById("solicitud-confirmacion");
+  var texto=document.getElementById("solicitud-texto");
+  var resultados=document.getElementById("solicitud-resultados");
+  var resumen=document.getElementById("solicitud-resumen");
+  if(busqueda) busqueda.classList.remove("hidden");
+  if(confirmacion) confirmacion.classList.add("hidden");
+  if(texto){
+    texto.value="";
+    texto.focus();
+  }
+  if(resultados) resultados.innerHTML="";
+  if(resumen) resumen.textContent=solicitudServicio+" · "+(tipo==="pelicula"?"Película":"Serie");
+}
+
+function mostrarResultadosSolicitud(resultados){
+  var contenedor=document.getElementById("solicitud-resultados");
+  if(!contenedor) return;
+  contenedor.innerHTML="";
+  if(!resultados || !resultados.length){
+    contenedor.innerHTML='<p style="text-align:center;color:#aaa;margin:15px 0">No se encontraron resultados en el catálogo.</p>';
+    return;
+  }
+  resultados.forEach(function(item){
+    var boton=document.createElement("button");
+    boton.type="button";
+    boton.style.textAlign="left";
+    boton.innerHTML="<strong>"+escaparSolicitudHtml(item.titulo)+"</strong>"+
+      (item.año ? ' <span style="color:#aaa">('+escaparSolicitudHtml(String(item.año))+')</span>' : "")+
+      (item.tituloES && item.tituloES!==item.titulo ? '<br><small style="color:#aaa">'+escaparSolicitudHtml(item.tituloES)+'</small>' : "");
+    boton.onclick=function(){seleccionarContenidoSolicitud(item);};
+    contenedor.appendChild(boton);
+  });
+}
+
+function escaparSolicitudHtml(texto){
+  return String(texto==null?"":texto)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function buscarSolicitudesCatalogo(){
+  var texto=document.getElementById("solicitud-texto");
+  if(!texto || !solicitudTipo) return;
+  var valor=texto.value.trim();
+  if(valor.length<2){
+    var resultados=document.getElementById("solicitud-resultados");
+    if(resultados) resultados.innerHTML='<p style="text-align:center;color:#aaa">Escribe al menos 2 letras.</p>';
+    return;
+  }
+
+  var contenedor=document.getElementById("solicitud-resultados");
+  if(contenedor) contenedor.innerHTML='<p style="text-align:center;color:#aaa">🔎 Buscando...</p>';
+
+  var callback="originalmasSolicitudBuscar_"+Date.now()+"_"+String(Math.random()).slice(2);
+  window[callback]=function(data){
+    try{
+      if(data && data.correcto===false){
+        throw new Error(data.error||"No se pudo realizar la búsqueda.");
+      }
+      mostrarResultadosSolicitud(Array.isArray(data)?data:[]);
+    }catch(error){
+      if(contenedor) contenedor.innerHTML='<p style="text-align:center;color:#ff7777">'+escaparSolicitudHtml(error.message)+'</p>';
+    }finally{
+      delete window[callback];
+      if(script && script.parentNode) script.parentNode.removeChild(script);
+    }
+  };
+
+  var script=document.createElement("script");
+  script.async=true;
+  script.src=ORIGINALMAS_SOLICITUDES_API+
+    "?action=buscarCatalogo"+
+    "&texto="+encodeURIComponent(valor)+
+    "&tipo="+encodeURIComponent(solicitudTipo)+
+    "&callback="+encodeURIComponent(callback)+
+    "&_="+Date.now();
+  script.onerror=function(){
+    delete window[callback];
+    if(script.parentNode) script.parentNode.removeChild(script);
+    if(contenedor) contenedor.innerHTML='<p style="text-align:center;color:#ff7777">No se pudo conectar con el catálogo.</p>';
+  };
+  document.head.appendChild(script);
+}
+
+function seleccionarContenidoSolicitud(item){
+  solicitudSeleccion=item;
+  var confirmacion=document.getElementById("solicitud-confirmacion");
+  var seleccion=document.getElementById("solicitud-seleccion");
+  if(!confirmacion || !seleccion) return;
+  seleccion.innerHTML="<strong>"+escaparSolicitudHtml(item.titulo)+"</strong>"+
+    (item.año ? "<br><span style='color:#aaa'>Año: "+escaparSolicitudHtml(String(item.año))+"</span>" : "");
+  confirmacion.classList.remove("hidden");
+  confirmacion.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function enviarSolicitudContenido(){
+  if(!solicitudServicio || !solicitudTipo || !solicitudSeleccion){
+    alert("Selecciona el servicio, el tipo y un contenido.");
+    return;
+  }
+
+  var boton=document.getElementById("solicitud-enviar");
+  if(!boton) return;
+  boton.disabled=true;
+  boton.textContent="⏳ Enviando...";
+
+  var callback="originalmasSolicitudCrear_"+Date.now()+"_"+String(Math.random()).slice(2);
+  window[callback]=function(data){
+    try{
+      if(data && data.correcto===false){
+        throw new Error(data.error||"No se pudo crear la solicitud.");
+      }
+      boton.textContent="✅ Solicitud enviada";
+      var confirmacion=document.getElementById("solicitud-confirmacion");
+      if(confirmacion){
+        confirmacion.innerHTML=
+          '<p style="color:#d4af37;font-weight:bold">✅ SOLICITUD ENVIADA</p>'+
+          '<p style="color:#aaa">Tu solicitud de <strong style="color:white">'+
+          escaparSolicitudHtml(solicitudSeleccion.titulo)+
+          '</strong> ha sido registrada correctamente.</p>'+
+          '<p style="color:#aaa">Estado: <strong style="color:#d4af37">Pendiente</strong></p>'+
+          '<button type="button" onclick="mostrar(\'solicitar-contenido\');limpiarSolicitudUI()">📩 Nueva solicitud</button>';
+      }
+    }catch(error){
+      boton.disabled=false;
+      boton.textContent="📩 Enviar solicitud";
+      alert(error.message);
+    }finally{
+      delete window[callback];
+      if(script && script.parentNode) script.parentNode.removeChild(script);
+    }
+  };
+
+  var script=document.createElement("script");
+  script.async=true;
+  script.src=ORIGINALMAS_SOLICITUDES_API+
+    "?action=crearSolicitud"+
+    "&servicio="+encodeURIComponent(solicitudServicio)+
+    "&tipo="+encodeURIComponent(solicitudTipo)+
+    "&wikidataId="+encodeURIComponent(solicitudSeleccion.wikidataId)+
+    "&titulo="+encodeURIComponent(solicitudSeleccion.titulo||"")+
+    "&año="+encodeURIComponent(solicitudSeleccion.año||"")+
+    "&callback="+encodeURIComponent(callback)+
+    "&_="+Date.now();
+  script.onerror=function(){
+    delete window[callback];
+    if(script.parentNode) script.parentNode.removeChild(script);
+    boton.disabled=false;
+    boton.textContent="📩 Enviar solicitud";
+    alert("No se pudo conectar con el servidor. Inténtalo de nuevo.");
+  };
+  document.head.appendChild(script);
+}
+
+document.addEventListener("input",function(e){
+  if(e.target && e.target.id==="solicitud-texto"){
+    clearTimeout(solicitudBusquedaTimer);
+    solicitudBusquedaTimer=setTimeout(buscarSolicitudesCatalogo,350);
+  }
+});
+
+document.addEventListener("click",function(e){
+  var boton=e.target.closest("#solicitud-enviar");
+  if(boton){
+    enviarSolicitudContenido();
+  }
+});
+
+var mostrarOriginalMas=mostrar;
+mostrar=function(id){
+  mostrarOriginalMas(id);
+  if(id==="solicitar-contenido"){
+    limpiarSolicitudUI();
+  }
+};
 function cargarTarifasWeb(){
   var callbackName="originalmasPricingCallback_"+Date.now()+"_"+String(Math.random()).slice(2);
   window[callbackName]=function(data){
