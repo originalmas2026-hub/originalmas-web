@@ -83,14 +83,30 @@ function cargarTarifasWeb(){
     function actualizarElementoPrecio(el,resultado){
       if(!el) return;
 
+      var texto=el.innerHTML;
+
       if(resultado.promocion && resultado.final<resultado.original){
-        el.innerHTML=
+        texto=texto.replace(
+          /\d+(?:\.\d+)?€/g,
           '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
-          formatoPrecio(resultado.original)+'€</span>'+
-          '<strong>'+formatoPrecio(resultado.final)+'€</strong>';
+          formatoPrecio(resultado.original)+'€</span>'
+        );
+
+        texto=texto.replace(
+          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
+          formatoPrecio(resultado.original)+'€</span>',
+          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
+          formatoPrecio(resultado.original)+'€</span><strong>'+
+          formatoPrecio(resultado.final)+'€</strong>'
+        );
+
+        el.innerHTML=texto;
       }else{
         el.innerHTML=
-          el.innerHTML.replace(/\d+(?:\.\d+)?€/g,formatoPrecio(resultado.final)+"€");
+          texto.replace(
+            /\d+(?:\.\d+)?€/g,
+            formatoPrecio(resultado.final)+"€"
+          );
       }
     }
 
