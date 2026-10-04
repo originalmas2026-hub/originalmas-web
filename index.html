@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>OriginalMas</title>
 <style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#050505;color:white;min-height:100vh}.container{width:100%;max-width:500px;margin:auto;padding:25px 18px 40px}.logo{text-align:center;font-size:34px;font-weight:bold;color:#d4af37;margin-top:20px}.subtitle{text-align:center;color:#aaa;margin:8px 0 30px}h2{text-align:center;color:#d4af37;margin-bottom:25px}button{width:100%;padding:17px;margin:8px 0;border:1px solid #d4af37;border-radius:10px;background:#111;color:white;font-size:16px;cursor:pointer}button:hover{background:#1d1d1d}.price{color:#d4af37;font-weight:bold}.hidden{display:none}.back{border-color:#555;color:#aaa;margin-top:25px}</style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
-<div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
+<div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button><button onclick="mostrar('mis-solicitudes')">📋 Mis solicitudes</button><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
 <div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas — 24 horas</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas Premium — 24 horas</button><button onclick="mostrar('prueba-emby')">🟣 Emby — 2 horas</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><div class="trial-form" data-service="OriginalMas" data-duration="24 horas"></div><button class="back" onclick="mostrar('pruebas')">⬅ Volver</button></div>
 <div id="prueba-premium" class="hidden"><h2>⭐ PRUEBA ORIGINALMAS PREMIUM</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><div class="trial-form" data-service="OriginalMas Premium" data-duration="24 horas"></div><button class="back" onclick="mostrar('pruebas')">⬅ Volver</button></div>
@@ -58,6 +58,22 @@ pantalla.classList.remove("hidden");
 var datos={imageBase64:base64,mimeType:f.type,fileName:f.name,firstName:contacto.value.trim(),username:"",telegramId:"",service:infoPedido&&infoPedido.service?infoPedido.service:(pantalla.id||"Web"),duration:infoPedido&&infoPedido.duration?infoPedido.duration:(titulo?titulo.textContent:""),amount:importe?importe.textContent:"",originalAmount:infoPedido?infoPedido.original:"",finalAmount:infoPedido?infoPedido.final:"",discountName:infoPedido&&infoPedido.promocion?infoPedido.promocion.name:"",discountType:infoPedido&&infoPedido.promocion?infoPedido.promocion.type:"",discountValue:infoPedido&&infoPedido.promocion?infoPedido.promocion.value:"",paymentMethod:(function(){try{return localStorage.getItem("originalmas_metodo")||"No indicado"}catch(e){return"No indicado"}})()};fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(datos),mode:"no-cors"}).then(function(){enviar.textContent="✅ Comprobante enviado";archivo.textContent="Tu comprobante ha sido enviado correctamente.";}).catch(function(){enviar.disabled=false;enviar.textContent="📤 Reintentar";archivo.textContent="❌ No se pudo enviar el comprobante. Inténtalo de nuevo."})};reader.readAsDataURL(f)};boton.disabled=true}document.querySelectorAll(".trial-form").forEach(function(form){form.innerHTML='<p style="text-align:center;color:#aaa">Indica tu nombre y un medio de contacto.</p><input type="text" class="trial-contact" placeholder="Nombre + WhatsApp, Telegram o email" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white"><button type="button" class="trial-send">🎁 Solicitar prueba</button>';form.querySelector(".trial-send").onclick=function(){var contact=form.querySelector(".trial-contact").value.trim();if(!contact){alert("Indica tu nombre y un medio de contacto.");return}var send=this;send.disabled=true;send.textContent="⏳ Enviando...";fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"trialRequest",trialService:form.dataset.service,trialDuration:form.dataset.duration,contact:contact}),mode:"no-cors"}).then(function(){send.textContent="✅ Solicitud enviada";form.querySelector(".trial-contact").disabled=true}).catch(function(){send.disabled=false;send.textContent="🎁 Reintentar";alert("No se pudo enviar la solicitud. Inténtalo de nuevo.")})}});document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var t=(b.textContent||"").trim();if(t.indexOf("Stripe")>=0)registrarMetodo("Stripe");else if(t.indexOf("PayPal")>=0)registrarMetodo("PayPal");else if(t.indexOf("USDT")>=0)registrarMetodo("USDT TRC20");else if(t.indexOf("USDC")>=0)registrarMetodo("USDC Polygon")},true)
 window.originalmasOrderPricing=window.originalmasOrderPricing||{};
 
+
+var ORIGINALMAS_CLIENTE_ID_KEY="originalmas_cliente_id";
+
+function obtenerIdCliente(){
+  try{
+    var id=localStorage.getItem(ORIGINALMAS_CLIENTE_ID_KEY);
+    if(id) return id;
+    id="CLI-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,8).toUpperCase();
+    localStorage.setItem(ORIGINALMAS_CLIENTE_ID_KEY,id);
+    return id;
+  }catch(e){
+    return "CLI-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  }
+}
+
+var originalmasClienteId=obtenerIdCliente();
 
 var ORIGINALMAS_SOLICITUDES_API="https://script.google.com/macros/s/AKfycbx82dsNaTYrt7HMySa7XGmJLtamEwr01Xh1jhYBcX8Iwc0TEaE6NMOafqTT4WQLtps-CQ/exec";
 var solicitudServicio="";
@@ -244,6 +260,7 @@ function enviarSolicitudContenido(){
     "&wikidataId="+encodeURIComponent(solicitudSeleccion.wikidataId)+
     "&titulo="+encodeURIComponent(solicitudSeleccion.titulo||"")+
     "&año="+encodeURIComponent(solicitudSeleccion.año||"")+
+    "&clienteId="+encodeURIComponent(originalmasClienteId)+
     "&callback="+encodeURIComponent(callback)+
     "&_="+Date.now();
   script.onerror=function(){
