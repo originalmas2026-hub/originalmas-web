@@ -452,9 +452,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   }
 }
 
+
+/* ===== Pantalla de inicio completa: frases y dispositivos ===== */
+#home-brand-stage.hidden,#home-social-proof.hidden,#home-device-zone.hidden,#home-telegram-card.hidden{display:none!important}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
-<div class="brand-stage">
+<div id="home-brand-stage" class="brand-stage">
   <div class="floating-friends" aria-hidden="true">
     <span class="friend one">🍿</span><span class="friend two">🤖</span>
     <span class="friend three">😎</span><span class="friend four">🕺</span>
@@ -463,7 +467,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   <p class="claim">Entra, elige y disfruta.<br><span>Lo difícil era decidirte. 😉</span></p>
   <p class="microcopy" id="fraseOriginalMas">Tu entretenimiento empieza con un clic.</p>
 </div>
-<div class="social-proof">
+<div id="home-social-proof" class="social-proof">
   <div class="proof"><strong>⚡ Fácil</strong><small>ALTA ONLINE</small></div>
   <div class="proof"><strong>🎁 Prueba</strong><small>ANTES DE DECIDIR</small></div>
   <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
@@ -493,7 +497,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
     </div>
   </div>
 </div>
-<div class="device-zone">
+<div id="home-device-zone" class="device-zone">
   <h3>📺 ¿DÓNDE PUEDES DISFRUTARLO?</h3>
   <p>Elige tu dispositivo y disfruta de OriginalMas donde quieras.</p>
   <div class="device-columns">
@@ -520,7 +524,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
     </div>
   </div>
 </div>
-<div class="telegram-card">
+<div id="home-telegram-card" class="telegram-card">
   <div class="tg-title">✈️ ÚNETE A NUESTRO TELEGRAM</div>
   <div class="tg-text">Novedades, información y contacto directo con OriginalMas.</div>
   <a href="https://t.me/Info_OriginalMas" target="_blank" rel="noopener">💬 ENTRAR EN TELEGRAM · @Info_OriginalMas</a>
@@ -569,34 +573,47 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 <button class="back" type="button" onclick="volver()">⬅ Volver</button>
 </div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Emby</button><button onclick="mostrar('duo-premium')">⭐ Premium + Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function ocultarPantallas(){
-document.querySelectorAll(".container > div").forEach(function(e){
-  if(!e.classList.contains("logo")&&!e.classList.contains("subtitle")) e.classList.add("hidden");
-});
+  document.querySelectorAll(".container > div").forEach(function(e){
+    if(!e.classList.contains("logo")&&!e.classList.contains("subtitle")){
+      e.classList.add("hidden");
+    }
+  });
+}
+function mostrarInicio(){
+  ocultarPantallas();
+  [
+    "home-brand-stage",
+    "home-social-proof",
+    "menu-principal",
+    "home-device-zone",
+    "home-telegram-card"
+  ].forEach(function(id){
+    var e=document.getElementById(id);
+    if(e)e.classList.remove("hidden");
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+  try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
 }
 function mostrar(id){
-ocultarPantallas();
-var pantalla=document.getElementById(id);
-if(pantalla){
-  pantalla.classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
+  ocultarPantallas();
+  var pantalla=document.getElementById(id);
+  if(pantalla){
+    pantalla.classList.remove("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
 }
 function volver(){
-ocultarPantallas();
-var menu=document.getElementById("menu-principal");
-if(menu)menu.classList.remove("hidden");
-window.scrollTo({top:0,behavior:"smooth"});
-try{localStorage.setItem("originalmas_pantalla","menu-principal")}catch(e){}
+  mostrarInicio();
 }
 function restaurarPantalla(){
-var id="menu-principal";
-try{id=localStorage.getItem("originalmas_pantalla")||"menu-principal"}catch(e){}
-ocultarPantallas();
-var pantalla=document.getElementById(id);
-if(!pantalla)pantalla=document.getElementById("menu-principal");
-if(pantalla)pantalla.classList.remove("hidden");
-window.scrollTo({top:0,behavior:"smooth"});
+  var id="inicio";
+  try{id=localStorage.getItem("originalmas_pantalla")||"inicio"}catch(e){}
+  if(id==="inicio" || !document.getElementById(id)){
+    mostrarInicio();
+  }else{
+    mostrar(id);
+  }
 }function copiarCripto(red,direccion,importe){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(direccion).then(function(){alert("Dirección copiada.\\n\\nRed: "+red+"\\nImporte: equivalente a "+importe+"\\n\\nEnvía el pago a la dirección copiada y conserva el comprobante.");}).catch(function(){alert("Dirección "+red+":\\n\\n"+direccion+"\\n\\nImporte: equivalente a "+importe);});}else{alert("Dirección "+red+":\\n\\n"+direccion+"\\n\\nImporte: equivalente a "+importe);}}function registrarMetodo(metodo){try{localStorage.setItem("originalmas_metodo",metodo)}catch(e){}}function mostrarComprobante(boton){var div=document.createElement("div");div.style.cssText="margin:15px 0;padding:15px;border:1px solid #555;border-radius:10px;text-align:center";div.innerHTML='<p style="color:#d4af37;font-weight:bold">📎 Envía tu comprobante de pago</p><p style="color:#aaa;font-size:14px">Indica tu nombre y un medio de contacto, y selecciona la captura.</p><input class="tgusuario" type="text" placeholder="Nombre + WhatsApp, Telegram o email" style="width:100%;box-sizing:border-box;margin:8px 0;padding:10px;border-radius:6px"><input class="archivoInput" type="file" accept="image/*" style="width:100%;margin:10px 0;color:white"><p class="archivo" style="color:#aaa;font-size:13px"></p><button type="button" class="enviar" disabled>📤 Enviar comprobante</button>';boton.parentNode.insertBefore(div,boton.nextSibling);var contacto=div.querySelector(".tgusuario"),input=div.querySelector(".archivoInput"),enviar=div.querySelector(".enviar"),archivo=div.querySelector(".archivo");function actualizarBoton(){enviar.disabled=!(contacto.value.trim()&&input.files.length)}contacto.oninput=actualizarBoton;input.onchange=function(){if(input.files.length){var f=input.files[0];archivo.textContent="Archivo seleccionado: "+f.name;if(f.size>8*1024*1024){archivo.textContent="⚠️ La imagen no puede superar 8 MB.";enviar.disabled=true}else{actualizarBoton()}}};enviar.onclick=function(){if(!input.files.length||!contacto.value.trim())return;var f=input.files[0];enviar.disabled=true;enviar.textContent="⏳ Enviando...";var reader=new FileReader();reader.onload=function(){var base64=reader.result.split(",")[1];var pantalla=boton.closest(".hidden")||boton.parentNode;var titulo=pantalla.querySelector("h2");var importe=pantalla.querySelector("p");var infoPedido=(window.originalmasOrderPricing&&pantalla.id)?window.originalmasOrderPricing[pantalla.id]:null;
 var datos={imageBase64:base64,mimeType:f.type,fileName:f.name,firstName:contacto.value.trim(),username:"",telegramId:"",service:infoPedido&&infoPedido.service?infoPedido.service:(pantalla.id||"Web"),duration:infoPedido&&infoPedido.duration?infoPedido.duration:(titulo?titulo.textContent:""),amount:importe?importe.textContent:"",originalAmount:infoPedido?infoPedido.original:"",finalAmount:infoPedido?infoPedido.final:"",discountName:infoPedido&&infoPedido.promocion?infoPedido.promocion.name:"",discountType:infoPedido&&infoPedido.promocion?infoPedido.promocion.type:"",discountValue:infoPedido&&infoPedido.promocion?infoPedido.promocion.value:"",paymentMethod:(function(){try{return localStorage.getItem("originalmas_metodo")||"No indicado"}catch(e){return"No indicado"}})()};fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(datos),mode:"no-cors"}).then(function(){enviar.textContent="✅ Comprobante enviado";archivo.textContent="Tu comprobante ha sido enviado correctamente.";}).catch(function(){enviar.disabled=false;enviar.textContent="📤 Reintentar";archivo.textContent="❌ No se pudo enviar el comprobante. Inténtalo de nuevo."})};reader.readAsDataURL(f)};boton.disabled=true}document.querySelectorAll(".trial-form").forEach(function(form){form.innerHTML='<p style="text-align:center;color:#aaa">Indica tu nombre y un medio de contacto.</p><input type="text" class="trial-contact" placeholder="Nombre + WhatsApp, Telegram o email" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white"><button type="button" class="trial-send">🎁 Solicitar prueba</button>';form.querySelector(".trial-send").onclick=function(){var contact=form.querySelector(".trial-contact").value.trim();if(!contact){alert("Indica tu nombre y un medio de contacto.");return}var send=this;send.disabled=true;send.textContent="⏳ Enviando...";fetch("https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec",{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"trialRequest",trialService:form.dataset.service,trialDuration:form.dataset.duration,contact:contact}),mode:"no-cors"}).then(function(){send.textContent="✅ Solicitud enviada";form.querySelector(".trial-contact").disabled=true}).catch(function(){send.disabled=false;send.textContent="🎁 Reintentar";alert("No se pudo enviar la solicitud. Inténtalo de nuevo.")})}});document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var t=(b.textContent||"").trim();if(t.indexOf("Stripe")>=0)registrarMetodo("Stripe");else if(t.indexOf("PayPal")>=0)registrarMetodo("PayPal");else if(t.indexOf("USDT")>=0)registrarMetodo("USDT TRC20");else if(t.indexOf("USDC")>=0)registrarMetodo("USDC Polygon")},true)
 window.originalmasOrderPricing=window.originalmasOrderPricing||{};
