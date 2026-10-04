@@ -20,7 +20,8 @@ var datos={imageBase64:base64,mimeType:f.type,fileName:f.name,firstName:contacto
 window.originalmasOrderPricing=window.originalmasOrderPricing||{};
 
 function cargarTarifasWeb(){
-  window.originalmasPricingCallback=function(data){
+  var callbackName="originalmasPricingCallback_"+Date.now()+"_"+String(Math.random()).slice(2);
+  window[callbackName]=function(data){
     if(!data || !data.ok || !data.pricing) return;
 
     var precios=data.pricing;
@@ -83,26 +84,26 @@ function cargarTarifasWeb(){
     function actualizarElementoPrecio(el,resultado){
       if(!el) return;
 
-      var texto=el.innerHTML;
+      var texto=el.textContent||"";
 
       if(resultado.promocion && resultado.final<resultado.original){
         texto=texto.replace(
           /\d+(?:\.\d+)?€/g,
-          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
-          formatoPrecio(resultado.original)+'€</span>'
-        );
+          ""
+        ).replace(/\s+$/,"");
 
-        texto=texto.replace(
-          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
-          formatoPrecio(resultado.original)+'€</span>',
-          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
-          formatoPrecio(resultado.original)+'€</span><strong>'+
-          formatoPrecio(resultado.final)+'€</strong>'
-        );
+        var precioFinal=formatoPrecio(resultado.final)+"€";
+        var precioOriginal=formatoPrecio(resultado.original)+"€";
 
-        el.innerHTML=texto;
-      }else{
         el.innerHTML=
+          texto+
+          ' <span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
+          precioOriginal+
+          '</span><strong>'+
+          precioFinal+
+          '</strong>';
+      }else{
+        el.textContent=
           texto.replace(
             /\d+(?:\.\d+)?€/g,
             formatoPrecio(resultado.final)+"€"
@@ -186,8 +187,8 @@ function cargarTarifasWeb(){
               formatoPrecio(resultado.final)+"€</strong>"
             );
         }else{
-          buttons[i].innerHTML=
-            buttons[i].innerHTML.replace(
+          buttons[i].textContent=
+            (buttons[i].textContent||"").replace(
               /\d+(?:\.\d+)?€/g,
               formatoPrecio(resultado.final)+"€"
             );
@@ -196,9 +197,15 @@ function cargarTarifasWeb(){
     });
   };
 
+  delete window[callbackName];
+
   var s=document.createElement("script");
-  s.src="https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec?action=getPricing&callback=originalmasPricingCallback&_="+Date.now();
-  s.onerror=function(){ delete window.originalmasPricingCallback; };
+  s.async=true;
+  s.src="https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec?action=getPricing&callback="+encodeURIComponent(callbackName)+"&_="+Date.now();
+  s.onerror=function(){
+    delete window[callbackName];
+    if(s.parentNode) s.parentNode.removeChild(s);
+  };
   document.head.appendChild(s);
 }
 cargarTarifasWeb();
