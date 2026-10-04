@@ -74,6 +74,21 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   .proof small{font-size:8px}
 }
 
+
+/* ===== Compatibilidad + comunidad ===== */
+.device-zone{margin:25px 0 8px;padding:17px 14px;border:1px solid rgba(212,175,55,.24);border-radius:18px;background:linear-gradient(145deg,rgba(212,175,55,.07),rgba(255,255,255,.018));text-align:center}
+.device-zone h3{margin:0 0 6px;color:var(--gold2);font-size:15px;letter-spacing:.6px}
+.device-zone p{margin:0 0 13px;color:#999;font-size:11px}
+.device-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.device{padding:9px 4px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(0,0,0,.25);color:#ddd;font-size:10px;line-height:1.2}
+.device b{display:block;font-size:17px;margin-bottom:4px}
+.telegram-card{position:relative;margin:13px 0 0;padding:15px;border:1px solid rgba(212,175,55,.38);border-radius:16px;background:linear-gradient(135deg,#17130a,#0b0b0b);overflow:hidden}
+.telegram-card:after{content:"";position:absolute;right:-35px;top:-45px;width:120px;height:120px;border-radius:50%;background:rgba(212,175,55,.07)}
+.telegram-card .tg-title{color:#fff;font-weight:800;font-size:14px}
+.telegram-card .tg-text{color:#999;font-size:11px;margin:4px 0 11px}
+.telegram-card a{display:block;padding:11px 12px;border-radius:11px;background:linear-gradient(135deg,#d4af37,#a98519);color:#080808;text-decoration:none;font-weight:900;font-size:12px;box-shadow:0 7px 18px rgba(0,0,0,.35)}
+@media(max-width:520px){.device-grid{grid-template-columns:repeat(2,1fr)}}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
 <div class="brand-stage">
@@ -89,6 +104,26 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   <div class="proof"><strong>⚡ Fácil</strong><small>ALTA ONLINE</small></div>
   <div class="proof"><strong>🎁 Prueba</strong><small>ANTES DE DECIDIR</small></div>
   <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
+</div>
+<div class="device-zone">
+  <h3>📺 ¿DÓNDE PUEDES DISFRUTARLO?</h3>
+  <p>Compatible con todos tus dispositivos habituales.</p>
+  <div class="device-grid">
+    <div class="device"><b>📱</b>Android</div>
+    <div class="device"><b>🔥</b>Fire TV</div>
+    <div class="device"><b>📺</b>Android TV</div>
+    <div class="device"><b>📦</b>TV Box</div>
+    <div class="device"><b>🍎</b>iPhone / iPad</div>
+    <div class="device"><b>💻</b>Windows</div>
+    <div class="device"><b>📡</b>Smart TV</div>
+    <div class="device"><b>🟠</b>Google TV</div>
+    <div class="device"><b>📲</b>Xiaomi TV</div>
+  </div>
+</div>
+<div class="telegram-card">
+  <div class="tg-title">✈️ ÚNETE A NUESTRO TELEGRAM</div>
+  <div class="tg-text">Novedades, información y contacto directo con OriginalMas.</div>
+  <a href="https://t.me/OriginalMas" target="_blank" rel="noopener">💬 ENTRAR EN TELEGRAM · @OriginalMas</a>
 </div>
 <div id="menu-principal"><h2>🛒 CONTRATACIÓN</h2><button onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button><button onclick="mostrar('mis-solicitudes')">📋 Mis solicitudes</button><button onclick="mostrar('pruebas')">🎁 Solicitar prueba</button><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('pack')">🔥 Pack Dúo</button><button onclick="mostrar('renovar')">🔄 Renovar</button></div>
 <div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas — 24 horas</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas Premium — 24 horas</button><button onclick="mostrar('prueba-emby')">🟣 Emby — 2 horas</button><button class="back" onclick="volver()">⬅ Volver</button></div>
