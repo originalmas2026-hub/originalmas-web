@@ -456,6 +456,53 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 /* ===== Pantalla de inicio completa: frases y dispositivos ===== */
 #home-brand-stage.hidden,#home-social-proof.hidden,#home-device-zone.hidden,#home-telegram-card.hidden{display:none!important}
 
+
+/* ===== Tamaño estándar fijo para todas las pantallas ===== */
+:root{--om-card-w:340px;--om-card-h:76px}
+#menu-principal .square-grid,
+#menu-principal .extra-actions{
+  display:grid!important;
+  grid-template-columns:repeat(2,var(--om-card-w))!important;
+  gap:12px!important;
+  width:max-content!important;
+  max-width:none!important;
+}
+#menu-principal .plans-grid{
+  grid-template-columns:repeat(2,var(--om-card-w))!important;
+}
+#menu-principal .square-grid button,
+#menu-principal .extra-actions button{
+  box-sizing:border-box!important;
+  width:var(--om-card-w)!important;
+  min-width:var(--om-card-w)!important;
+  max-width:var(--om-card-w)!important;
+  height:var(--om-card-h)!important;
+  min-height:var(--om-card-h)!important;
+  max-height:var(--om-card-h)!important;
+  flex:none!important;
+}
+#menu-principal .square-grid button span{
+  white-space:normal!important;
+}
+@media(max-width:760px){
+  #menu-principal .square-grid,
+  #menu-principal .extra-actions,
+  #menu-principal .plans-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+  #menu-principal .square-grid button,
+  #menu-principal .extra-actions button{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:76px!important;
+    min-height:76px!important;
+    max-height:76px!important;
+  }
+}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
 <div id="home-brand-stage" class="brand-stage">
