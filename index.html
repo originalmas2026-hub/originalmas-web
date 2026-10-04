@@ -33,8 +33,8 @@ function cargarTarifasWeb(){
       if(!pantalla || precio===undefined) return;
       var importe=String(precio)+"€";
       pantalla.querySelectorAll("button,p").forEach(function(el){
-        if(el.textContent.indexOf("€")>=0) el.innerHTML=el.innerHTML.replace(/\\d+(?:\\.\\d+)?€/g,importe);
-        if(el.tagName==="BUTTON" && el.getAttribute("onclick") && el.getAttribute("onclick").indexOf("copiarCripto")>=0) el.setAttribute("onclick",el.getAttribute("onclick").replace(/'\\d+(?:\\.\\d+)?€'/g,"'"+importe+"'"));
+        if(el.textContent.indexOf("€")>=0) el.innerHTML=el.innerHTML.replace(/\d+(?:\.\d+)?€/g,importe);
+        if(el.tagName==="BUTTON" && el.getAttribute("onclick") && el.getAttribute("onclick").indexOf("copiarCripto")>=0) el.setAttribute("onclick",el.getAttribute("onclick").replace(/'\d+(?:\.\d+)?€'/g,"'"+importe+"'"));
       });
     });
     var menus=[["originalmas","OriginalMas"],["premium","OriginalMas Premium"],["emby","Emby"],["duo-om","OriginalMas + Emby"],["duo-premium","Premium + Emby"]];
@@ -43,7 +43,7 @@ function cargarTarifasWeb(){
       if(!pantalla || !cfg) return;
       ["1 mes","3 meses","6 meses","12 meses"].forEach(function(d,i){
         var buttons=pantalla.querySelectorAll("button");
-        if(buttons[i] && cfg[d]!==undefined) buttons[i].innerHTML=buttons[i].innerHTML.replace(/\\d+(?:\\.\\d+)?€/g,String(cfg[d])+"€");
+        if(buttons[i] && cfg[d]!==undefined) buttons[i].innerHTML=buttons[i].innerHTML.replace(/\d+(?:\.\d+)?€/g,String(cfg[d])+"€");
       });
     });
   };
