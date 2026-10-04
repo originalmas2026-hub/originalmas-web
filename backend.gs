@@ -155,7 +155,7 @@ function listOrders(token) {
     orders:values.slice(1).map(function(row) {
       return {
         id: row[0],
-        date: row[1],
+        date: row[1] instanceof Date ? Utilities.formatDate(row[1], Session.getScriptTimeZone(), "dd/MM/yyyy HH:mm") : String(row[1] || ""),
         contact: row[2],
         service: row[3],
         duration: row[4],
