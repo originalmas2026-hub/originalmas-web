@@ -290,6 +290,82 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   .group-text{color:#888;font-size:10px;margin:4px 0 9px}
 }
 
+
+/* ===== Corrección definitiva de alineación del menú ===== */
+#menu-principal{
+  display:block;
+  width:100%;
+}
+#menu-principal .menu-block{
+  display:block;
+  width:100%;
+  margin:0 0 28px;
+}
+#menu-principal .menu-block h2{
+  display:block;
+  width:100%;
+  margin:0 0 13px;
+  text-align:left;
+}
+#menu-principal .square-grid{
+  width:100%;
+  display:grid;
+  align-items:stretch;
+  justify-content:start;
+  gap:12px;
+}
+#menu-principal .requests-grid{
+  grid-template-columns:repeat(2,170px);
+}
+#menu-principal .plans-grid{
+  grid-template-columns:repeat(5,170px);
+}
+#menu-principal .extra-actions{
+  grid-template-columns:170px;
+}
+#menu-principal .square-grid button,
+#menu-principal .extra-actions button{
+  width:170px;
+  height:150px;
+  min-width:170px;
+  max-width:170px;
+  min-height:150px;
+  max-height:150px;
+  margin:0;
+  justify-self:start;
+}
+@media(max-width:1100px) and (min-width:821px){
+  #menu-principal .plans-grid{
+    grid-template-columns:repeat(3,170px);
+  }
+}
+@media(max-width:820px){
+  #menu-principal .requests-grid,
+  #menu-principal .plans-grid,
+  #menu-principal .extra-actions{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  #menu-principal .square-grid button,
+  #menu-principal .extra-actions button{
+    width:100%;
+    min-width:0;
+    max-width:none;
+    height:auto;
+    min-height:150px;
+    max-height:none;
+    aspect-ratio:1/1;
+  }
+}
+@media(max-width:520px){
+  #menu-principal .square-grid{gap:9px}
+  #menu-principal .square-grid button,
+  #menu-principal .extra-actions button{
+    min-height:135px;
+    height:auto;
+    max-height:none;
+  }
+}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
 <div class="brand-stage">
