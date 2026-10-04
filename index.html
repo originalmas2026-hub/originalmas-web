@@ -563,6 +563,76 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   }
 }
 
+
+/* ===== Botones con el mismo estilo que Fácil / Prueba / Multidispositivo ===== */
+#menu-principal .square-grid,
+#menu-principal .extra-actions{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+  width:100%!important;
+}
+#menu-principal .square-grid button,
+#menu-principal .extra-actions button{
+  position:relative!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:70px!important;
+  min-height:70px!important;
+  max-height:70px!important;
+  margin:0!important;
+  padding:10px 12px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  text-align:left!important;
+  border:1px solid rgba(255,255,255,.07)!important;
+  border-radius:13px!important;
+  background:rgba(255,255,255,.025)!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  font-size:24px!important;
+}
+#menu-principal .square-grid button span{
+  display:block!important;
+  color:var(--gold2)!important;
+  font-size:13px!important;
+  font-weight:800!important;
+  line-height:1.2!important;
+  text-align:left!important;
+}
+#menu-principal .square-grid button:hover,
+#menu-principal .extra-actions button:hover{
+  transform:translateY(-2px)!important;
+  border-color:rgba(212,175,55,.35)!important;
+  background:rgba(212,175,55,.055)!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.22)!important;
+}
+#menu-principal .square-grid button:before{
+  display:none!important;
+}
+#menu-principal .square-grid button:after{
+  top:auto!important;
+  right:10px!important;
+}
+@media(max-width:520px){
+  #menu-principal .square-grid,
+  #menu-principal .extra-actions{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  #menu-principal .square-grid button,
+  #menu-principal .extra-actions button{
+    height:70px!important;
+    min-height:70px!important;
+    max-height:70px!important;
+  }
+}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
 <div id="home-brand-stage" class="brand-stage">
