@@ -35,6 +35,15 @@
 <button type="button" id="solicitud-enviar">📩 Enviar solicitud</button>
 </div>
 <button class="back" type="button" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="mis-solicitudes" class="hidden">
+<h2>📋 MIS SOLICITUDES</h2>
+<p style="text-align:center;color:#aaa">Aquí puedes consultar el estado de tus solicitudes de contenido.</p>
+<div id="mis-solicitudes-lista">
+<p style="text-align:center;color:#aaa">Cargando solicitudes...</p>
+</div>
+<button type="button" onclick="cargarMisSolicitudes()">🔄 Actualizar</button>
+<button class="back" type="button" onclick="volver()">⬅ Volver</button>
 </div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Emby</button><button onclick="mostrar('duo-premium')">⭐ Premium + Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function mostrar(id){
 document.querySelectorAll(".container > div").forEach(function(e){if(e.id)e.classList.add("hidden")});
@@ -293,6 +302,120 @@ mostrar=function(id){
   if(id==="solicitar-contenido"){
     limpiarSolicitudUI();
   }
+  if(id==="mis-solicitudes"){
+    cargarMisSolicitudes();
+  }
+};
+
+function cargarMisSolicitudes(){
+  var contenedor=document.getElementById("mis-solicitudes-lista");
+  if(!contenedor) return;
+
+  contenedor.innerHTML='<p style="text-align:center;color:#aaa">⏳ Cargando solicitudes...</p>';
+
+  var callback="originalmasMisSolicitudes_"+Date.now()+"_"+String(Math.random()).slice(2);
+
+  window[callback]=function(data){
+    try{
+      if(data && data.correcto===false){
+        throw new Error(data.error||"No se pudieron cargar tus solicitudes.");
+      }
+
+      var solicitudes=Array.isArray(data)?data:[];
+
+      if(!solicitudes.length){
+        contenedor.innerHTML=
+          '<div style="padding:18px;border:1px solid #333;border-radius:10px;text-align:center;color:#aaa">'+
+          'No tienes solicitudes todavía.'+
+          '</div>';
+        return;
+      }
+
+      contenedor.innerHTML="";
+
+      solicitudes.forEach(function(solicitud){
+        var tarjeta=document.createElement("div");
+        tarjeta.style.cssText=
+          "margin:12px 0;padding:15px;border:1px solid #333;border-radius:10px;background:#0d0d0d;";
+
+        var tipoTexto=
+          solicitud.tipo==="pelicula"
+            ? "🎬 Película"
+            : "📺 Serie";
+
+        var estado=String(solicitud.estado||"").trim();
+
+        var estadoColor="#d4af37";
+
+        if(estado==="Completada"){
+          estadoColor="#5fd17a";
+        }else if(estado==="Rechazada"){
+          estadoColor="#ff7777";
+        }else if(estado==="En proceso"){
+          estadoColor="#66b3ff";
+        }
+
+        var fechaTexto="";
+
+        if(solicitud.fecha){
+          try{
+            fechaTexto=new Date(solicitud.fecha).toLocaleString("es-ES");
+          }catch(e){
+            fechaTexto=String(solicitud.fecha);
+          }
+        }
+
+        tarjeta.innerHTML=
+          '<div style="font-weight:bold;color:#d4af37;font-size:17px;margin-bottom:8px">'+
+          escaparSolicitudHtml(solicitud.titulo||"Sin título")+
+          '</div>'+
+          '<div style="color:#aaa;margin-bottom:5px">'+
+          escaparSolicitudHtml(tipoTexto)+
+          (solicitud.año ? " · "+escaparSolicitudHtml(String(solicitud.año)) : "")+
+          '</div>'+
+          '<div style="color:#aaa;margin-bottom:5px">Servicio: '+
+          escaparSolicitudHtml(solicitud.servicio||"")+
+          '</div>'+
+          '<div style="color:#aaa;font-size:13px;margin-bottom:10px">Solicitud: '+
+          escaparSolicitudHtml(solicitud.id||"")+
+          (fechaTexto ? " · "+escaparSolicitudHtml(fechaTexto) : "")+
+          '</div>'+
+          '<div style="font-weight:bold;color:'+estadoColor+'">Estado: '+
+          escaparSolicitudHtml(estado||"Pendiente")+
+          '</div>';
+
+        contenedor.appendChild(tarjeta);
+      });
+
+    }catch(error){
+      contenedor.innerHTML=
+        '<p style="text-align:center;color:#ff7777">'+
+        escaparSolicitudHtml(error.message)+
+        '</p>';
+    }finally{
+      delete window[callback];
+      if(script && script.parentNode) script.parentNode.removeChild(script);
+    }
+  };
+
+  var script=document.createElement("script");
+  script.async=true;
+
+  script.src=ORIGINALMAS_SOLICITUDES_API+
+    "?action=obtenersolicitudescliente"+
+    "&clienteId="+encodeURIComponent(originalmasClienteId)+
+    "&callback="+encodeURIComponent(callback)+
+    "&_="+Date.now();
+
+  script.onerror=function(){
+    delete window[callback];
+    if(script.parentNode) script.parentNode.removeChild(script);
+
+    contenedor.innerHTML=
+      '<p style="text-align:center;color:#ff7777">No se pudieron cargar tus solicitudes. Inténtalo de nuevo.</p>';
+  };
+
+  document.head.appendChild(script);
 };
 function cargarTarifasWeb(){
   var callbackName="originalmasPricingCallback_"+Date.now()+"_"+String(Math.random()).slice(2);
