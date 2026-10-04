@@ -41,7 +41,12 @@ function doPost(e) {
       data.paymentMethod || "",
       file.getId(),
       "PENDIENTE",
-      ""
+      "",
+      data.originalAmount || "",
+      data.discountName || "",
+      data.discountType || "",
+      data.discountValue || "",
+      data.finalAmount || ""
     ]);
 
     const botToken = PropertiesService.getScriptProperties().getProperty("BOT_TOKEN");
@@ -187,7 +192,12 @@ function getOrdersSheet_() {
       "Método de pago",
       "Comprobante",
       "Estado",
-      "Acceso"
+      "Acceso",
+      "Precio original",
+      "Promoción",
+      "Tipo descuento",
+      "Valor descuento",
+      "Precio final"
     ]);
   }
 
@@ -246,7 +256,12 @@ function listOrders(token) {
         paymentMethod: row[6],
         proofId: row[7],
         status: row[8],
-        access: row[9]
+        access: row[9],
+        originalAmount: row[10],
+        discountName: row[11],
+        discountType: row[12],
+        discountValue: row[13],
+        finalAmount: row[14]
       };
     })
   };
