@@ -4,6 +4,16 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
 
+    if (data.action === "trialRequest") {
+      return handleTrialRequest_(data);
+    }
+
+    if (!data.imageBase64) {
+      return jsonResponse({ok:false, error:"No se recibió la imagen."});
+    }
+  try {
+    const data = JSON.parse(e.postData.contents);
+
     if (!data.imageBase64) {
       return jsonResponse({ok:false, error:"No se recibió la imagen."});
     }
@@ -78,6 +88,79 @@ function doPost(e) {
       error: error.message
     });
   }
+}
+
+
+function handleTrialRequest_(data) {
+  const service = String(data.trialService || "").trim();
+  const duration = String(data.trialDuration || "").trim();
+  const contact = String(data.contact || "").trim();
+
+  if (!service || !duration || !contact) {
+    return jsonResponse({ok:false, error:"Faltan datos para solicitar la prueba."});
+  }
+
+  const ss = getOrdersSpreadsheet_();
+  let sheet = ss.getSheetByName("Pruebas");
+  if (!sheet) {
+    sheet = ss.insertSheet("Pruebas");
+    sheet.appendRow([
+      "ID Prueba",
+      "Fecha",
+      "Cliente / Contacto",
+      "Servicio",
+      "Duración",
+      "Estado",
+      "Acceso",
+      "Notas"
+    ]);
+  }
+
+  const pruebaId = "PR-" + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyyMMdd-HHmmss") + "-" + Math.floor(Math.random() * 1000);
+
+  sheet.appendRow([
+    pruebaId,
+    new Date(),
+    contact,
+    service,
+    duration,
+    "PENDIENTE",
+    "",
+    ""
+  ]);
+
+  const botToken = PropertiesService.getScriptProperties().getProperty("BOT_TOKEN");
+  if (botToken) {
+    const mensaje =
+      "🎁 NUEVA SOLICITUD DE PRUEBA\\n" +
+      "━━━━━━━━━━━━━━━━━━━━\\n\\n" +
+      "🆔 " + pruebaId + "\\n\\n" +
+      "👤 CONTACTO\\n" + contact + "\\n\\n" +
+      "📺 SERVICIO\\n" + service + "\\n\\n" +
+      "⏱ DURACIÓN\\n" + duration;
+
+    UrlFetchApp.fetch("https://api.telegram.org/bot" + botToken + "/sendMessage", {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify({chat_id: ADMIN_ID, text: mensaje}),
+      muteHttpExceptions: true
+    });
+  }
+
+  return jsonResponse({
+    ok:true,
+    message:"Solicitud de prueba recibida correctamente.",
+    trialId:pruebaId
+  });
+}
+
+function getOrdersSpreadsheet_() {
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+  if (spreadsheetId) return SpreadsheetApp.openById(spreadsheetId);
+
+  const ss = SpreadsheetApp.create("OriginalMas - Pedidos");
+  PropertiesService.getScriptProperties().setProperty("ORDERS_SPREADSHEET_ID", ss.getId());
+  return ss;
 }
 
 function getOrdersSheet_() {
