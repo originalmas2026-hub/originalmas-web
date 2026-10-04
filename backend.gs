@@ -252,6 +252,58 @@ function listOrders(token) {
   };
 }
 
+
+function listTrials(token) {
+  if (!isAdminSession_(token)) return {ok:false, error:"Sesión no válida."};
+
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+  if (!spreadsheetId) return {ok:true, trials:[]};
+
+  const sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName("Pruebas");
+  if (!sheet) return {ok:true, trials:[]};
+
+  const values = sheet.getDataRange().getValues();
+  if (values.length < 2) return {ok:true, trials:[]};
+
+  return {
+    ok:true,
+    trials:values.slice(1).map(function(row) {
+      return {
+        id: row[0],
+        date: row[1] instanceof Date ? Utilities.formatDate(row[1], Session.getScriptTimeZone(), "dd/MM/yyyy HH:mm") : String(row[1] || ""),
+        contact: row[2],
+        service: row[3],
+        duration: row[4],
+        status: row[5],
+        access: row[6],
+        notes: row[7]
+      };
+    })
+  };
+}
+
+function updateTrial(token, trialId, status, access) {
+  if (!isAdminSession_(token)) return {ok:false, error:"Sesión no válida."};
+
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+  if (!spreadsheetId) return {ok:false, error:"No existe la hoja de pedidos."};
+
+  const sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName("Pruebas");
+  if (!sheet) return {ok:false, error:"No existe la hoja de pruebas."};
+
+  const values = sheet.getDataRange().getValues();
+
+  for (let i = 1; i < values.length; i++) {
+    if (String(values[i][0]) === String(trialId)) {
+      sheet.getRange(i + 1, 6).setValue(status || values[i][5]);
+      sheet.getRange(i + 1, 7).setValue(access || "");
+      return {ok:true};
+    }
+  }
+
+  return {ok:false, error:"Solicitud de prueba no encontrada."};
+}
+
 function updateOrder(token, orderId, status, access) {
   if (!isAdminSession_(token)) return {ok:false, error:"Sesión no válida."};
   const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
