@@ -492,6 +492,77 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   white-space:normal!important;
 }
 
+
+/* ===== Volver al estilo rectangular original ===== */
+#menu-principal .square-grid,
+#menu-principal .plans-grid,
+#menu-principal .requests-grid,
+#menu-principal .extra-actions{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  gap:10px!important;
+}
+#menu-principal .square-grid button,
+#menu-principal .extra-actions button{
+  box-sizing:border-box!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:58px!important;
+  min-height:58px!important;
+  max-height:58px!important;
+  margin:0!important;
+  padding:16px 21px!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:13px!important;
+  border-radius:12px!important;
+  font-size:25px!important;
+  text-align:left!important;
+}
+#menu-principal .square-grid button span{
+  font-size:14px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  text-align:left!important;
+}
+#menu-principal .square-grid button:first-child{
+  border-color:var(--gold)!important;
+  background:linear-gradient(135deg,#28200a,#141108)!important;
+  box-shadow:0 9px 25px rgba(0,0,0,.4),0 0 20px rgba(212,175,55,.08)!important;
+}
+#menu-principal .square-grid button:before{
+  left:0!important;
+  top:14%!important;
+  bottom:14%!important;
+  width:2px!important;
+  height:auto!important;
+  transform:none!important;
+}
+@media(max-width:520px){
+  #menu-principal .square-grid,
+  #menu-principal .plans-grid,
+  #menu-principal .requests-grid,
+  #menu-principal .extra-actions{
+    grid-template-columns:1fr!important;
+    width:100%!important;
+  }
+  #menu-principal .square-grid button,
+  #menu-principal .extra-actions button{
+    width:100%!important;
+    height:58px!important;
+    min-height:58px!important;
+    max-height:58px!important;
+    padding:14px 15px!important;
+    border-radius:12px!important;
+  }
+}
+
 </style></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Contratación online</div>
 <div id="home-brand-stage" class="brand-stage">
