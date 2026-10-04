@@ -173,7 +173,7 @@ function buscarSolicitudesCatalogo(){
   var script=document.createElement("script");
   script.async=true;
   script.src=ORIGINALMAS_SOLICITUDES_API+
-    "?action=buscarCatalogo"+
+    "?action=buscarcatalogo"+
     "&texto="+encodeURIComponent(valor)+
     "&tipo="+encodeURIComponent(solicitudTipo)+
     "&callback="+encodeURIComponent(callback)+
@@ -238,7 +238,7 @@ function enviarSolicitudContenido(){
   var script=document.createElement("script");
   script.async=true;
   script.src=ORIGINALMAS_SOLICITUDES_API+
-    "?action=crearSolicitud"+
+    "?action=crearsolicitud"+
     "&servicio="+encodeURIComponent(solicitudServicio)+
     "&tipo="+encodeURIComponent(solicitudTipo)+
     "&wikidataId="+encodeURIComponent(solicitudSeleccion.wikidataId)+
