@@ -128,3 +128,59 @@ function jsonResponse(data) {
     .createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
 }
+
+
+function loginAdmin(password) {
+  const saved = PropertiesService.getScriptProperties().getProperty("ADMIN_PASSWORD");
+  if (!saved || password !== saved) return {ok:false, error:"Contraseña incorrecta."};
+  const token = Utilities.getUuid();
+  CacheService.getScriptCache().put("ADMIN_SESSION_" + token, "1", 21600);
+  return {ok:true, token:token};
+}
+
+function isAdminSession_(token) {
+  return !!token && CacheService.getScriptCache().get("ADMIN_SESSION_" + token) === "1";
+}
+
+function listOrders(token) {
+  if (!isAdminSession_(token)) return {ok:false, error:"Sesión no válida."};
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+  if (!spreadsheetId) return {ok:true, orders:[]};
+  const sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName("Pedidos");
+  if (!sheet) return {ok:true, orders:[]};
+  const values = sheet.getDataRange().getValues();
+  if (values.length < 2) return {ok:true, orders:[]};
+  return {
+    ok:true,
+    orders:values.slice(1).map(function(row) {
+      return {
+        id: row[0],
+        date: row[1],
+        contact: row[2],
+        service: row[3],
+        duration: row[4],
+        amount: row[5],
+        paymentMethod: row[6],
+        proofId: row[7],
+        status: row[8],
+        access: row[9]
+      };
+    })
+  };
+}
+
+function updateOrder(token, orderId, status, access) {
+  if (!isAdminSession_(token)) return {ok:false, error:"Sesión no válida."};
+  const spreadsheetId = PropertiesService.getScriptProperties().getProperty("ORDERS_SPREADSHEET_ID");
+  if (!spreadsheetId) return {ok:false, error:"No existe la hoja de pedidos."};
+  const sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName("Pedidos");
+  const values = sheet.getDataRange().getValues();
+  for (let i = 1; i < values.length; i++) {
+    if (String(values[i][0]) === String(orderId)) {
+      sheet.getRange(i + 1, 9).setValue(status || values[i][8]);
+      sheet.getRange(i + 1, 10).setValue(access || "");
+      return {ok:true};
+    }
+  }
+  return {ok:false, error:"Pedido no encontrado."};
+}
