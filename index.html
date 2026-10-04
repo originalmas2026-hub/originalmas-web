@@ -43,6 +43,7 @@
 <p style="text-align:center;color:#aaa">Cargando solicitudes...</p>
 </div>
 <button type="button" onclick="cargarMisSolicitudes()">🔄 Actualizar</button>
+<button type="button" onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button>
 <button class="back" type="button" onclick="volver()">⬅ Volver</button>
 </div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas</button><button onclick="mostrar('premium')">⭐ OriginalMas Premium</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Emby</button><button onclick="mostrar('duo-premium')">⭐ Premium + Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function mostrar(id){
@@ -248,7 +249,8 @@ function enviarSolicitudContenido(){
           escaparSolicitudHtml(solicitudSeleccion.titulo)+
           '</strong> ha sido registrada correctamente.</p>'+
           '<p style="color:#aaa">Estado: <strong style="color:#d4af37">Pendiente</strong></p>'+
-          '<button type="button" onclick="mostrar(\'solicitar-contenido\');limpiarSolicitudUI()">📩 Nueva solicitud</button>';
+          '<button type="button" onclick="mostrar(\'solicitar-contenido\');limpiarSolicitudUI()">📩 Nueva solicitud</button>'+
+          '<button type="button" onclick="mostrar(\'mis-solicitudes\')">📋 Ver mis solicitudes</button>';
       }
     }catch(error){
       boton.disabled=false;
@@ -327,6 +329,7 @@ function cargarMisSolicitudes(){
         contenedor.innerHTML=
           '<div style="padding:18px;border:1px solid #333;border-radius:10px;text-align:center;color:#aaa">'+
           'No tienes solicitudes todavía.'+
+          '<button type="button" style="margin-top:15px" onclick="mostrar(\'solicitar-contenido\')">📩 Solicitar contenido</button>'+
           '</div>';
         return;
       }
