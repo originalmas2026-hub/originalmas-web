@@ -19,7 +19,12 @@
 function cargarTarifasWeb(){
   window.originalmasPricingCallback=function(data){
     if(!data || !data.ok || !data.pricing) return;
+
     var precios=data.pricing;
+    var promociones=data.discounts && Array.isArray(data.discounts.promotions)
+      ? data.discounts.promotions
+      : [];
+
     var pantallas={
       "om-1":["OriginalMas","1 mes"],"om-3":["OriginalMas","3 meses"],"om-6":["OriginalMas","6 meses"],"om-12":["OriginalMas","12 meses"],
       "omp-1":["OriginalMas Premium","1 mes"],"omp-3":["OriginalMas Premium","3 meses"],"omp-6":["OriginalMas Premium","6 meses"],"omp-12":["OriginalMas Premium","12 meses"],
@@ -27,28 +32,146 @@ function cargarTarifasWeb(){
       "duoom-1":["OriginalMas + Emby","1 mes"],"duoom-3":["OriginalMas + Emby","3 meses"],"duoom-6":["OriginalMas + Emby","6 meses"],"duoom-12":["OriginalMas + Emby","12 meses"],
       "duop-1":["Premium + Emby","1 mes"],"duop-3":["Premium + Emby","3 meses"],"duop-6":["Premium + Emby","6 meses"],"duop-12":["Premium + Emby","12 meses"]
     };
+
+    function obtenerPrecioConDescuento(precioOriginal,servicio,duracion){
+      var precio=Number(precioOriginal);
+      if(!isFinite(precio)||precio<0){
+        return {original:precio,final:precio,promocion:null};
+      }
+
+      for(var i=0;i<promociones.length;i++){
+        var promo=promociones[i];
+        if(!promo || promo.active===false) continue;
+
+        var servicios=Array.isArray(promo.services)?promo.services:[];
+        var aplicaServicio=servicios.length===0 || servicios.indexOf(servicio)>=0;
+        if(!aplicaServicio) continue;
+
+        var duraciones=Array.isArray(promo.durations)?promo.durations:[];
+        var aplicaDuracion=duraciones.length===0 || duraciones.indexOf(duracion)>=0;
+        if(!aplicaDuracion) continue;
+
+        var valor=Number(promo.value);
+        if(!isFinite(valor)||valor<=0) continue;
+
+        var precioFinal=precio;
+
+        if(promo.type==="percentage"){
+          precioFinal=precio-(precio*valor/100);
+        }else if(promo.type==="fixed"){
+          precioFinal=precio-valor;
+        }
+
+        precioFinal=Math.max(0,precioFinal);
+        precioFinal=Math.round(precioFinal*100)/100;
+
+        return {original:precio,final:precioFinal,promocion:promo};
+      }
+
+      return {original:precio,final:precio,promocion:null};
+    }
+
+    function formatoPrecio(valor){
+      var n=Number(valor);
+      if(Math.round(n)===n) return String(n);
+      return n.toFixed(2).replace(/0+$/,"").replace(/\.$/,"");
+    }
+
+    function actualizarElementoPrecio(el,resultado){
+      if(!el) return;
+
+      if(resultado.promocion && resultado.final<resultado.original){
+        el.innerHTML=
+          '<span style="text-decoration:line-through;opacity:.55;margin-right:6px;">'+
+          formatoPrecio(resultado.original)+'€</span>'+
+          '<strong>'+formatoPrecio(resultado.final)+'€</strong>';
+      }else{
+        el.innerHTML=
+          el.innerHTML.replace(/\d+(?:\.\d+)?€/g,formatoPrecio(resultado.final)+"€");
+      }
+    }
+
     Object.keys(pantallas).forEach(function(id){
-      var pantalla=document.getElementById(id), info=pantallas[id];
+      var pantalla=document.getElementById(id);
+      var info=pantallas[id];
       var precio=precios[info[0]] && precios[info[0]][info[1]];
+
       if(!pantalla || precio===undefined) return;
-      var importe=String(precio)+"€";
+
+      var resultado=obtenerPrecioConDescuento(precio,info[0],info[1]);
+
       pantalla.querySelectorAll("button,p").forEach(function(el){
-        if(el.textContent.indexOf("€")>=0) el.innerHTML=el.innerHTML.replace(/\d+(?:\.\d+)?€/g,importe);
-        if(el.tagName==="BUTTON" && el.getAttribute("onclick") && el.getAttribute("onclick").indexOf("copiarCripto")>=0) el.setAttribute("onclick",el.getAttribute("onclick").replace(/'\d+(?:\.\d+)?€'/g,"'"+importe+"'"));
+        if(el.textContent.indexOf("€")>=0){
+          actualizarElementoPrecio(el,resultado);
+        }
+
+        if(
+          el.tagName==="BUTTON" &&
+          el.getAttribute("onclick") &&
+          el.getAttribute("onclick").indexOf("copiarCripto")>=0
+        ){
+          el.setAttribute(
+            "onclick",
+            el.getAttribute("onclick").replace(
+              /'\d+(?:\.\d+)?€'/g,
+              "'"+formatoPrecio(resultado.final)+"€'"
+            )
+          );
+        }
       });
     });
-    var menus=[["originalmas","OriginalMas"],["premium","OriginalMas Premium"],["emby","Emby"],["duo-om","OriginalMas + Emby"],["duo-premium","Premium + Emby"]];
+
+    var menus=[
+      ["originalmas","OriginalMas"],
+      ["premium","OriginalMas Premium"],
+      ["emby","Emby"],
+      ["duo-om","OriginalMas + Emby"],
+      ["duo-premium","Premium + Emby"]
+    ];
+
     menus.forEach(function(item){
-      var pantalla=document.getElementById(item[0]),cfg=precios[item[1]];
+      var pantalla=document.getElementById(item[0]);
+      var cfg=precios[item[1]];
+
       if(!pantalla || !cfg) return;
-      ["1 mes","3 meses","6 meses","12 meses"].forEach(function(d,i){
+
+      ["1 mes","3 meses","6 meses","12 meses"].forEach(function(duracion,i){
         var buttons=pantalla.querySelectorAll("button");
-        if(buttons[i] && cfg[d]!==undefined) buttons[i].innerHTML=buttons[i].innerHTML.replace(/\d+(?:\.\d+)?€/g,String(cfg[d])+"€");
+        if(!buttons[i] || cfg[duracion]===undefined) return;
+
+        var resultado=obtenerPrecioConDescuento(
+          cfg[duracion],
+          item[1],
+          duracion
+        );
+
+        if(resultado.promocion && resultado.final<resultado.original){
+          buttons[i].innerHTML=
+            buttons[i].innerHTML.replace(
+              /\d+(?:\.\d+)?€/g,
+              formatoPrecio(resultado.original)+"€"
+            );
+
+          buttons[i].innerHTML=
+            buttons[i].innerHTML.replace(
+              formatoPrecio(resultado.original)+"€",
+              '<span style="text-decoration:line-through;opacity:.55;margin-right:5px;">'+
+              formatoPrecio(resultado.original)+"€</span><strong>"+
+              formatoPrecio(resultado.final)+"€</strong>"
+            );
+        }else{
+          buttons[i].innerHTML=
+            buttons[i].innerHTML.replace(
+              /\d+(?:\.\d+)?€/g,
+              formatoPrecio(resultado.final)+"€"
+            );
+        }
       });
     });
   };
+
   var s=document.createElement("script");
-  s.src="https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec?action=getPricing&callback=originalmasPricingCallback&_=" + Date.now();
+  s.src="https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec?action=getPricing&callback=originalmasPricingCallback&_="+Date.now();
   s.onerror=function(){ delete window.originalmasPricingCallback; };
   document.head.appendChild(s);
 }
