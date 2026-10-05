@@ -900,7 +900,10 @@ function mostrarResultadosSolicitud(resultados){
     boton.innerHTML="<strong>"+escaparSolicitudHtml(item.titulo)+"</strong>"+
       (item.año ? ' <span style="color:#aaa">('+escaparSolicitudHtml(String(item.año))+')</span>' : "")+
       (item.tituloES && item.tituloES!==item.titulo ? '<br><small style="color:#aaa">'+escaparSolicitudHtml(item.tituloES)+'</small>' : "");
-    boton.onclick=function(){seleccionarContenidoSolicitud(item);};
+    boton.onclick=function(event){
+      if(event) event.stopPropagation();
+      seleccionarContenidoSolicitud(item);
+    };
     contenedor.appendChild(boton);
   });
 }
