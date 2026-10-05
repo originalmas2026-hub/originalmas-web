@@ -1338,8 +1338,6 @@ function cargarTarifasWeb(){
     });
   };
 
-  delete window[callbackName];
-
   var s=document.createElement("script");
   s.async=true;
   s.src="https://script.google.com/macros/s/AKfycbwRGBiGN9bsy-7WaA14LFzgRfhSSGCvjPBnUoA2I9ac0dnHyWros_AEFcsQtiyvWbCsxQ/exec?action=getPricing&callback="+encodeURIComponent(callbackName)+"&_="+Date.now();
