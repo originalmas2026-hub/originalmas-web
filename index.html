@@ -736,8 +736,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 <p id="solicitud-resumen" style="text-align:center;color:#d4af37;font-weight:bold"></p>
 <input id="solicitud-texto" type="text" placeholder="Escribe al menos 2 letras del título" autocomplete="off" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white">
 <div id="solicitud-resultados"></div>
+<button type="button" id="solicitud-manual-btn" class="hidden" onclick="mostrarSolicitudManual()">✍️ ¿No encuentras lo que buscas? Escríbelo manualmente</button>
 </div>
-<div id="solicitud-confirmacion" class="hidden" style="margin-top:15px;padding:15px;border:1px solid #555;border-radius:10px;text-align:center">
+<div id="solicitud-manual" class="hidden" style="margin-top:15px;padding:15px;border:1px solid rgba(212,175,55,.28);border-radius:10px;background:#0d0d0d">
+<p style="text-align:center;color:#d4af37;font-weight:bold;margin-top:0">✍️ SOLICITAR CONTENIDO</p>
+<p style="text-align:center;color:#aaa;font-size:12px">Si no aparece en el catálogo, indícanos el título y lo revisaremos.</p>
+<input id="solicitud-manual-titulo" type="text" placeholder="Título" autocomplete="off" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white">
+<input id="solicitud-manual-año" type="number" min="1800" max="2100" placeholder="Año (opcional)" style="width:100%;box-sizing:border-box;margin:8px 0;padding:12px;border-radius:6px;border:1px solid #444;background:#111;color:white">
+<button type="button" onclick="enviarSolicitudManual()">📩 Enviar solicitud</button>
+</div><div id="solicitud-confirmacion" class="hidden" style="margin-top:15px;padding:15px;border:1px solid #555;border-radius:10px;text-align:center">
 <p style="color:#d4af37;font-weight:bold">Contenido seleccionado</p>
 <p id="solicitud-seleccion"></p>
 <button type="button" id="solicitud-enviar">📩 Enviar solicitud</button>
@@ -877,6 +884,8 @@ function mostrarResultadosSolicitud(resultados){
   if(!contenedor) return;
   contenedor.innerHTML="";
   if(!resultados || !resultados.length){
+    var manualBtn=document.getElementById("solicitud-manual-btn");
+    if(manualBtn) manualBtn.classList.remove("hidden");
     contenedor.innerHTML='<p style="text-align:center;color:#aaa;margin:15px 0">No se encontraron resultados en el catálogo.</p>';
     return;
   }
@@ -947,6 +956,27 @@ function buscarSolicitudesCatalogo(){
     if(contenedor) contenedor.innerHTML='<p style="text-align:center;color:#ff7777">No se pudo conectar con el catálogo.</p>';
   };
   document.head.appendChild(script);
+}
+
+function mostrarSolicitudManual(){
+  var manual=document.getElementById("solicitud-manual");
+  var btn=document.getElementById("solicitud-manual-btn");
+  var titulo=document.getElementById("solicitud-manual-titulo");
+  if(manual) manual.classList.remove("hidden");
+  if(btn) btn.classList.add("hidden");
+  if(titulo){
+    titulo.value=(document.getElementById("solicitud-texto")||{}).value||"";
+    titulo.focus();
+  }
+}
+function enviarSolicitudManual(){
+  var titulo=document.getElementById("solicitud-manual-titulo");
+  var año=document.getElementById("solicitud-manual-año");
+  var valor=titulo?titulo.value.trim():"";
+  if(!solicitudServicio||!solicitudTipo){alert("Selecciona el servicio y el tipo de contenido.");return;}
+  if(!valor){alert("Debes indicar el título del contenido.");if(titulo)titulo.focus();return;}
+  solicitudSeleccion={wikidataId:"",titulo:valor,año:año?año.value.trim():""};
+  enviarSolicitudContenido();
 }
 
 function seleccionarContenidoSolicitud(item){
