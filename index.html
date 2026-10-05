@@ -995,6 +995,10 @@ function seleccionarContenidoSolicitud(item){
 }
 
 function enviarSolicitudContenido(){
+  if(window.originalmasSolicitudEnviando){
+    return;
+  }
+
   if(!solicitudServicio || !solicitudTipo || !solicitudSeleccion){
     alert("Selecciona el servicio, el tipo y un contenido.");
     return;
@@ -1002,6 +1006,7 @@ function enviarSolicitudContenido(){
 
   var boton=document.getElementById("solicitud-enviar");
   if(!boton) return;
+  window.originalmasSolicitudEnviando=true;
   boton.disabled=true;
   boton.textContent="⏳ Enviando...";
 
@@ -1013,9 +1018,11 @@ function enviarSolicitudContenido(){
       }
       boton.textContent="✅ Solicitud enviada";
       alert("✅ Solicitud enviada correctamente.");
+      window.originalmasSolicitudEnviando=false;
       limpiarSolicitudUI();
       mostrarInicio();
     }catch(error){
+      window.originalmasSolicitudEnviando=false;
       boton.disabled=false;
       boton.textContent="📩 Enviar solicitud";
       alert(error.message);
@@ -1040,6 +1047,7 @@ function enviarSolicitudContenido(){
   script.onerror=function(){
     delete window[callback];
     if(script.parentNode) script.parentNode.removeChild(script);
+    window.originalmasSolicitudEnviando=false;
     boton.disabled=false;
     boton.textContent="📩 Enviar solicitud";
     alert("No se pudo conectar con el servidor. Inténtalo de nuevo.");
