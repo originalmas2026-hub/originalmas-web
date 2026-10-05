@@ -1039,7 +1039,7 @@ function enviarSolicitudContenido(){
     "?action=crearsolicitud"+
     "&servicio="+encodeURIComponent(solicitudServicio)+
     "&tipo="+encodeURIComponent(solicitudTipo)+
-    "&wikidataId="+encodeURIComponent(solicitudSeleccion.wikidataId)+
+    (solicitudSeleccion.wikidataId ? "&wikidataId="+encodeURIComponent(solicitudSeleccion.wikidataId) : "")+
     "&titulo="+encodeURIComponent(solicitudSeleccion.titulo||"")+
     "&año="+encodeURIComponent(solicitudSeleccion.año||"")+
     "&clienteId="+encodeURIComponent(originalmasClienteId)+
