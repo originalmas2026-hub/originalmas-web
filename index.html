@@ -643,9 +643,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 body:before{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.20) 38%,rgba(0,0,0,.46) 100%)}
 @media(max-width:520px){.container{padding-top:185px}}
 
-/* ===== Ocultar temporalmente la sección de planes ===== */
-#menu-principal .plans-block{display:none!important}
-</style></head>
+/* ===== Dos versiones de la web: planes ocultos por defecto ===== */
+html:not(.version-planes) #menu-principal .plans-block{display:none!important}
+</style>
+<script>
+(function(){
+  try{
+    var params=new URLSearchParams(window.location.search);
+    if(params.get("planes")==="si"){
+      document.documentElement.classList.add("version-planes");
+    }
+  }catch(e){}
+})();
+</script></head>
 <body><div class="container"><div class="logo">ORIGINALMAS</div><div class="subtitle">Planes</div>
 <div id="home-brand-stage" class="brand-stage">
   <div class="floating-friends" aria-hidden="true">
