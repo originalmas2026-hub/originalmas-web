@@ -998,7 +998,7 @@ function seleccionarContenidoSolicitud(item){
 }
 
 function enviarSolicitudContenido(){
-  if(window.originalmasSolicitudEnviando){
+  if(window.originalmasSolicitudEnviando === true){
     return;
   }
 
@@ -1009,34 +1009,58 @@ function enviarSolicitudContenido(){
 
   var boton=document.getElementById("solicitud-enviar");
   if(!boton) return;
+
   window.originalmasSolicitudEnviando=true;
+
   boton.disabled=true;
+  boton.setAttribute("disabled","disabled");
+  boton.style.pointerEvents="none";
+  boton.style.opacity="0.6";
   boton.textContent="⏳ Enviando...";
 
   var callback="originalmasSolicitudCrear_"+Date.now()+"_"+String(Math.random()).slice(2);
+
   window[callback]=function(data){
+    if(window[callback+"_procesado"]){
+      return;
+    }
+    window[callback+"_procesado"]=true;
+
     try{
       if(data && data.correcto===false){
         throw new Error(data.error||"No se pudo crear la solicitud.");
       }
+
+      window.originalmasSolicitudEnviando=true;
       boton.textContent="✅ Solicitud enviada";
+      boton.style.pointerEvents="none";
+      boton.disabled=true;
+
       alert("✅ Solicitud enviada correctamente.");
+
       window.originalmasSolicitudEnviando=false;
       limpiarSolicitudUI();
       mostrarInicio();
+
     }catch(error){
       window.originalmasSolicitudEnviando=false;
       boton.disabled=false;
+      boton.removeAttribute("disabled");
+      boton.style.pointerEvents="";
+      boton.style.opacity="";
       boton.textContent="📩 Enviar solicitud";
       alert(error.message);
+
     }finally{
       delete window[callback];
+      delete window[callback+"_procesado"];
       if(script && script.parentNode) script.parentNode.removeChild(script);
     }
   };
 
   var script=document.createElement("script");
   script.async=true;
+
   script.src=obtenerApiSolicitudes()+
     "?action=crearsolicitud"+
     "&servicio="+encodeURIComponent(solicitudServicio)+
@@ -1047,17 +1071,25 @@ function enviarSolicitudContenido(){
     "&clienteId="+encodeURIComponent(originalmasClienteId)+
     "&callback="+encodeURIComponent(callback)+
     "&_="+Date.now();
+
   script.onerror=function(){
     delete window[callback];
+    delete window[callback+"_procesado"];
+
     if(script.parentNode) script.parentNode.removeChild(script);
+
     window.originalmasSolicitudEnviando=false;
     boton.disabled=false;
+    boton.removeAttribute("disabled");
+    boton.style.pointerEvents="";
+    boton.style.opacity="";
     boton.textContent="📩 Enviar solicitud";
+
     alert("No se pudo conectar con el servidor. Inténtalo de nuevo.");
   };
+
   document.head.appendChild(script);
 }
-
 document.addEventListener("input",function(e){
   if(e.target && e.target.id==="solicitud-texto"){
     clearTimeout(solicitudBusquedaTimer);
