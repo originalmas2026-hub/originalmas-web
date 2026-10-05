@@ -840,9 +840,13 @@ function limpiarSolicitudUI(){
   var confirmacion=document.getElementById("solicitud-confirmacion");
   var texto=document.getElementById("solicitud-texto");
   var resultados=document.getElementById("solicitud-resultados");
+  var manual=document.getElementById("solicitud-manual");
+  var manualBtn=document.getElementById("solicitud-manual-btn");
   if(tipo) tipo.classList.add("hidden");
   if(busqueda) busqueda.classList.add("hidden");
   if(confirmacion) confirmacion.classList.add("hidden");
+  if(manual) manual.classList.add("hidden");
+  if(manualBtn) manualBtn.classList.add("hidden");
   if(texto) texto.value="";
   if(resultados) resultados.innerHTML="";
 }
