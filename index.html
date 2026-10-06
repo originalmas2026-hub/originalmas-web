@@ -1177,11 +1177,7 @@ function cargarMisSolicitudes(){
 function cargarTarifasWeb(){
   var callbackName="originalmasPricingCallback_"+Date.now()+"_"+String(Math.random()).slice(2);
   window[callbackName]=function(data){
-    window.originalmasPricingReady=true;
     if(!data || !data.ok || !data.pricing){
-      var pendienteError=window.originalmasPricingPending;
-      window.originalmasPricingPending=null;
-      if(pendienteError) mostrar(pendienteError);
       return;
     }
 
