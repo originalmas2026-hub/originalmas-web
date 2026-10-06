@@ -1179,7 +1179,7 @@ function cargarTarifasWeb(){
   window[callbackName]=function(data){
     if(!data || !data.ok || !data.pricing) return;
 
-    var precios=data.pricing;
+    var precios=(data.pricing && data.pricing["1 conexión"]) ? data.pricing["1 conexión"] : data.pricing;
     var promociones=data.discounts && Array.isArray(data.discounts.promotions)
       ? data.discounts.promotions
       : [];
