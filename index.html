@@ -784,7 +784,36 @@ function mostrarInicio(){
   window.scrollTo({top:0,behavior:"smooth"});
   try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
 }
+window.originalmasPricingReady=false;
+window.originalmasPricingPending=null;
+function esPantallaDeTarifas(id){
+  return [
+    "originalmas","premium","emby","duo-om","duo-premium",
+    "om-1","om-3","om-6","om-12",
+    "omp-1","omp-3","omp-6","omp-12",
+    "emby-1","emby-3","emby-6","emby-12",
+    "duoom-1","duoom-3","duoom-6","duoom-12",
+    "duop-1","duop-3","duop-6","duop-12"
+  ].indexOf(id)>=0;
+}
 function mostrar(id){
+  if(esPantallaDeTarifas(id) && !window.originalmasPricingReady){
+    window.originalmasPricingPending=id;
+    ocultarPantallas();
+    var cargando=document.getElementById("originalmas-cargando-precios");
+    if(!cargando){
+      cargando=document.createElement("div");
+      cargando.id="originalmas-cargando-precios";
+      cargando.style.cssText="padding:35px 15px;text-align:center;color:#d4af37;font-weight:800;font-size:16px;";
+      cargando.textContent="⏳ Cargando tarifas actualizadas...";
+      document.querySelector(".container").appendChild(cargando);
+    }
+    cargando.classList.remove("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
+    return;
+  }
+  var cargando=document.getElementById("originalmas-cargando-precios");
+  if(cargando) cargando.classList.add("hidden");
   ocultarPantallas();
   var pantalla=document.getElementById(id);
   if(pantalla){
@@ -1177,7 +1206,13 @@ function cargarMisSolicitudes(){
 function cargarTarifasWeb(){
   var callbackName="originalmasPricingCallback_"+Date.now()+"_"+String(Math.random()).slice(2);
   window[callbackName]=function(data){
-    if(!data || !data.ok || !data.pricing) return;
+    window.originalmasPricingReady=true;
+    if(!data || !data.ok || !data.pricing){
+      var pendienteError=window.originalmasPricingPending;
+      window.originalmasPricingPending=null;
+      if(pendienteError) mostrar(pendienteError);
+      return;
+    }
 
     var precios=(data.pricing && data.pricing["1 conexión"]) ? data.pricing["1 conexión"] : data.pricing;
     var promociones=data.discounts && Array.isArray(data.discounts.promotions)
@@ -1350,6 +1385,11 @@ function cargarTarifasWeb(){
         }
       });
     });
+    var pendiente=window.originalmasPricingPending;
+    window.originalmasPricingPending=null;
+    var cargandoFinal=document.getElementById("originalmas-cargando-precios");
+    if(cargandoFinal) cargandoFinal.classList.add("hidden");
+    if(pendiente) mostrar(pendiente);
   };
 
   var s=document.createElement("script");
