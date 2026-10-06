@@ -770,6 +770,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   });
 }
 function mostrarInicio(){
+  document.querySelectorAll(".comprobanteForm").forEach(function(e){e.remove()});
+  document.querySelectorAll('button[data-comprobante-trigger="1"]').forEach(function(e){e.disabled=false});
   ocultarPantallas();
   [
     "home-brand-stage",
