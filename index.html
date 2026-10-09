@@ -82,6 +82,16 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 .device-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .device{padding:9px 4px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(0,0,0,.25);color:#ddd;font-size:10px;line-height:1.2}
 .device b{display:block;font-size:17px;margin-bottom:4px}
+
+.home-payment-methods{margin:0 0 22px;padding:15px 14px;border:1px solid rgba(212,175,55,.32);border-radius:16px;background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(255,255,255,.018));text-align:center}
+.payment-title{margin-bottom:11px;color:var(--gold2);font-size:12px;font-weight:900;letter-spacing:1.4px}
+.payment-options{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.payment-option{display:flex;align-items:center;justify-content:center;gap:5px;color:#fff;font-size:13px}
+.payment-option strong{color:var(--gold2);font-size:15px}
+.payment-option span{color:#aaa;font-size:12px}
+.payment-divider{color:#666;font-size:11px}
+@media(min-width:821px){.home-payment-methods{max-width:620px;margin:0 auto 24px}.payment-options{gap:18px}}
+
 .telegram-card{position:relative;margin:13px 0 0;padding:15px;border:1px solid rgba(212,175,55,.38);border-radius:16px;background:linear-gradient(135deg,#17130a,#0b0b0b);overflow:hidden}
 .telegram-card:after{content:"";position:absolute;right:-35px;top:-45px;width:120px;height:120px;border-radius:50%;background:rgba(212,175,55,.07)}
 .telegram-card .tg-title{color:#fff;font-weight:800;font-size:14px}
@@ -654,6 +664,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   <div class="proof"><strong>⚡ Fácil</strong><small>ALTA ONLINE</small></div>
   <div class="proof"><strong>🎁 Prueba</strong><small>ANTES DE DECIDIR</small></div>
   <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
+</div>
+<div id="home-payment-methods" class="home-payment-methods">
+  <div class="payment-title">💳 MÉTODOS DE PAGO</div>
+  <div class="payment-options">
+    <div class="payment-option"><strong>Stripe</strong><span>(Bizum o tarjeta)</span></div>
+    <div class="payment-divider">o</div>
+    <div class="payment-option"><strong>PayPal</strong></div>
+  </div>
 </div>
 <div id="home-telegram-card" class="telegram-card">
   <div class="tg-title">✈️ ÚNETE A NUESTRO TELEGRAM</div>
