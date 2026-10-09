@@ -75,6 +75,16 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 }
 
 
+
+/* ===== Descripción de servicios en la página de inicio ===== */
+.home-services{margin:0 0 22px;display:grid;gap:12px}
+.home-service-card{padding:16px 15px;border:1px solid rgba(212,175,55,.3);border-radius:16px;background:linear-gradient(145deg,rgba(212,175,55,.075),rgba(255,255,255,.018));text-align:left}
+.home-service-card h3{margin:0 0 11px;color:var(--gold2);font-size:16px;letter-spacing:.45px}
+.home-service-card ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.home-service-card li{color:#e2e2e2;font-size:12px;line-height:1.45}
+.home-service-card .service-tagline{margin:12px 0 0;padding-top:10px;border-top:1px solid rgba(212,175,55,.18);color:#fff;font-size:12px;line-height:1.5}
+.home-service-card .service-tagline strong{color:var(--gold2)}
+
 /* ===== Compatibilidad + comunidad ===== */
 .device-zone{margin:25px 0 8px;padding:17px 14px;border:1px solid rgba(212,175,55,.24);border-radius:18px;background:linear-gradient(145deg,rgba(212,175,55,.07),rgba(255,255,255,.018));text-align:center}
 .device-zone h3{margin:0 0 6px;color:var(--gold2);font-size:15px;letter-spacing:.6px}
@@ -670,6 +680,42 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   <div class="proof"><strong>🎁 Prueba</strong><small>ANTES DE DECIDIR</small></div>
   <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
 </div>
+<div id="home-services" class="home-services">
+  <article class="home-service-card">
+    <h3>📺 ORIGINALMAS</h3>
+    <ul>
+      <li>✅ Todos los canales, deportes y entretenimiento</li>
+      <li>🎬 Gran catálogo de películas y series</li>
+      <li>🔄 Catálogo con actualizaciones diarias</li>
+      <li>📱 App propia para Android, Fire TV, Xiaomi TV, TV Box, Android TV y Google TV</li>
+      <li>✅ Compatible también mediante aplicaciones genéricas en Smart TV, Windows, iOS y más</li>
+    </ul>
+    <p class="service-tagline">👉 Una opción sencilla para disfrutar de tus canales favoritos sin complicaciones.</p>
+  </article>
+  <article class="home-service-card">
+    <h3>⭐ ORIGINALMAS PREMIUM</h3>
+    <ul>
+      <li>🔥 Todos los canales con más calidad de imagen</li>
+      <li>🎬 Catálogo de películas y series en crecimiento (servidor nuevo)</li>
+      <li>🔄 Catálogo con actualizaciones diarias</li>
+      <li>📥 Puedes solicitar películas y series</li>
+      <li>📱 App propia para Android, Fire TV, Xiaomi TV, TV Box, Android TV y Google TV</li>
+      <li>✅ Compatible también mediante aplicaciones genéricas en Smart TV, Windows, iOS y más</li>
+    </ul>
+    <p class="service-tagline">👉 <strong>La opción ideal si quieres canales y un catálogo que no deja de crecer.</strong></p>
+  </article>
+  <article class="home-service-card">
+    <h3>🎬 EMBY</h3>
+    <ul>
+      <li>🍿 Miles de películas, telenovelas, programas y series</li>
+      <li>🔄 Catálogo con actualizaciones diarias</li>
+      <li>📥 Solicitud de contenido</li>
+      <li>👤 Perfil personal</li>
+      <li>📺 Posibilidad de disfrutar del mismo perfil en <strong>dos dispositivos simultáneamente</strong> (consultar tarifas)</li>
+    </ul>
+    <p class="service-tagline">👉 Perfecto para quienes buscan centrarse especialmente en <strong>cine y series</strong>.</p>
+  </article>
+</div>
 <div id="home-payment-methods" class="home-payment-methods">
   <div class="payment-title">💳 MÉTODOS DE PAGO</div>
   <div class="payment-options">
@@ -803,6 +849,7 @@ function mostrarInicio(){
   [
     "home-brand-stage",
     "home-social-proof",
+    "home-services",
     "home-payment-methods",
     "home-payment-reminder",
     "menu-principal",
