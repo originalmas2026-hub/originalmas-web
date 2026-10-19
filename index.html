@@ -930,7 +930,6 @@ function mostrar(id){
   ocultarPantallas();
   pantalla.classList.remove("hidden");
   window.originalmasPantallaActual = id;
-  window.scrollTo({top:0,behavior:"smooth"});
 
   document.querySelectorAll('[onclick*="contratarTelegram("]').forEach(function(boton){
     boton.textContent=window.originalmasModoRenovacion ? "🔄 Renovar por Telegram" : "✈️ Contratar por Telegram";
