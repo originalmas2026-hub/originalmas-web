@@ -122,6 +122,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 .telegram-card a{display:block;padding:11px 12px;border-radius:11px;background:linear-gradient(135deg,#d4af37,#a98519);color:#080808;text-decoration:none;font-weight:900;font-size:12px;box-shadow:0 7px 18px rgba(0,0,0,.35)}
 @media(max-width:520px){.device-grid{grid-template-columns:repeat(2,1fr)}}
 
+/* ===== Acceso destacado a soporte ===== */
+.support-quick-wrap{margin:18px 0 28px;width:100%}
+button.support-quick-button{display:block;width:100%;min-height:100px;margin:0;padding:22px 20px;border:2px solid #d4af37;border-radius:18px;background:linear-gradient(135deg,#30250a,#12100a 72%);color:#f5d76e;text-align:center;font-size:clamp(17px,4.5vw,22px);font-weight:900;line-height:1.35;box-shadow:0 0 22px rgba(212,175,55,.18),0 8px 22px rgba(0,0,0,.38)}
+button.support-quick-button:before{display:none}
+button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-size:14px;font-weight:600;line-height:1.4}
+
 /* ===== Menú compacto en cuadrados ===== */
 .menu-block{margin:0 0 20px}
 .menu-block h2{margin:0 0 13px}
@@ -728,6 +734,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   <div class="tg-text">Novedades, información y contacto directo con OriginalMas.</div>
   <a href="https://t.me/Info_OriginalMas" target="_blank" rel="noopener">💬 ENTRAR EN TELEGRAM · @Info_OriginalMas</a>
 </div>
+<div class="support-quick-wrap">
+  <button class="support-quick-button" onclick="mostrar('soporte')">🛠️ ¿TIENES ALGÚN PROBLEMA? CONTACTA CON NOSOTROS <span>Estamos aquí para ayudarte · Pulsa para contactar</span></button>
+</div>
 <div id="menu-principal">
   <div class="menu-block plans-block">
     <h2>🛒 CONTRATACIÓN</h2>
@@ -744,7 +753,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
     <h2>🎁 MÁS OPCIONES</h2>
     <div class="square-grid plans-grid extra-actions">
       <button onclick="mostrar('pruebas')">🎁<span>Solicitar prueba</span></button>
-      <button onclick="mostrar('soporte')">🛠️<span>¿Tienes algún problema? Contacta con nosotros</span></button>
     </div>
   </div>
 </div>
