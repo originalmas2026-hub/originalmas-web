@@ -851,7 +851,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 <button type="button" onclick="cargarMisSolicitudes()">🔄 Actualizar</button>
 <button type="button" onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button>
 <button class="back" type="button" onclick="volver()">⬅ Volver</button>
-</div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio que quieres renovar:</p><button onclick="mostrar('originalmas')">📺 OriginalMas + Proxy</button><button onclick="mostrar('premium')">⭐ OriginalMas+</button><button onclick="mostrar('emby')">🟣 Emby</button><button onclick="mostrar('duo-om')">🔥 OriginalMas + Proxy y Emby</button><button onclick="mostrar('duo-premium')">⭐ OriginalMas+ y Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+</div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio y después el periodo que quieres renovar. Se mostrarán las mismas categorías y tarifas que en la contratación.</p><button onclick="iniciarRenovacion('originalmas')">📺 OriginalMas + Proxy</button><button onclick="iniciarRenovacion('premium')">⭐ OriginalMas+</button><button onclick="iniciarRenovacion('emby')">🟣 Emby</button><button onclick="iniciarRenovacion('pack')">🔥 Pack Dúo</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function contratarTelegram(id){
   var pantalla=document.getElementById(id);
   if(!pantalla) return;
@@ -868,7 +868,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
   if(!seleccion) return;
   var precio=info && info.final!==undefined ? info.final : ((pantalla.querySelector(".price")||{}).textContent||"Consultar").replace(/\s+/g,"").replace(/€/g,"");
   var precioTexto=String(precio).indexOf("€")>=0 ? String(precio) : String(precio)+"€";
-  var mensaje="Hola, OriginalMas. Quiero contratar este servicio:\n\nServicio: "+seleccion[0]+"\nDuración: "+seleccion[1]+"\nPrecio: "+precioTexto+"\n\n¿Me puedes indicar cómo realizar el pago?";
+  var accion=window.originalmasModoRenovacion ? "renovar" : "contratar";
+  var mensaje="Hola, OriginalMas. Quiero "+accion+" este servicio:\n\nServicio: "+seleccion[0]+"\nDuración: "+seleccion[1]+"\nPrecio: "+precioTexto+"\n\n¿Me puedes indicar cómo realizar el pago?";
   window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
 }
 
@@ -895,6 +896,11 @@ function mostrarInicio(){
   window.scrollTo({top:0,behavior:"smooth"});
   try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
 }
+window.originalmasModoRenovacion=window.originalmasModoRenovacion||false;
+function iniciarRenovacion(id){
+  window.originalmasModoRenovacion=true;
+  mostrar(id);
+}
 function mostrar(id){
   ocultarPantallas();
   var pantalla=document.getElementById(id);
@@ -902,9 +908,13 @@ function mostrar(id){
     pantalla.classList.remove("hidden");
     window.scrollTo({top:0,behavior:"smooth"});
   }
+  document.querySelectorAll('[onclick*="contratarTelegram("]').forEach(function(boton){
+    boton.textContent=window.originalmasModoRenovacion ? "🔄 Renovar por Telegram" : "✈️ Contratar por Telegram";
+  });
   try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
 }
 function volver(){
+  window.originalmasModoRenovacion=false;
   mostrarInicio();
 }
 function restaurarPantalla(){
