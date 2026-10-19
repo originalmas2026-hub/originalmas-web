@@ -110,6 +110,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
 .telegram-card{position:relative;margin:13px 0 0;padding:15px;border:1px solid rgba(212,175,55,.38);border-radius:16px;background:linear-gradient(135deg,#17130a,#0b0b0b);overflow:hidden}
 .telegram-card:after{content:"";position:absolute;right:-35px;top:-45px;width:120px;height:120px;border-radius:50%;background:rgba(212,175,55,.07)}
 .telegram-card .tg-title{color:#fff;font-weight:800;font-size:14px}
+.offer-section{margin:16px 0;padding:18px;border:1px solid rgba(212,175,55,.42);border-radius:18px;background:linear-gradient(145deg,rgba(212,175,55,.09),rgba(10,10,10,.96));}
+.offer-section h2{margin:0 0 8px;color:var(--gold2);text-align:center;}
+.offer-intro{margin:0 0 16px;color:#bdbdbd;text-align:center;font-size:13px;line-height:1.55;}
+.offer-card{padding:16px;border:1px solid rgba(212,175,55,.28);border-radius:14px;background:rgba(0,0,0,.28);text-align:center;}
+.offer-card h3{margin:0 0 8px;color:#fff;font-size:17px;}
+.offer-card p{margin:0 0 14px;color:#c7c7c7;font-size:13px;line-height:1.5;}
+.offer-card a{display:block;padding:13px 12px;border-radius:10px;background:linear-gradient(135deg,#d4af37,#a98519);color:#080808;text-decoration:none;font-weight:900;font-size:13px;}
+
 .telegram-card .tg-text{color:#999;font-size:11px;margin:4px 0 11px}
 .telegram-card a{display:block;padding:11px 12px;border-radius:11px;background:linear-gradient(135deg,#d4af37,#a98519);color:#080808;text-decoration:none;font-weight:900;font-size:12px;box-shadow:0 7px 18px rgba(0,0,0,.35)}
 @media(max-width:520px){.device-grid{grid-template-columns:repeat(2,1fr)}}
@@ -735,8 +743,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;box-s
     <h2>🎁 MÁS OPCIONES</h2>
     <div class="square-grid plans-grid extra-actions">
       <button onclick="mostrar('pruebas')">🎁<span>Solicitar prueba</span></button>
+      <button onclick="mostrar('ofertas')">🔥<span>Ofertas</span></button>
     </div>
   </div>
+</div>
+<div id="ofertas" class="hidden offer-section">
+  <h2>🔥 OFERTAS ORIGINALMAS</h2>
+  <p class="offer-intro">Consulta nuestras promociones y pregunta directamente por Telegram para conocer las ofertas disponibles.</p>
+  <div class="offer-card">
+    <h3>🎁 ¿Buscas una oferta?</h3>
+    <p>Escríbenos por Telegram y te informaremos de las promociones activas de OriginalMas.</p>
+    <a href="https://t.me/OriginalMas?text=Hola%2C%20OriginalMas.%20Quiero%20informaci%C3%B3n%20sobre%20las%20ofertas%20activas." target="_blank" rel="noopener">✈️ CONSULTAR OFERTAS POR TELEGRAM</a>
+  </div>
+  <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="home-device-zone" class="device-zone">
   <h3>📺 ¿DÓNDE PUEDES DISFRUTARLO?</h3>
