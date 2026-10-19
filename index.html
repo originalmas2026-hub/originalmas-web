@@ -891,7 +891,7 @@ function ocultarPantallas(){
 window.originalmasHistorialNavegacion = window.originalmasHistorialNavegacion || [];
 window.originalmasPantallaActual = window.originalmasPantallaActual || "inicio";
 
-function mostrarInicio(){
+function mostrarInicio(conservarDesplazamiento){
   ocultarPantallas();
   [
     "home-brand-stage",
@@ -907,7 +907,9 @@ function mostrarInicio(){
   });
   window.originalmasPantallaActual = "inicio";
   window.originalmasHistorialNavegacion = [];
-  window.scrollTo({top:0,behavior:"smooth"});
+  if(!conservarDesplazamiento){
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
   try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
 }
 window.originalmasModoRenovacion=window.originalmasModoRenovacion||false;
@@ -941,7 +943,10 @@ function volver(){
   window.originalmasModoRenovacion=false;
 
   if(!anterior || anterior.pantalla === "inicio"){
-    mostrarInicio();
+    mostrarInicio(true);
+    requestAnimationFrame(function(){
+      window.scrollTo({top:anterior ? (anterior.scrollY || 0) : 0,behavior:"auto"});
+    });
     return;
   }
 
