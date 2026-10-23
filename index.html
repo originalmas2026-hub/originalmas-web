@@ -817,7 +817,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
 <div id="pack" class="hidden"><h2>🔥 PACK DÚO</h2><button onclick="mostrar('duo-om')">📺 OriginalMas + Proxy y Emby</button><button onclick="mostrar('duo-premium')">⭐ OriginalMas+ y Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="duo-om" class="hidden"><h2>📺 ORIGINALMAS + PROXY Y EMBY</h2><button onclick="mostrar('duoom-1')">1 mes — <span class="price">20€</span></button><button onclick="mostrar('duoom-3')">3 meses — <span class="price">50€</span></button><button onclick="mostrar('duoom-6')">6 meses — <span class="price">75€</span></button><button onclick="mostrar('duoom-12')">12 meses — <span class="price">110€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="duo-premium" class="hidden"><h2>⭐ ORIGINALMAS+ Y EMBY</h2><button onclick="mostrar('duop-1')">1 mes — <span class="price">18€</span></button><button onclick="mostrar('duop-3')">3 meses — <span class="price">35€</span></button><button onclick="mostrar('duop-6')">6 meses — <span class="price">55€</span></button><button onclick="mostrar('duop-12')">12 meses — <span class="price">90€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="om-1" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-1')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-3" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">27€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-3')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-6" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-6')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-12" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">60€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-12')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="om-1" class="hidden"><h2>📺 ORIGINALMAS + PROXY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><button id="om1-pagar" type="button" onclick="pagarOriginalMas1Mes()">💳 Pagar ahora — 10€</button><p id="om1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Cuando hayas terminado o cerrado la pestaña de pago, puedes continuar por Telegram.</p><button id="om1-telegram" class="hidden" type="button" onclick="contratarTelegram('om-1')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-3" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">27€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-3')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-6" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-6')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-12" class="hidden"><h2>✈️ ORIGINALMAS + PROXY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">60€</span></p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('om-12')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="omnovod-1" class="hidden"><h2>✈️ ORIGINALMAS + PROXY SIN VOD — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">Solo canales de televisión, sin VOD.</p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('omnovod-1')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="omnovod-3" class="hidden"><h2>✈️ ORIGINALMAS + PROXY SIN VOD — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">23€</span></p><p style="text-align:center;color:#aaa">Solo canales de televisión, sin VOD.</p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('omnovod-3')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="omnovod-6" class="hidden"><h2>✈️ ORIGINALMAS + PROXY SIN VOD — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">30€</span></p><p style="text-align:center;color:#aaa">Solo canales de televisión, sin VOD.</p><p style="text-align:center;color:#aaa">Finaliza tu contratación hablando directamente con OriginalMas por Telegram.</p><button type="button" onclick="contratarTelegram('omnovod-6')">✈️ Contratar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
@@ -881,6 +881,23 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
 }
 
+function actualizarBotonesPagoOm1(){
+  var pagar=document.getElementById("om1-pagar");
+  var telegram=document.getElementById("om1-telegram");
+  var aviso=document.getElementById("om1-pago-aviso");
+  var iniciado=false;
+  try{iniciado=sessionStorage.getItem("originalmas_pago_om1_iniciado")==="1"}catch(e){}
+  if(pagar)pagar.classList.toggle("hidden",iniciado);
+  if(telegram)telegram.classList.toggle("hidden",!iniciado);
+  if(aviso)aviso.classList.toggle("hidden",!iniciado);
+}
+function pagarOriginalMas1Mes(){
+  var url="https://store.kunfupay.com/originalmas2026-8c2p3iiuxh3h/Np2C002Y";
+  try{sessionStorage.setItem("originalmas_pago_om1_iniciado","1")}catch(e){}
+  actualizarBotonesPagoOm1();
+  window.open(url,"_blank","noopener");
+}
+
 function ocultarPantallas(){
   document.querySelectorAll(".container > div").forEach(function(e){
     if(!e.classList.contains("logo")&&!e.classList.contains("subtitle")){
@@ -937,6 +954,7 @@ function mostrar(id){
     boton.textContent=window.originalmasModoRenovacion ? "🔄 Renovar por Telegram" : "✈️ Contratar por Telegram";
   });
   try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
+  if(id==="om-1")actualizarBotonesPagoOm1();
 }
 function volver(){
   var anterior = window.originalmasHistorialNavegacion.pop();
