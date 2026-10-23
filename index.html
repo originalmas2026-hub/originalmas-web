@@ -805,10 +805,10 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     </div>
   </div>
 </div>
-<div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas — 24 horas</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas+ — 24 horas</button><button onclick="mostrar('prueba-emby')">🟣 Emby — 2 horas</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><button type="button" onclick="contactarPrueba('OriginalMas + Proxy','24 horas')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="prueba-premium" class="hidden"><h2>⭐ PRUEBA ORIGINALMAS+</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 24 horas.</p><button type="button" onclick="contactarPrueba('OriginalMas+','24 horas')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="prueba-emby" class="hidden"><h2>🟣 PRUEBA EMBY</h2><p style="text-align:center;color:#aaa">Prueba gratuita de 2 horas.</p><button type="button" onclick="contactarPrueba('Emby','2 horas')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 OriginalMas + Proxy</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas+</button><button onclick="mostrar('prueba-emby')">🟣 Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS + PROXY</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('OriginalMas + Proxy')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="prueba-premium" class="hidden"><h2>⭐ PRUEBA ORIGINALMAS+</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('OriginalMas+')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="prueba-emby" class="hidden"><h2>🟣 PRUEBA EMBY</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('Emby')">✈️ Contactar por Telegram</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="originalmas" class="hidden"><h2>📺 ORIGINALMAS + PROXY</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Incluye VOD: películas y series.</p><button onclick="mostrar('om-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('om-3')">3 meses — <span class="price">27€</span></button><button onclick="mostrar('om-6')">6 meses — <span class="price">40€</span></button><button onclick="mostrar('om-12')">12 meses — <span class="price">60€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 
 <div id="premium" class="hidden"><h2>⭐ ORIGINALMAS+</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Actualizaciones de contenido bajo petición.</p><button onclick="mostrar('omp-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('omp-3')">3 meses — <span class="price">18€</span></button><button onclick="mostrar('omp-6')">6 meses — <span class="price">32€</span></button><button onclick="mostrar('omp-12')">12 meses — <span class="price">45€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
@@ -1353,7 +1353,7 @@ function restaurarPantalla(){
   try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
   mostrarInicio();
 }
-function contactarPrueba(servicio,duracion){var mensaje="Hola, OriginalMas. Quiero contactar para solicitar una prueba gratuita de "+servicio+" de "+duracion+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
+function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
 window.originalmasOrderPricing=window.originalmasOrderPricing||{};
 
 
