@@ -764,7 +764,9 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     <p><strong>OriginalMas+</strong> · 12 meses: <strong>45 €</strong></p>
     <p><strong>OriginalMas + Proxy</strong> · 12 meses: <strong>30 €</strong> <span style="color:#d4af37;font-weight:900;">(50 % de descuento)</span></p>
     <p style="font-size:18px;color:#d4af37;font-weight:900;">TOTAL DEL PACK: 75 €</p>
-    <a href="https://t.me/OriginalMas?text=Hola%2C%20OriginalMas.%20Quiero%20contratar%20la%20oferta%20anual%3A%20OriginalMas%2B%2012%20meses%20por%2045%E2%82%AC%20%2B%20OriginalMas%20%2B%20Proxy%2012%20meses%20con%2050%25%20de%20descuento%20por%2030%E2%82%AC.%20Total%3A%2075%E2%82%AC." target="_blank" rel="noopener">✈️ CONTACTAR POR TELEGRAM</a>
+    <p id="oferta-pago-aviso" class="hidden" style="text-align:center;color:#d4af37;font-weight:700;">Si ya has realizado el pago, contacta con nosotros por Telegram para recibir tus datos de acceso.</p>
+    <button id="oferta-pagar" type="button" onclick="pagarOfertaAnual()">💳 PAGAR AHORA — 75 €</button>
+    <button id="oferta-telegram" class="hidden" type="button" onclick="contactarTelegramOferta()">✈️ CONTACTAR POR TELEGRAM</button>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
@@ -1238,10 +1240,33 @@ function pagarDuoPremiumEmby1Mes(){
   }catch(e){}
   window.open(url,"_blank","noopener");
 }
+function actualizarBotonesPagoOferta(){
+  var pagar=document.getElementById("oferta-pagar");
+  var telegram=document.getElementById("oferta-telegram");
+  var aviso=document.getElementById("oferta-pago-aviso");
+  var listo=false;
+  try{listo=sessionStorage.getItem("originalmas_pago_oferta_listo")==="1"}catch(e){}
+  if(pagar)pagar.classList.toggle("hidden",listo);
+  if(telegram)telegram.classList.toggle("hidden",!listo);
+  if(aviso)aviso.classList.toggle("hidden",!listo);
+}
+function pagarOfertaAnual(){
+  var url="https://store.kunfupay.com/originalmas2026-8c2p3iiuxh3h/tl5BDkxP";
+  try{
+    sessionStorage.setItem("originalmas_pago_oferta_pendiente","1");
+    sessionStorage.setItem("originalmas_pago_oferta_listo","0");
+  }catch(e){}
+  actualizarBotonesPagoOferta();
+  window.open(url,"_blank","noopener");
+}
+function contactarTelegramOferta(){
+  var mensaje="Hola, OriginalMas. He hecho el pago de la oferta anual: OriginalMas+ 12 meses por 45€ + OriginalMas + Proxy 12 meses por 30€. Total: 75€. ¿Me puedes pasar los datos de mis cuentas?";
+  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
+}
 function mostrarTelegramAlVolverDePago(){
   if(document.visibilityState && document.visibilityState!=="visible")return;
   var actualizado=false;
-  ["om1","om3","om6","om12","omp1","omp3","omp6","omp12","emby1","emby3","emby6","emby12","duoom1","duoom3","duoom6","duoom12","duop1","duop3","duop6","duop12"].forEach(function(plan){
+  ["om1","om3","om6","om12","omp1","omp3","omp6","omp12","emby1","emby3","emby6","emby12","duoom1","duoom3","duoom6","duoom12","duop1","duop3","duop6","duop12","oferta"].forEach(function(plan){
     var pendiente=false;
     try{pendiente=sessionStorage.getItem("originalmas_pago_"+plan+"_pendiente")==="1"}catch(e){}
     if(!pendiente)return;
@@ -1272,6 +1297,7 @@ function mostrarTelegramAlVolverDePago(){
     actualizarBotonesPagoDuoPremiumEmby3();
     actualizarBotonesPagoDuoPremiumEmby6();
     actualizarBotonesPagoDuoPremiumEmby12();
+    actualizarBotonesPagoOferta();
   }
 }
 window.addEventListener("focus",mostrarTelegramAlVolverDePago);
@@ -1385,6 +1411,15 @@ function mostrar(id){
   document.querySelectorAll('[onclick*="contratarTelegram("]').forEach(function(boton){
     boton.textContent=window.originalmasModoRenovacion ? "🔄 Renovar por Telegram" : "✈️ Contactar por Telegram";
   });
+  if(id==="ofertas"){
+    if(actual!=="ofertas"){
+      try{
+        sessionStorage.setItem("originalmas_pago_oferta_pendiente","0");
+        sessionStorage.setItem("originalmas_pago_oferta_listo","0");
+      }catch(e){}
+    }
+    actualizarBotonesPagoOferta();
+  }
   try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
   if(id==="omp-3"){
     if(actual!=="omp-3"){
