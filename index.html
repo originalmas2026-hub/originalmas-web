@@ -1025,7 +1025,15 @@ function mostrar(id){
     boton.textContent=window.originalmasModoRenovacion ? "🔄 Renovar por Telegram" : "✈️ Contactar por Telegram";
   });
   try{localStorage.setItem("originalmas_pantalla",id)}catch(e){}
-  if(id==="om-1")actualizarBotonesPagoOm1();
+  if(id==="om-1"){
+    if(actual!=="om-1"){
+      try{
+        sessionStorage.setItem("originalmas_pago_om1_pendiente","0");
+        sessionStorage.setItem("originalmas_pago_om1_listo","0");
+      }catch(e){}
+    }
+    actualizarBotonesPagoOm1();
+  }
   if(id==="om-3")actualizarBotonesPagoOm3();
   if(id==="om-6")actualizarBotonesPagoOm6();
 }
