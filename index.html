@@ -885,16 +885,31 @@ function actualizarBotonesPagoOm1(){
   var pagar=document.getElementById("om1-pagar");
   var telegram=document.getElementById("om1-telegram");
   var aviso=document.getElementById("om1-pago-aviso");
-  var iniciado=false;
-  try{iniciado=sessionStorage.getItem("originalmas_pago_om1_iniciado")==="1"}catch(e){}
-  if(pagar)pagar.classList.toggle("hidden",iniciado);
-  if(telegram)telegram.classList.toggle("hidden",!iniciado);
-  if(aviso)aviso.classList.toggle("hidden",!iniciado);
+  var listo=false;
+  try{listo=sessionStorage.getItem("originalmas_pago_om1_listo")==="1"}catch(e){}
+  if(pagar)pagar.classList.toggle("hidden",listo);
+  if(telegram)telegram.classList.toggle("hidden",!listo);
+  if(aviso)aviso.classList.toggle("hidden",!listo);
 }
+function mostrarTelegramAlVolverDePago(){
+  if(document.visibilityState && document.visibilityState!=="visible")return;
+  var pendiente=false;
+  try{pendiente=sessionStorage.getItem("originalmas_pago_om1_pendiente")==="1"}catch(e){}
+  if(!pendiente)return;
+  try{
+    sessionStorage.setItem("originalmas_pago_om1_pendiente","0");
+    sessionStorage.setItem("originalmas_pago_om1_listo","1");
+  }catch(e){}
+  actualizarBotonesPagoOm1();
+}
+window.addEventListener("focus",mostrarTelegramAlVolverDePago);
+document.addEventListener("visibilitychange",mostrarTelegramAlVolverDePago);
 function pagarOriginalMas1Mes(){
   var url="https://store.kunfupay.com/originalmas2026-8c2p3iiuxh3h/Np2C002Y";
-  try{sessionStorage.setItem("originalmas_pago_om1_iniciado","1")}catch(e){}
-  actualizarBotonesPagoOm1();
+  try{
+    sessionStorage.setItem("originalmas_pago_om1_pendiente","1");
+    sessionStorage.setItem("originalmas_pago_om1_listo","0");
+  }catch(e){}
   window.open(url,"_blank","noopener");
 }
 
