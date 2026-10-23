@@ -906,13 +906,7 @@ window.addEventListener("focus",mostrarTelegramAlVolverDePago);
 document.addEventListener("visibilitychange",mostrarTelegramAlVolverDePago);
 function contactarTelegramPagoOm1(){
   var mensaje="Hola, OriginalMas. He hecho el pago de este servicio:\\n\\nServicio: OriginalMas + Proxy\\nDuración: 1 mes\\nPrecio: 10€\\n\\n¿Me puedes pasar los datos de mi cuenta?";
-  var url="https://t.me/";
-  try{
-    var enlaces=document.querySelectorAll("a[href*=\"t.me/\"]");
-    if(enlaces.length) url=enlaces[0].href;
-  }catch(e){}
-  var destino=url.indexOf("?")>=0 ? "&" : "?";
-  window.open(url+destino+"text="+encodeURIComponent(mensaje),"_blank","noopener");
+  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
 }
 
 function pagarOriginalMas1Mes(){
