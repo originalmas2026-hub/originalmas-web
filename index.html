@@ -787,7 +787,23 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
 </div>
 <div id="revendedores-usuario-m3u" class="hidden offer-section">
   <h2>📋 QUIERO USUARIO/CONTRASEÑA/M3U</h2>
-  <p class="offer-intro">Esta opción estará disponible próximamente.</p>
+  <p class="offer-intro">Selecciona el servicio o pack para el que quieres usuario, contraseña o lista M3U.</p>
+  <div class="square-grid plans-grid" style="margin-top:18px;">
+    <button type="button" onclick="seleccionarServicioM3URevendedor('OriginalMas + Proxy')">📺<span>OriginalMas + Proxy</span></button>
+    <button type="button" onclick="seleccionarServicioM3URevendedor('OriginalMas+')">⭐<span>OriginalMas+</span></button>
+    <button type="button" onclick="seleccionarServicioM3URevendedor('Emby')">🟣<span>Emby</span></button>
+    <button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo OriginalMas + Proxy y Emby')">🎬<span>Pack Dúo OriginalMas + Proxy y Emby</span></button>
+    <button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo OriginalMas+ y Emby')">✨<span>Pack Dúo OriginalMas+ y Emby</span></button>
+  </div>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="revendedores-contacto-m3u" class="hidden offer-section">
+  <h2>📩 CONTACTAR POR USUARIO/CONTRASEÑA/M3U</h2>
+  <p class="offer-intro">Has seleccionado: <strong id="revendedores-m3u-servicio-seleccionado" style="color:#f0cf63;"></strong></p>
+  <p class="offer-intro">Elige cómo quieres contactar con OriginalMas.</p>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-m3u-servicio-seleccionado').textContent,'telegram')">✈️ Contactar por Telegram</button>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-m3u-servicio-seleccionado').textContent,'whatsapp')">💬 Contactar por WhatsApp</button>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-m3u-servicio-seleccionado').textContent,'correo')">✉️ Contactar por correo electrónico</button>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="ofertas" class="hidden offer-section">
@@ -1700,6 +1716,22 @@ function contactarRevendedor(servicio,canal){
   }else if(canal==="correo"){
     window.location.href="mailto:originalmas2026@gmail.com?subject="+encodeURIComponent("Consulta de revendedor - "+servicio)+"&body="+encodeURIComponent(mensaje);
   }
+}
+function seleccionarServicioM3URevendedor(servicio){
+  var pantalla=document.getElementById("revendedores-usuario-m3u");
+  var seleccion=document.getElementById("revendedores-contacto-m3u");
+  var titulo=document.getElementById("revendedores-m3u-servicio-seleccionado");
+  if(!pantalla||!seleccion||!titulo)return;
+  pantalla.classList.add("hidden");
+  seleccion.classList.remove("hidden");
+  titulo.textContent=servicio;
+  window.originalmasHistorialNavegacion.push({
+    pantalla:"revendedores-usuario-m3u",
+    scrollY:window.scrollY||window.pageYOffset||0
+  });
+  window.originalmasPantallaActual="revendedores-contacto-m3u";
+  try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-m3u")}catch(e){}
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function seleccionarServicioPanelRevendedor(servicio){
   var panel=document.getElementById("revendedores-paneles");
