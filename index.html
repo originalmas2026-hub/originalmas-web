@@ -1489,6 +1489,9 @@ function mostrar(id){
   if(!pantalla)return;
 
   var actual = window.originalmasPantallaActual || "inicio";
+  var conservarScrollRevendedores =
+    actual.indexOf("revendedores")===0 && id.indexOf("revendedores")===0;
+  var scrollRevendedores = window.scrollY || window.pageYOffset || 0;
   if(actual !== id){
     window.originalmasHistorialNavegacion.push({
       pantalla: actual,
@@ -1669,6 +1672,12 @@ function mostrar(id){
   if(id==="om-3")actualizarBotonesPagoOm3();
   if(id==="om-6")actualizarBotonesPagoOm6();
   if(id==="om-12")actualizarBotonesPagoOm12();
+
+  if(conservarScrollRevendedores){
+    requestAnimationFrame(function(){
+      window.scrollTo({top:scrollRevendedores,behavior:"auto"});
+    });
+  }
 }
 function volver(){
   var anterior = window.originalmasHistorialNavegacion.pop();
@@ -1731,7 +1740,9 @@ function seleccionarServicioM3URevendedor(servicio){
   });
   window.originalmasPantallaActual="revendedores-contacto-m3u";
   try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-m3u")}catch(e){}
-  window.scrollTo({top:0,behavior:"smooth"});
+  requestAnimationFrame(function(){
+    window.scrollTo({top:window.scrollY||window.pageYOffset||0,behavior:"auto"});
+  });
 }
 function seleccionarServicioPanelRevendedor(servicio){
   var panel=document.getElementById("revendedores-paneles");
@@ -1747,7 +1758,9 @@ function seleccionarServicioPanelRevendedor(servicio){
   });
   window.originalmasPantallaActual="revendedores-contacto-panel";
   try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-panel")}catch(e){}
-  window.scrollTo({top:0,behavior:"smooth"});
+  requestAnimationFrame(function(){
+    window.scrollTo({top:window.scrollY||window.pageYOffset||0,behavior:"auto"});
+  });
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
 function contactarPruebaCanal(servicio,canal){
