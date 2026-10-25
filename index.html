@@ -758,23 +758,11 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
 </div>
 <div id="revendedores" class="hidden offer-section">
-  <h2>🔐 ACCESO PARA REVENDEDORES</h2>
-  <div id="revendedores-acceso">
-    <p class="offer-intro">Introduce tu clave para acceder a la zona de revendedores.</p>
-    <form onsubmit="return validarClaveRevendedores(event)">
-      <label for="clave-revendedores" style="display:block;margin:18px 0 8px;color:#f0cf63;font-weight:700;">Clave de acceso</label>
-      <input id="clave-revendedores" type="password" autocomplete="current-password" placeholder="Introduce tu clave" required style="display:block;width:100%;padding:15px;border:1px solid rgba(212,175,55,.55);border-radius:12px;background:#080808;color:#fff;font-size:16px;outline:none;">
-      <p id="revendedores-error" class="hidden" role="alert" style="color:#ff8b8b;text-align:center;font-weight:700;">La clave introducida no es correcta. Inténtalo de nuevo.</p>
-      <button type="submit">🔓 ACCEDER</button>
-    </form>
-  </div>
-  <div id="revendedores-contenido" class="hidden">
-    <h3 style="text-align:center;color:#f0cf63;">✅ ACCESO PARA REVENDEDORES</h3>
-    <p class="offer-intro">Selecciona qué tipo de servicio necesitas.</p>
-    <div class="square-grid plans-grid" style="margin-top:18px;">
-      <button type="button" onclick="mostrar('revendedores-paneles')">🖥️<span>Quiero un panel</span></button>
-      <button type="button" onclick="mostrar('revendedores-usuario-m3u')">📋<span>Quiero usuario/contraseña/M3U</span></button>
-    </div>
+  <h2>🤝 ZONA DE REVENDEDORES</h2>
+  <p class="offer-intro">Selecciona qué tipo de servicio necesitas.</p>
+  <div class="square-grid plans-grid" style="margin-top:18px;">
+    <button type="button" onclick="mostrar('revendedores-paneles')">🖥️<span>Quiero un panel</span></button>
+    <button type="button" onclick="mostrar('revendedores-clave-m3u')">📋<span>Quiero usuario/contraseña/M3U</span></button>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
@@ -795,6 +783,17 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'telegram')">✈️ Contactar por Telegram</button>
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'whatsapp')">💬 Contactar por WhatsApp</button>
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'correo')">✉️ Contactar por correo electrónico</button>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="revendedores-clave-m3u" class="hidden offer-section">
+  <h2>🔐 ACCESO PARA USUARIO/CONTRASEÑA/M3U</h2>
+  <p class="offer-intro">Introduce tu clave para continuar con esta opción.</p>
+  <form onsubmit="return validarClaveRevendedores(event)">
+    <label for="clave-revendedores" style="display:block;margin:18px 0 8px;color:#f0cf63;font-weight:700;">Clave de acceso</label>
+    <input id="clave-revendedores" type="password" autocomplete="current-password" placeholder="Introduce tu clave" required style="display:block;width:100%;padding:15px;border:1px solid rgba(212,175,55,.55);border-radius:12px;background:#080808;color:#fff;font-size:16px;outline:none;">
+    <p id="revendedores-error" class="hidden" role="alert" style="color:#ff8b8b;text-align:center;font-weight:700;">La clave introducida no es correcta. Inténtalo de nuevo.</p>
+    <button type="submit">🔓 ACCEDER</button>
+  </form>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="revendedores-usuario-m3u" class="hidden offer-section">
@@ -1704,14 +1703,11 @@ function validarClaveRevendedores(event){
   if(event)event.preventDefault();
   var campo=document.getElementById("clave-revendedores");
   var error=document.getElementById("revendedores-error");
-  var acceso=document.getElementById("revendedores-acceso");
-  var contenido=document.getElementById("revendedores-contenido");
-  if(!campo||!acceso||!contenido)return false;
+  if(!campo)return false;
   if(campo.value==="131548041315"){
-    acceso.classList.add("hidden");
     if(error)error.classList.add("hidden");
-    contenido.classList.remove("hidden");
     campo.value="";
+    mostrar("revendedores-usuario-m3u");
   }else{
     if(error)error.classList.remove("hidden");
     campo.value="";
