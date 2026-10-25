@@ -1731,6 +1731,7 @@ function seleccionarServicioM3URevendedor(servicio){
   var seleccion=document.getElementById("revendedores-contacto-m3u");
   var titulo=document.getElementById("revendedores-m3u-servicio-seleccionado");
   if(!pantalla||!seleccion||!titulo)return;
+  var scrollAnterior=window.scrollY||window.pageYOffset||0;
   pantalla.classList.add("hidden");
   seleccion.classList.remove("hidden");
   titulo.textContent=servicio;
@@ -1741,7 +1742,7 @@ function seleccionarServicioM3URevendedor(servicio){
   window.originalmasPantallaActual="revendedores-contacto-m3u";
   try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-m3u")}catch(e){}
   requestAnimationFrame(function(){
-    window.scrollTo({top:window.scrollY||window.pageYOffset||0,behavior:"auto"});
+    window.scrollTo({top:scrollAnterior,behavior:"auto"});
   });
 }
 function seleccionarServicioPanelRevendedor(servicio){
@@ -1749,6 +1750,7 @@ function seleccionarServicioPanelRevendedor(servicio){
   var seleccion=document.getElementById("revendedores-contacto-panel");
   var titulo=document.getElementById("revendedores-servicio-seleccionado");
   if(!panel||!seleccion||!titulo)return;
+  var scrollAnterior=window.scrollY||window.pageYOffset||0;
   panel.classList.add("hidden");
   seleccion.classList.remove("hidden");
   titulo.textContent=servicio;
@@ -1759,7 +1761,7 @@ function seleccionarServicioPanelRevendedor(servicio){
   window.originalmasPantallaActual="revendedores-contacto-panel";
   try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-panel")}catch(e){}
   requestAnimationFrame(function(){
-    window.scrollTo({top:window.scrollY||window.pageYOffset||0,behavior:"auto"});
+    window.scrollTo({top:scrollAnterior,behavior:"auto"});
   });
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
