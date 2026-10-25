@@ -753,8 +753,28 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     <h2>🎁 MÁS OPCIONES</h2>
     <div class="square-grid plans-grid extra-actions">
       <button onclick="mostrar('pruebas')">🎁<span>Solicitar prueba</span></button>
+      <button onclick="mostrar('revendedores')">🔐<span>Revendedores</span></button>
     </div>
   </div>
+</div>
+<div id="revendedores" class="hidden offer-section">
+  <h2>🔐 ACCESO PARA REVENDEDORES</h2>
+  <div id="revendedores-acceso">
+    <p class="offer-intro">Introduce tu clave para acceder a la zona de revendedores.</p>
+    <form onsubmit="return validarClaveRevendedores(event)">
+      <label for="clave-revendedores" style="display:block;margin:18px 0 8px;color:#f0cf63;font-weight:700;">Clave de acceso</label>
+      <input id="clave-revendedores" type="password" autocomplete="current-password" placeholder="Introduce tu clave" required style="display:block;width:100%;padding:15px;border:1px solid rgba(212,175,55,.55);border-radius:12px;background:#080808;color:#fff;font-size:16px;outline:none;">
+      <p id="revendedores-error" class="hidden" role="alert" style="color:#ff8b8b;text-align:center;font-weight:700;">La clave introducida no es correcta. Inténtalo de nuevo.</p>
+      <button type="submit">🔓 ACCEDER</button>
+    </form>
+  </div>
+  <div id="revendedores-contenido" class="hidden">
+    <h3 style="text-align:center;color:#f0cf63;">✅ Acceso autorizado</h3>
+    <p class="offer-intro">Bienvenido a la zona de revendedores de OriginalMas.</p>
+    <p style="text-align:center;">Aquí podrás consultar las tarifas y condiciones para revendedores.</p>
+    <p style="text-align:center;color:#aaa;font-size:13px;">Las tarifas de revendedor se añadirán en este apartado.</p>
+  </div>
+  <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="ofertas" class="hidden offer-section">
   <h2>🔥 OFERTA ACTIVA ORIGINALMAS</h2>
@@ -1653,6 +1673,25 @@ function volver(){
 function restaurarPantalla(){
   try{localStorage.setItem("originalmas_pantalla","inicio")}catch(e){}
   mostrarInicio();
+}
+function validarClaveRevendedores(event){
+  if(event)event.preventDefault();
+  var campo=document.getElementById("clave-revendedores");
+  var error=document.getElementById("revendedores-error");
+  var acceso=document.getElementById("revendedores-acceso");
+  var contenido=document.getElementById("revendedores-contenido");
+  if(!campo||!acceso||!contenido)return false;
+  if(campo.value==="131548041315"){
+    acceso.classList.add("hidden");
+    if(error)error.classList.add("hidden");
+    contenido.classList.remove("hidden");
+    campo.value="";
+  }else{
+    if(error)error.classList.remove("hidden");
+    campo.value="";
+    campo.focus();
+  }
+  return false;
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
 function contactarPruebaCanal(servicio,canal){
