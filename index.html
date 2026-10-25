@@ -769,11 +769,28 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     </form>
   </div>
   <div id="revendedores-contenido" class="hidden">
-    <h3 style="text-align:center;color:#f0cf63;">✅ Acceso autorizado</h3>
-    <p class="offer-intro">Bienvenido a la zona de revendedores de OriginalMas.</p>
-    <p style="text-align:center;">Aquí podrás consultar las tarifas y condiciones para revendedores.</p>
-    <p style="text-align:center;color:#aaa;font-size:13px;">Las tarifas de revendedor se añadirán en este apartado.</p>
+    <h3 style="text-align:center;color:#f0cf63;">✅ ACCESO PARA REVENDEDORES</h3>
+    <p class="offer-intro">Selecciona qué tipo de servicio necesitas.</p>
+    <div class="square-grid plans-grid" style="margin-top:18px;">
+      <button type="button" onclick="mostrar('revendedores-paneles')">🖥️<span>Quiero un panel</span></button>
+      <button type="button" onclick="mostrar('revendedores-usuario-m3u')">📋<span>Quiero usuario/contraseña/M3U</span></button>
+    </div>
   </div>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="revendedores-paneles" class="hidden offer-section">
+  <h2>🖥️ QUIERO UN PANEL</h2>
+  <p class="offer-intro">Elige el servicio para el que quieres un panel.</p>
+  <div class="square-grid plans-grid" style="margin-top:18px;">
+    <button type="button" onclick="seleccionarServicioPanelRevendedor('OriginalMas + Proxy')">📺<span>OriginalMas + Proxy</span></button>
+    <button type="button" onclick="seleccionarServicioPanelRevendedor('OriginalMas+')">⭐<span>OriginalMas+</span></button>
+    <button type="button" onclick="seleccionarServicioPanelRevendedor('Emby')">🟣<span>Emby</span></button>
+  </div>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="revendedores-usuario-m3u" class="hidden offer-section">
+  <h2>📋 QUIERO USUARIO/CONTRASEÑA/M3U</h2>
+  <p class="offer-intro">Esta opción estará disponible próximamente.</p>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="ofertas" class="hidden offer-section">
@@ -1692,6 +1709,10 @@ function validarClaveRevendedores(event){
     campo.focus();
   }
   return false;
+}
+function seleccionarServicioPanelRevendedor(servicio){
+  var mensaje="Hola, OriginalMas. Soy revendedor y quiero un panel de "+servicio+".";
+  window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
 function contactarPruebaCanal(servicio,canal){
