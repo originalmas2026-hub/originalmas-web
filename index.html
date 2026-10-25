@@ -788,6 +788,15 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
+<div id="revendedores-contacto-panel" class="hidden offer-section">
+  <h2>📩 CONTACTAR POR EL PANEL</h2>
+  <p class="offer-intro">Has seleccionado: <strong id="revendedores-servicio-seleccionado" style="color:#f0cf63;"></strong></p>
+  <p class="offer-intro">Elige cómo quieres contactar con OriginalMas.</p>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'telegram')">✈️ Contactar por Telegram</button>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'whatsapp')">💬 Contactar por WhatsApp</button>
+  <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'correo')">✉️ Contactar por correo electrónico</button>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
 <div id="revendedores-usuario-m3u" class="hidden offer-section">
   <h2>📋 QUIERO USUARIO/CONTRASEÑA/M3U</h2>
   <p class="offer-intro">Esta opción estará disponible próximamente.</p>
@@ -1710,9 +1719,34 @@ function validarClaveRevendedores(event){
   }
   return false;
 }
+function mensajeRevendedor(servicio){
+  return "Hola, OriginalMas. Soy revendedor y quiero información para "+servicio+".";
+}
+function contactarRevendedor(servicio,canal){
+  var mensaje=mensajeRevendedor(servicio);
+  if(canal==="telegram"){
+    window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");
+  }else if(canal==="whatsapp"){
+    window.open("https://wa.me/34614062846?text="+encodeURIComponent(mensaje),"_blank","noopener");
+  }else if(canal==="correo"){
+    window.location.href="mailto:originalmas2026@gmail.com?subject="+encodeURIComponent("Consulta de revendedor - "+servicio)+"&body="+encodeURIComponent(mensaje);
+  }
+}
 function seleccionarServicioPanelRevendedor(servicio){
-  var mensaje="Hola, OriginalMas. Soy revendedor y quiero un panel de "+servicio+".";
-  window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");
+  var panel=document.getElementById("revendedores-paneles");
+  var seleccion=document.getElementById("revendedores-contacto-panel");
+  var titulo=document.getElementById("revendedores-servicio-seleccionado");
+  if(!panel||!seleccion||!titulo)return;
+  panel.classList.add("hidden");
+  seleccion.classList.remove("hidden");
+  titulo.textContent=servicio;
+  window.originalmasHistorialNavegacion.push({
+    pantalla:"revendedores-paneles",
+    scrollY:window.scrollY||window.pageYOffset||0
+  });
+  window.originalmasPantallaActual="revendedores-contacto-panel";
+  try{localStorage.setItem("originalmas_pantalla","revendedores-contacto-panel")}catch(e){}
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
 function contactarPruebaCanal(servicio,canal){
