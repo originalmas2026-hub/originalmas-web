@@ -812,12 +812,14 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
 </div>
 <div id="ofertas" class="hidden offer-section">
   <h2>🔥 OFERTA ACTIVA ORIGINALMAS</h2>
-  <p class="offer-intro">Promoción especial por 12 meses. ¡Aprovecha el pack y disfruta de los dos servicios por un precio único!</p>
+  <p class="offer-intro">Promoción especial hasta el <strong style="color:#f0cf63;">01/11/2026</strong>. Disfruta de OriginalMas+ y Emby durante 12 meses cada uno.</p>
   <div class="offer-card">
-    <h3>🎁 PACK ANUAL ORIGINALMAS</h3>
+    <h3>🎁 PACK ANUAL ORIGINALMAS+</h3>
     <p><strong>OriginalMas+</strong> · 12 meses: <strong>45 €</strong></p>
-    <p><strong>ORIGINALMAS + VOD</strong> · 12 meses: <strong>30 €</strong> <span style="color:#d4af37;font-weight:900;">(50 % de descuento)</span></p>
-    <p style="font-size:18px;color:#d4af37;font-weight:900;">TOTAL DEL PACK: 75 €</p>
+    <p><strong>Emby</strong> · 12 meses: <strong>65 €</strong></p>
+    <p style="font-size:13px;color:#aaa;">Precio habitual: <span style="text-decoration:line-through;">90 €</span></p>
+    <p style="font-size:18px;color:#d4af37;font-weight:900;">TOTAL DE LA OFERTA: 75 €</p>
+    <p style="font-size:12px;color:#f0cf63;font-weight:800;">⏳ VÁLIDA HASTA EL 01/11/2026</p>
     <p id="oferta-pago-aviso" class="hidden" style="text-align:center;color:#d4af37;font-weight:700;">Si ya has realizado el pago, contacta con nosotros por Telegram para recibir tus datos de acceso.</p>
     <p id="oferta-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="oferta-stripe" type="button" onclick="pagarConStripe(75)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 75 €</button>
     <button id="oferta-telegram" class="hidden" type="button" onclick="contactarTelegramOferta()">✈️ CONTACTAR POR TELEGRAM</button>
@@ -1356,7 +1358,7 @@ function pagarOfertaAnual(){
   window.open(url,"_blank","noopener");
 }
 function contactarTelegramOferta(){
-  var mensaje="Hola, OriginalMas. He hecho el pago de la oferta anual: OriginalMas+ 12 meses por 45€ + ORIGINALMAS + VOD 12 meses por 30€. Total: 75€. ¿Me puedes pasar los datos de mis cuentas?";
+  var mensaje="Hola, OriginalMas. He hecho el pago de la oferta: OriginalMas+ 12 meses + Emby 12 meses. Total: 75€. ¿Me puedes pasar los datos de mis cuentas?";
   window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
 }
 function mostrarTelegramAlVolverDePago(){
