@@ -746,7 +746,6 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <div class="menu-block plans-block">
     <h2>🛒 CONTRATACIÓN</h2>
     <div class="square-grid plans-grid">
-      <button onclick="mostrar('ofertas')">🔥<span>Ofertas</span></button>
       <button onclick="mostrar('originalmas')">📺<span>ORIGINALMAS + VOD</span></button>
       <button onclick="mostrar('premium')">⭐<span>OriginalMas+</span></button>
       <button onclick="mostrar('emby')">🟣<span>Emby</span></button>
@@ -811,20 +810,10 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="ofertas" class="hidden offer-section">
-  <h2>🔥 OFERTA ACTIVA ORIGINALMAS</h2>
-  <p class="offer-intro">Promoción especial hasta el <strong style="color:#f0cf63;">01/11/2026</strong>. Disfruta de OriginalMas+ y Emby durante 12 meses cada uno.</p>
+  <h2>OFERTAS</h2>
   <div class="offer-card">
-    <h3>🎁 PACK ANUAL ORIGINALMAS+</h3>
-    <p><strong>OriginalMas+</strong> · 12 meses: <strong>45 €</strong></p>
-    <p><strong>Emby</strong> · 12 meses: <strong>65 €</strong></p>
-    <p style="font-size:13px;color:#aaa;">Precio habitual: <span style="text-decoration:line-through;">90 €</span></p>
-    <p style="font-size:18px;color:#d4af37;font-weight:900;">TOTAL DE LA OFERTA: 75 €</p>
-    <p style="font-size:12px;color:#f0cf63;font-weight:800;">⏳ VÁLIDA HASTA EL 01/11/2026</p>
-    <p id="oferta-pago-aviso" class="hidden" style="text-align:center;color:#d4af37;font-weight:700;">Si ya has realizado el pago, contacta con nosotros por Telegram para recibir tus datos de acceso.</p>
-    <p id="oferta-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="oferta-stripe" type="button" onclick="pagarConStripe(75)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 75 €</button>
-    <button id="oferta-telegram" class="hidden" type="button" onclick="contactarTelegramOferta()">✈️ CONTACTAR POR TELEGRAM</button>
-    <button id="oferta-whatsapp" class="hidden" type="button" onclick="contactarWhatsAppPago('oferta-telegram')">💬 Contactar por WhatsApp</button>
-    <button id="oferta-correo" class="hidden" type="button" onclick="contactarCorreoPago('oferta-telegram')">✉️ Contactar por correo electrónico</button>
+    <h3>Ahora mismo no hay ofertas activas</h3>
+    <p>Estamos preparando nuevas promociones. Mientras tanto, puedes consultar nuestros servicios y tarifas habituales.</p>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
