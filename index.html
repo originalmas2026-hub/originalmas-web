@@ -765,12 +765,9 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
   <div class="menu-block extras-block">
     <h2>🎁 MÁS OPCIONES</h2>
-    <div class="square-grid plans-grid extra-actions">
-      <button onclick="mostrar('revendedores')">🔐<span>Revendedores</span></button>
-    </div>
   </div>
 </div>
-<div id="revendedores" class="hidden offer-section">
+<div id="revendedores" class="hidden offer-section" style="display:none">
   <h2>🤝 ZONA DE REVENDEDORES</h2>
   <p class="offer-intro">Selecciona qué tipo de servicio necesitas.</p>
   <div class="square-grid plans-grid" style="margin-top:18px;">
@@ -779,7 +776,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
-<div id="revendedores-paneles" class="hidden offer-section">
+<div id="revendedores-paneles" class="hidden offer-section" style="display:none">
   <h2>🖥️ QUIERO UN PANEL</h2>
   <p class="offer-intro">Elige el servicio para el que quieres un panel.</p>
   <div class="square-grid plans-grid" style="margin-top:18px;">
@@ -789,7 +786,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
-<div id="revendedores-contacto-panel" class="hidden offer-section">
+<div id="revendedores-contacto-panel" class="hidden offer-section" style="display:none">
   <h2>📩 CONTACTAR POR EL PANEL</h2>
   <p class="offer-intro">Has seleccionado: <strong id="revendedores-servicio-seleccionado" style="color:#f0cf63;"></strong></p>
   <p class="offer-intro">Elige cómo quieres contactar con OriginalMas.</p>
@@ -798,7 +795,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-servicio-seleccionado').textContent,'correo')">✉️ Contactar por correo electrónico</button>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
-<div id="revendedores-usuario-m3u" class="hidden offer-section">
+<div id="revendedores-usuario-m3u" class="hidden offer-section" style="display:none">
   <h2>📋 QUIERO USUARIO/CONTRASEÑA/M3U</h2>
   <p class="offer-intro">Selecciona el servicio o pack para el que quieres usuario, contraseña o lista M3U.</p>
   <div class="square-grid plans-grid" style="margin-top:18px;">
@@ -810,7 +807,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
-<div id="revendedores-contacto-m3u" class="hidden offer-section">
+<div id="revendedores-contacto-m3u" class="hidden offer-section" style="display:none">
   <h2>📩 CONTACTAR POR USUARIO/CONTRASEÑA/M3U</h2>
   <p class="offer-intro">Has seleccionado: <strong id="revendedores-m3u-servicio-seleccionado" style="color:#f0cf63;"></strong></p>
   <p class="offer-intro">Elige cómo quieres contactar con OriginalMas.</p>
