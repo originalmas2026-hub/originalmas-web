@@ -44,19 +44,17 @@ Y si hoy te apetece cambiar de plan:
 WhatsApp: +34 614 062 846
 
 <b>Conoce OriginalMas.</b>""",
-"""🍿 <b>Hoy toca sofá, manta y entretenimiento</b>
+"""🎬 <b>¿TE APETECE UNA BUENA PELÍCULA O UNA SERIE PARA MARATONEAR?</b>
 
-¿Eres más de películas y series?
-🎬 Descubre <b>Emby</b> para tus maratones.
+Con <b>Emby de OriginalMas</b> tienes una opción pensada para disfrutar de películas y series cuando te apetezca.
 
-¿Prefieres tener más opciones?
-📺 También puedes conocer OriginalMas + VOD y OriginalMas+.
+🍿 Prepara tu próxima sesión, elige qué quieres ver y disfruta del entretenimiento a tu ritmo.
 
-📩 Escríbenos y te contamos:
+📩 ¿Quieres información o solicitar una prueba?
 Telegram: @OriginalMas
 WhatsApp: +34 614 062 846
 
-<b>OriginalMas, a tu ritmo.</b>""",
+<b>EMBY — tus próximas historias te esperan.</b>""",
 """📺 <b>¿Qué tipo de entretenimiento buscas?</b>
 
 ⚽ Deporte y contenido VOD: <b>OriginalMas + VOD</b>.
