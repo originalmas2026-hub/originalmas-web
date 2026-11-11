@@ -808,45 +808,20 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="ofertas" class="hidden offer-section">
-  <h2>🔥 BLACK FRIDAY · 20% DE DESCUENTO</h2>
-  <p class="offer-intro">Aprovecha el Black Friday de OriginalMas. Descuento del 20% en todas las duraciones excepto 1 mes. Los precios generales de contratación y renovación no cambian.</p>
-  <div class="offer-card" style="margin-bottom:12px">
-    <h3>📺 ORIGINALMAS + VOD</h3>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
-      <div>1 mes<br><strong>10€</strong></div>
-      <div>3 meses<br><del>27€</del> <strong style="color:#f2cf79">21,60€</strong></div>
-      <div>6 meses<br><del>40€</del> <strong style="color:#f2cf79">32€</strong></div>
-      <div>12 meses<br><del>60€</del> <strong style="color:#f2cf79">48€</strong></div>
-    </div>
-  </div>
-  <div class="offer-card" style="margin-bottom:12px">
-    <h3>⭐ ORIGINALMAS+</h3>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
-      <div>1 mes<br><strong>10€</strong></div>
-      <div>3 meses<br><del>18€</del> <strong style="color:#f2cf79">14,40€</strong></div>
-      <div>6 meses<br><del>32€</del> <strong style="color:#f2cf79">25,60€</strong></div>
-      <div>12 meses<br><del>45€</del> <strong style="color:#f2cf79">36€</strong></div>
-    </div>
-  </div>
-  <div class="offer-card" style="margin-bottom:12px">
-    <h3>🟣 EMBY</h3>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
-      <div>1 mes<br><strong>12€</strong></div>
-      <div>3 meses<br><del>30€</del> <strong style="color:#f2cf79">24€</strong></div>
-      <div>6 meses<br><del>45€</del> <strong style="color:#f2cf79">36€</strong></div>
-      <div>12 meses<br><del>65€</del> <strong style="color:#f2cf79">52€</strong></div>
-    </div>
-  </div>
+  <h2>🔥 OFERTA ESPECIAL · ORIGINALMAS+ Y EMBY</h2>
+  <p class="offer-intro">Disfruta de OriginalMas+ y Emby juntos con estos precios especiales. Selecciona la duración y paga de forma segura mediante Stripe (Bizum o tarjeta).</p>
   <div class="offer-card" style="margin-bottom:12px">
     <h3>✨ PACK DÚO ORIGINALMAS+ Y EMBY</h3>
+    <p>Elige la duración de tu oferta:</p>
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
-      <div>1 mes<br><strong>18€</strong></div>
-      <div>3 meses<br><del>35€</del> <strong style="color:#f2cf79">28€</strong></div>
-      <div>6 meses<br><del>55€</del> <strong style="color:#f2cf79">44€</strong></div>
-      <div>12 meses<br><del>90€</del> <strong style="color:#f2cf79">72€</strong></div>
+      <button type="button" onclick="pagarConStripe(18)">💳 1 mes — 18€</button>
+      <button type="button" onclick="pagarConStripe(30)">💳 3 meses — 30€</button>
+      <button type="button" onclick="pagarConStripe(45)">💳 6 meses — 45€</button>
+      <button type="button" onclick="pagarConStripe(75)">💳 12 meses — 75€</button>
     </div>
+    <p style="margin:12px 0 0;color:#aaa;font-size:12px">En Stripe, introduce manualmente el importe exacto de la duración elegida.</p>
   </div>
-  <p style="text-align:center;color:#aaa;font-size:12px">La oferta se aplica únicamente a través de esta sección. Los precios habituales de contratación y renovación permanecen intactos.</p>
+  <p style="text-align:center;color:#aaa;font-size:12px">Esta oferta corresponde únicamente al pack OriginalMas+ y Emby. Los precios generales de contratación y renovación permanecen intactos.</p>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="soporte" class="hidden offer-section">
