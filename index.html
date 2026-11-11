@@ -809,8 +809,16 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
 <div id="ofertas" class="hidden offer-section">
   <h2>OFERTAS</h2>
   <div class="offer-card">
-    <h3>Ahora mismo no hay ofertas activas</h3>
-    <p>Estamos preparando nuevas promociones. Mientras tanto, puedes consultar nuestros servicios y tarifas habituales.</p>
+    <h3>🔥 OFERTA PACK DÚO: OriginalMas+ y Emby</h3>
+    <p>¡Tus plataformas favoritas en un solo pack! Aprovecha estos precios especiales:</p>
+    <ul style="list-style:none;padding:0;text-align:center">
+      <li>1 mes: <strong>18€</strong></li>
+      <li>3 meses: <del>35€</del> <strong>30€</strong></li>
+      <li>6 meses: <del>55€</del> <strong>45€</strong></li>
+      <li>12 meses: <del>90€</del> <strong>75€</strong></li>
+    </ul>
+    <p style="text-align:center;font-weight:bold;color:#d4af37">¡La mejor opción: máximo ahorro en 12 meses!</p>
+    <button type="button" onclick="mostrar('pack')">🔥 Contratar Pack Dúo</button>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
@@ -2165,8 +2173,30 @@ function cargarTarifasWeb(){
     precios["ORIGINALMAS + VOD"]={"1 mes":10,"3 meses":27,"6 meses":40,"12 meses":60};
     precios["OriginalMas + Proxy"]={"1 mes":10,"3 meses":27,"6 meses":40,"12 meses":60};
     var promociones=data.discounts && Array.isArray(data.discounts.promotions)
-      ? data.discounts.promotions
+      ? data.discounts.promotions.slice()
       : [];
+    promociones.unshift({
+      active:true,
+      services:["OriginalMas+ y Emby"],
+      durations:["3 meses","6 meses","12 meses"],
+      type:"fixed",
+      value:5
+    });
+    /* Ajustes específicos de la oferta Pack Dúo: 5€, 10€ y 15€ de descuento. */
+    promociones.unshift({
+      active:true,
+      services:["OriginalMas+ y Emby"],
+      durations:["6 meses","12 meses"],
+      type:"fixed",
+      value:10
+    });
+    promociones.unshift({
+      active:true,
+      services:["OriginalMas+ y Emby"],
+      durations:["12 meses"],
+      type:"fixed",
+      value:15
+    });
 
     var pantallas={
       "om-1":["ORIGINALMAS + VOD","1 mes"],"om-3":["ORIGINALMAS + VOD","3 meses"],"om-6":["ORIGINALMAS + VOD","6 meses"],"om-12":["ORIGINALMAS + VOD","12 meses"],
@@ -2279,6 +2309,9 @@ function cargarTarifasWeb(){
       pantalla.querySelectorAll("button,p").forEach(function(el){
         if(el.textContent.indexOf("€")>=0){
           actualizarElementoPrecio(el,resultado);
+        }
+        if(el.tagName==="BUTTON" && /^duop(?:1|3|6|12)-stripe$/.test(el.id)){
+          el.setAttribute("onclick","pagarConStripe("+formatoPrecio(resultado.final)+")");
         }
 
         if(
