@@ -810,15 +810,15 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <h2>OFERTAS</h2>
   <div class="offer-card">
     <h3>🔥 OFERTA PACK DÚO: OriginalMas+ y Emby</h3>
-    <p>¡Tus plataformas favoritas en un solo pack! Aprovecha estos precios especiales:</p>
-    <ul style="list-style:none;padding:0;text-align:center">
-      <li>1 mes: <strong>18€</strong></li>
-      <li>3 meses: <del>35€</del> <strong>30€</strong></li>
-      <li>6 meses: <del>55€</del> <strong>45€</strong></li>
-      <li>12 meses: <del>90€</del> <strong>75€</strong></li>
-    </ul>
+    <p>¡Tus plataformas favoritas en un solo pack!</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;text-align:center;margin:18px 0">
+      <div style="border:1px solid #b88a3b;border-radius:10px;padding:14px 8px"><strong>1 MES</strong><div style="font-size:30px;color:#f2cf79;font-weight:bold">18€</div></div>
+      <div style="border:1px solid #b88a3b;border-radius:10px;padding:14px 8px"><strong>3 MESES</strong><div><del style="opacity:.6">35€</del></div><div style="font-size:30px;color:#f2cf79;font-weight:bold">30€</div></div>
+      <div style="border:1px solid #b88a3b;border-radius:10px;padding:14px 8px"><strong>6 MESES</strong><div><del style="opacity:.6">55€</del></div><div style="font-size:30px;color:#f2cf79;font-weight:bold">45€</div></div>
+      <div style="border:1px solid #b88a3b;border-radius:10px;padding:14px 8px"><strong>12 MESES</strong><div><del style="opacity:.6">90€</del></div><div style="font-size:30px;color:#f2cf79;font-weight:bold">75€</div></div>
+    </div>
     <p style="text-align:center;font-weight:bold;color:#d4af37">¡La mejor opción: máximo ahorro en 12 meses!</p>
-    <button type="button" onclick="mostrar('pack')">🔥 Contratar Pack Dúo</button>
+    <p style="text-align:center;color:#aaa">Promoción informativa. Los precios generales de contratación y renovación se mantienen sin cambios.</p>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
@@ -2173,30 +2173,8 @@ function cargarTarifasWeb(){
     precios["ORIGINALMAS + VOD"]={"1 mes":10,"3 meses":27,"6 meses":40,"12 meses":60};
     precios["OriginalMas + Proxy"]={"1 mes":10,"3 meses":27,"6 meses":40,"12 meses":60};
     var promociones=data.discounts && Array.isArray(data.discounts.promotions)
-      ? data.discounts.promotions.slice()
+      ? data.discounts.promotions
       : [];
-    promociones.unshift({
-      active:true,
-      services:["OriginalMas+ y Emby"],
-      durations:["3 meses","6 meses","12 meses"],
-      type:"fixed",
-      value:5
-    });
-    /* Ajustes específicos de la oferta Pack Dúo: 5€, 10€ y 15€ de descuento. */
-    promociones.unshift({
-      active:true,
-      services:["OriginalMas+ y Emby"],
-      durations:["6 meses","12 meses"],
-      type:"fixed",
-      value:10
-    });
-    promociones.unshift({
-      active:true,
-      services:["OriginalMas+ y Emby"],
-      durations:["12 meses"],
-      type:"fixed",
-      value:15
-    });
 
     var pantallas={
       "om-1":["ORIGINALMAS + VOD","1 mes"],"om-3":["ORIGINALMAS + VOD","3 meses"],"om-6":["ORIGINALMAS + VOD","6 meses"],"om-12":["ORIGINALMAS + VOD","12 meses"],
