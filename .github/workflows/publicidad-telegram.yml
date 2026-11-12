@@ -2,10 +2,10 @@ name: Publicidad diaria de OriginalMas
 
 on:
   schedule:
-    # 12:00 hora peninsular: 11:00 UTC en invierno y 10:00 UTC en verano.
+    # Prueba a las 18:00 hora peninsular: 17:00 UTC en invierno y 16:00 UTC en verano.
     # El script comprueba la hora local Europe/Madrid antes de publicar.
-    - cron: "0 11 * * *"
-    - cron: "0 10 * * *"
+    - cron: "0 17 * * *"
+    - cron: "0 16 * * *"
   workflow_dispatch:
     inputs:
       prueba:
