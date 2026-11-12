@@ -11,7 +11,7 @@ TZ = ZoneInfo("Europe/Madrid")
 now = datetime.now(TZ)
 
 # GitHub Actions ejecuta el workflow en dos horas UTC para cubrir el cambio
-# horario. Solo se publica cuando son las 18:00 en la zona peninsular.
+# horario. El cron se programa a las 18:07 para evitar el pico de carga del minuto 00; se publica dentro de la hora 18:00 peninsular.
 # FORCE_SEND=1 permite una prueba manual desde GitHub Actions fuera de esa hora.
 force_send = os.environ.get("FORCE_SEND", "0") == "1"
 if now.hour != 18 and not force_send:
