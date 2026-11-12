@@ -11,10 +11,10 @@ TZ = ZoneInfo("Europe/Madrid")
 now = datetime.now(TZ)
 
 # GitHub Actions ejecuta el workflow en dos horas UTC para cubrir el cambio
-# horario. Solo se publica cuando son las 14:30 en la zona peninsular.
+# horario. Solo se publica cuando son las 12:00 en la zona peninsular.
 # FORCE_SEND=1 permite una prueba manual desde GitHub Actions fuera de esa hora.
 force_send = os.environ.get("FORCE_SEND", "0") == "1"
-if (now.hour != 14 or now.minute != 30) and not force_send:
+if (now.hour != 12 or now.minute != 0) and not force_send:
     print(f"No toca publicar: hora local {now:%H:%M} (Europe/Madrid).")
     raise SystemExit(0)
 
