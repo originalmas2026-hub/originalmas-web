@@ -2,11 +2,10 @@ name: Publicidad diaria de OriginalMas
 
 on:
   schedule:
-    # Evitamos el minuto 00, cuando GitHub Actions suele acumular retrasos.
-    # En verano 10:07 UTC = 12:07 Madrid; en invierno 11:07 UTC = 12:07 Madrid.
-    # La segunda ejecución solo actúa si la hora local es 12, según el script.
-    - cron: "7 10 * * *"
-    - cron: "7 11 * * *"
+    # 13:37 hora peninsular: 11:37 UTC en invierno y 10:37 UTC en verano.
+    # El script comprueba la hora local Europe/Madrid antes de publicar.
+    - cron: "37 11 * * *"
+    - cron: "37 10 * * *"
   workflow_dispatch:
     inputs:
       prueba:
