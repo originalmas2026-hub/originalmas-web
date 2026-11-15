@@ -695,18 +695,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <div class="proof"><strong>📺 Multidispositivo</strong><small>DONDE QUIERAS</small></div>
 </div>
 <div id="home-services" class="home-services">
-  <article class="home-service-card">
-    <h3>📺 ORIGINALMAS + VOD</h3>
-    <ul>
-      <li>✅ Todos los canales, deportes y entretenimiento</li>
-      <li>🎬 Gran catálogo de películas y series</li>
-      <li>🔄 Catálogo con actualizaciones diarias</li>
-      <li>📱 App propia para Android, Fire TV, Xiaomi TV, TV Box, Android TV y Google TV</li>
-      <li>✅ Compatible también mediante aplicaciones genéricas en Smart TV, Windows, iOS y más</li>
-    </ul>
-    <p class="service-tagline">👉 Una opción sencilla para disfrutar de tus canales favoritos sin complicaciones.</p>
-  </article>
-  <article class="home-service-card">
+<article class="home-service-card">
     <h3>⭐ ORIGINALMAS+</h3>
     <ul>
       <li>🔥 Todos los canales</li>
@@ -747,7 +736,6 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <div class="menu-block plans-block">
     <h2>🛒 CONTRATACIÓN</h2>
     <div class="square-grid plans-grid">
-      <button onclick="mostrar('originalmas')">📺<span>ORIGINALMAS + VOD</span></button>
       <button onclick="mostrar('premium')">⭐<span>OriginalMas+</span></button>
       <button onclick="mostrar('emby')">🟣<span>Emby</span></button>
       <button onclick="mostrar('pack')">🔥<span>Pack Dúo</span></button>
@@ -791,7 +779,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <h2>🖥️ QUIERO UN PANEL</h2>
   <p class="offer-intro">Elige el servicio para el que quieres un panel.</p>
   <div class="square-grid plans-grid" style="margin-top:18px;">
-    <button type="button" onclick="seleccionarServicioPanelRevendedor('ORIGINALMAS + VOD')">📺<span>ORIGINALMAS + VOD</span></button><button type="button" onclick="seleccionarServicioPanelRevendedor('OriginalMas + Proxy')">🚀<span>OriginalMas + Proxy</span></button><button type="button" onclick="seleccionarServicioPanelRevendedor('Pack Dúo OriginalMas + Proxy y Emby')">🚀<span>Pack Dúo OriginalMas + Proxy y Emby</span></button>
+    <button type="button" onclick="seleccionarServicioPanelRevendedor('OriginalMas + Proxy')">🚀<span>OriginalMas + Proxy</span></button><button type="button" onclick="seleccionarServicioPanelRevendedor('Pack Dúo OriginalMas + Proxy y Emby')">🚀<span>Pack Dúo OriginalMas + Proxy y Emby</span></button>
     <button type="button" onclick="seleccionarServicioPanelRevendedor('OriginalMas+')">⭐<span>OriginalMas+</span></button>
     <button type="button" onclick="seleccionarServicioPanelRevendedor('Emby')">🟣<span>Emby</span></button>
   </div>
@@ -810,10 +798,9 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <h2>📋 QUIERO USUARIO/CONTRASEÑA/M3U</h2>
   <p class="offer-intro">Selecciona el servicio o pack para el que quieres usuario, contraseña o lista M3U.</p>
   <div class="square-grid plans-grid" style="margin-top:18px;">
-    <button type="button" onclick="seleccionarServicioM3URevendedor('ORIGINALMAS + VOD')">📺<span>ORIGINALMAS + VOD</span></button><button type="button" onclick="seleccionarServicioM3URevendedor('OriginalMas + Proxy')">🚀<span>OriginalMas + Proxy</span></button><button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo OriginalMas + Proxy y Emby')">🚀<span>Pack Dúo OriginalMas + Proxy y Emby</span></button>
+    <button type="button" onclick="seleccionarServicioM3URevendedor('OriginalMas + Proxy')">🚀<span>OriginalMas + Proxy</span></button><button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo OriginalMas + Proxy y Emby')">🚀<span>Pack Dúo OriginalMas + Proxy y Emby</span></button>
     <button type="button" onclick="seleccionarServicioM3URevendedor('OriginalMas+')">⭐<span>OriginalMas+</span></button>
     <button type="button" onclick="seleccionarServicioM3URevendedor('Emby')">🟣<span>Emby</span></button>
-    <button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo ORIGINALMAS + VOD y Emby')">🎬<span>Pack Dúo ORIGINALMAS + VOD y Emby</span></button>
     <button type="button" onclick="seleccionarServicioM3URevendedor('Pack Dúo OriginalMas+ y Emby')">✨<span>Pack Dúo OriginalMas+ y Emby</span></button>
   </div>
   <button class="back" onclick="volver()">⬅ Volver</button>
@@ -881,31 +868,16 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     </div>
   </div>
 </div>
-<div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-om')">📺 ORIGINALMAS + VOD</button><button onclick="mostrar('prueba-premium')">⭐ OriginalMas+</button><button onclick="mostrar('prueba-emby')">🟣 Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="prueba-om" class="hidden"><h2>📺 PRUEBA ORIGINALMAS + VOD</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('ORIGINALMAS + VOD')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarPruebaCanal('ORIGINALMAS + VOD','correo')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="pruebas" class="hidden"><h2>🎁 SOLICITAR PRUEBA</h2><p style="text-align:center;color:#aaa">Elige el servicio que quieres probar:</p><button onclick="mostrar('prueba-premium')">⭐ OriginalMas+</button><button onclick="mostrar('prueba-emby')">🟣 Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="prueba-premium" class="hidden"><h2>⭐ PRUEBA ORIGINALMAS+</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('OriginalMas+')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarPruebaCanal('OriginalMas+','correo')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="prueba-emby" class="hidden"><h2>🟣 PRUEBA EMBY</h2><p style="text-align:center;color:#aaa">Solicita tu prueba gratuita.</p><button type="button" onclick="contactarPrueba('Emby')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarPruebaCanal('Emby','correo')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="originalmas" class="hidden"><h2>📺 ORIGINALMAS + VOD</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Incluye VOD: películas y series.</p><button onclick="mostrar('om-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('om-3')">3 meses — <span class="price">27€</span></button><button onclick="mostrar('om-6')">6 meses — <span class="price">40€</span></button><button onclick="mostrar('om-12')">12 meses — <span class="price">60€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 
-<div id="proxy" class="hidden"><h2>🚀 ORIGINALMAS + PROXY</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Como OriginalMas + VOD, con mucho más contenido de películas y series.</p><button onclick="mostrar('proxy-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('proxy-3')">3 meses — <span class="price">23€</span></button><button onclick="mostrar('proxy-6')">6 meses — <span class="price">30€</span></button><button onclick="mostrar('proxy-12')">12 meses — <span class="price">50€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
+<div id="proxy" class="hidden"><h2>🚀 ORIGINALMAS + PROXY</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Canales y un amplio catálogo de películas y series.</p><button onclick="mostrar('proxy-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('proxy-3')">3 meses — <span class="price">23€</span></button><button onclick="mostrar('proxy-6')">6 meses — <span class="price">30€</span></button><button onclick="mostrar('proxy-12')">12 meses — <span class="price">50€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="proxy-1" class="hidden"><h2>🚀 ORIGINALMAS + PROXY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">En Stripe, introduce manualmente el importe exacto de este producto.</p><button type="button" onclick="pagarConStripe(10)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 10€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button type="button" onclick="contratarTelegram('proxy-1')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('proxy-1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="proxy-3" class="hidden"><h2>🚀 ORIGINALMAS + PROXY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">23€</span></p><p style="text-align:center;color:#aaa">En Stripe, introduce manualmente el importe exacto de este producto.</p><button type="button" onclick="pagarConStripe(23)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 23€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button type="button" onclick="contratarTelegram('proxy-3')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('proxy-3-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="proxy-6" class="hidden"><h2>🚀 ORIGINALMAS + PROXY — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">30€</span></p><p style="text-align:center;color:#aaa">En Stripe, introduce manualmente el importe exacto de este producto.</p><button type="button" onclick="pagarConStripe(30)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 30€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button type="button" onclick="contratarTelegram('proxy-6')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('proxy-6-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="proxy-12" class="hidden"><h2>🚀 ORIGINALMAS + PROXY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">50€</span></p><p style="text-align:center;color:#aaa">En Stripe, introduce manualmente el importe exacto de este producto.</p><button type="button" onclick="pagarConStripe(50)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 50€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button type="button" onclick="contratarTelegram('proxy-12')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('proxy-12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="premium" class="hidden"><h2>⭐ ORIGINALMAS+</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Actualizaciones de contenido bajo petición.</p><button onclick="mostrar('omp-1')">1 mes — <span class="price">10€</span></button><button onclick="mostrar('omp-3')">3 meses — <span class="price">18€</span></button><button onclick="mostrar('omp-6')">6 meses — <span class="price">32€</span></button><button onclick="mostrar('omp-12')">12 meses — <span class="price">45€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="emby" class="hidden"><h2>🟣 EMBY</h2><p style="text-align:center;color:#aaa">Múltiples dispositivos · 1 conexión simultánea</p><p style="text-align:center;color:#aaa">Actualizaciones de contenido bajo petición.</p><button onclick="mostrar('emby-1')">1 mes — <span class="price">12€</span></button><button onclick="mostrar('emby-3')">3 meses — <span class="price">30€</span></button><button onclick="mostrar('emby-6')">6 meses — <span class="price">45€</span></button><button onclick="mostrar('emby-12')">12 meses — <span class="price">65€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="pack" class="hidden"><h2>🔥 PACK DÚO</h2><button onclick="mostrar('duo-premium')">⭐ OriginalMas+ y Emby</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="duo-om" class="hidden"><h2>📺 ORIGINALMAS + VOD Y EMBY</h2><button onclick="mostrar('duoom-1')">1 mes — <span class="price">20€</span></button><button onclick="mostrar('duoom-3')">3 meses — <span class="price">50€</span></button><button onclick="mostrar('duoom-6')">6 meses — <span class="price">75€</span></button><button onclick="mostrar('duoom-12')">12 meses — <span class="price">110€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="duo-proxy" class="hidden"><h2>🚀 ORIGINALMAS + PROXY Y EMBY</h2><button onclick="mostrar('duox-1')">1 mes — <span class="price">20€</span></button><button onclick="mostrar('duox-3')">3 meses — <span class="price">50€</span></button><button onclick="mostrar('duox-6')">6 meses — <span class="price">75€</span></button><button onclick="mostrar('duox-12')">12 meses — <span class="price">110€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
 <div id="duox-1" class="hidden"><h2>🚀 ORIGINALMAS + PROXY Y EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">20€</span></p><p style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto antes de pagar.</p><button type="button" onclick="pagarConStripe(20)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 20€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button id="duox1-telegram" type="button" onclick="contratarTelegram('duox-1')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('duox-1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duox-3" class="hidden"><h2>🚀 ORIGINALMAS + PROXY Y EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">50€</span></p><p style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto antes de pagar.</p><button type="button" onclick="pagarConStripe(50)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 50€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button id="duox3-telegram" type="button" onclick="contratarTelegram('duox-3')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('duox-3-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duox-6" class="hidden"><h2>🚀 ORIGINALMAS + PROXY Y EMBY — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">75€</span></p><p style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto antes de pagar.</p><button type="button" onclick="pagarConStripe(75)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 75€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button id="duox6-telegram" type="button" onclick="contratarTelegram('duox-6')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('duox-6-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duox-12" class="hidden"><h2>🚀 ORIGINALMAS + PROXY Y EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">110€</span></p><p style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto antes de pagar.</p><button type="button" onclick="pagarConStripe(110)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 110€</button><p style="text-align:center;color:#aaa">Después del pago, contacta con nosotros para recibir los datos de tu cuenta.</p><button id="duox12-telegram" type="button" onclick="contratarTelegram('duox-12')">✈️ Contactar por Telegram</button><button type="button" onclick="contactarCorreoPago('duox-12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duo-premium" class="hidden"><h2>⭐ ORIGINALMAS+ Y EMBY</h2><button onclick="mostrar('duop-1')">1 mes — <span class="price">18€</span></button><button onclick="mostrar('duop-3')">3 meses — <span class="price">35€</span></button><button onclick="mostrar('duop-6')">6 meses — <span class="price">55€</span></button><button onclick="mostrar('duop-12')">12 meses — <span class="price">90€</span></button><button class="back" onclick="volver()">⬅ Volver</button></div>
-<div id="om-1" class="hidden"><h2>📺 ORIGINALMAS + VOD — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="om1-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="om1-stripe" type="button" onclick="pagarConStripe(10)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 10€</button><p id="om1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="om1-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOm1()">✈️ Contactar por Telegram</button>
-    
-    <button id="om1-correo" class="hidden" type="button" onclick="contactarCorreoPago('om1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-3" class="hidden"><h2>📺 ORIGINALMAS + VOD — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">27€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="om3-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="om3-stripe" type="button" onclick="pagarConStripe(27)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 27€</button><p id="om3-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="om3-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOm3()">✈️ Contactar por Telegram</button>
-    
-    <button id="om3-correo" class="hidden" type="button" onclick="contactarCorreoPago('om3-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-6" class="hidden"><h2>📺 ORIGINALMAS + VOD — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">40€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="om6-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="om6-stripe" type="button" onclick="pagarConStripe(40)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 40€</button><p id="om6-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="om6-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOm6()">✈️ Contactar por Telegram</button>
-    
-    <button id="om6-correo" class="hidden" type="button" onclick="contactarCorreoPago('om6-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="om-12" class="hidden"><h2>📺 ORIGINALMAS + VOD — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">60€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="om12-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="om12-stripe" type="button" onclick="pagarConStripe(60)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 60€</button><p id="om12-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="om12-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOm12()">✈️ Contactar por Telegram</button>
-    
-    <button id="om12-correo" class="hidden" type="button" onclick="contactarCorreoPago('om12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div>
-
-
-
 <div id="omp-1" class="hidden"><h2>⭐ ORIGINALMAS+ — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">10€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="omp1-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="omp1-stripe" type="button" onclick="pagarConStripe(10)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 10€</button><p id="omp1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="omp1-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOmp1()">✈️ Contactar por Telegram</button>
     
     <button id="omp1-correo" class="hidden" type="button" onclick="contactarCorreoPago('omp1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="omp-3" class="hidden"><h2>⭐ ORIGINALMAS+ — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">18€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="omp3-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="omp3-stripe" type="button" onclick="pagarConStripe(18)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 18€</button><p id="omp3-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="omp3-telegram" class="hidden" type="button" onclick="contactarTelegramPagoOmp3()">✈️ Contactar por Telegram</button>
@@ -922,15 +894,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     
     <button id="emby6-correo" class="hidden" type="button" onclick="contactarCorreoPago('emby6-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="emby-12" class="hidden"><h2>✈️ EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">65€</span></p><p style="text-align:center;color:#aaa">1. Abre el enlace y completa el pago. Después, vuelve a esta pestaña.</p><p id="emby12-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="emby12-stripe" type="button" onclick="pagarConStripe(65)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 65€</button><p id="emby12-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar con nosotros por Telegram o correo electrónico.</p><button id="emby12-telegram" class="hidden" type="button" onclick="contactarTelegramPagoEmby12()">✈️ Contactar por Telegram</button>
     
-    <button id="emby12-correo" class="hidden" type="button" onclick="contactarCorreoPago('emby12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-1" class="hidden"><h2>✈️ ORIGINALMAS + VOD Y EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">20€</span></p><p id="duoom1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duoom1-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duoom1-stripe" type="button" onclick="pagarConStripe(20)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 20€</button><button id="duoom1-telegram" class="hidden" type="button" onclick="contratarTelegram('duoom-1')">✈️ Contactar por Telegram</button>
-    
-    <button id="duoom1-correo" class="hidden" type="button" onclick="contactarCorreoPago('duoom1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-3" class="hidden"><h2>✈️ ORIGINALMAS + VOD Y EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">50€</span></p><p id="duoom3-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duoom3-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duoom3-stripe" type="button" onclick="pagarConStripe(50)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 50€</button><button id="duoom3-telegram" class="hidden" type="button" onclick="contratarTelegram('duoom-3')">✈️ Contactar por Telegram</button>
-    
-    <button id="duoom3-correo" class="hidden" type="button" onclick="contactarCorreoPago('duoom3-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-6" class="hidden"><h2>✈️ ORIGINALMAS + VOD Y EMBY — 6 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">75€</span></p><p id="duoom6-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duoom6-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duoom6-stripe" type="button" onclick="pagarConStripe(75)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 75€</button><button id="duoom6-telegram" class="hidden" type="button" onclick="contratarTelegram('duoom-6')">✈️ Contactar por Telegram</button>
-    
-    <button id="duoom6-correo" class="hidden" type="button" onclick="contactarCorreoPago('duoom6-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duoom-12" class="hidden"><h2>✈️ ORIGINALMAS + VOD Y EMBY — 12 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">110€</span></p><p id="duoom12-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duoom12-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duoom12-stripe" type="button" onclick="pagarConStripe(110)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 110€</button><button id="duoom12-telegram" class="hidden" type="button" onclick="contratarTelegram('duoom-12')">✈️ Contactar por Telegram</button>
-    
-    <button id="duoom12-correo" class="hidden" type="button" onclick="contactarCorreoPago('duoom12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-1" class="hidden"><h2>✈️ ORIGINALMAS+ Y EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">18€</span></p><p id="duop1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duop1-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duop1-stripe" type="button" onclick="pagarConStripe(18)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 18€</button><button id="duop1-telegram" class="hidden" type="button" onclick="contratarTelegram('duop-1')">✈️ Contactar por Telegram</button>
+    <button id="emby12-correo" class="hidden" type="button" onclick="contactarCorreoPago('emby12-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-1" class="hidden"><h2>✈️ ORIGINALMAS+ Y EMBY — 1 MES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">18€</span></p><p id="duop1-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duop1-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duop1-stripe" type="button" onclick="pagarConStripe(18)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 18€</button><button id="duop1-telegram" class="hidden" type="button" onclick="contratarTelegram('duop-1')">✈️ Contactar por Telegram</button>
     
     <button id="duop1-correo" class="hidden" type="button" onclick="contactarCorreoPago('duop1-telegram')">✉️ Contactar por correo electrónico</button><button class="back" onclick="volver()">⬅ Volver</button></div><div id="duop-3" class="hidden"><h2>✈️ ORIGINALMAS+ Y EMBY — 3 MESES</h2><p style="text-align:center;color:#aaa">Precio: <span class="price">35€</span></p><p id="duop3-pago-aviso" class="hidden" style="text-align:center;color:#aaa">Al volver de la pestaña de pago, podrás contactar por Telegram para recibir los datos de tu cuenta.</p><p id="duop3-stripe-aviso" style="text-align:center;color:#aaa">Con Stripe, introduce manualmente el importe exacto de este producto antes de pagar.</p><button id="duop3-stripe" type="button" onclick="pagarConStripe(35)">💳 Pagar ahora — Bizum o tarjeta a través de Stripe — 35€</button><button id="duop3-telegram" class="hidden" type="button" onclick="contratarTelegram('duop-3')">✈️ Contactar por Telegram</button>
     
@@ -976,17 +940,17 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
 <button type="button" onclick="cargarMisSolicitudes()">🔄 Actualizar</button>
 <button type="button" onclick="mostrar('solicitar-contenido')">📩 Solicitar contenido</button>
 <button class="back" type="button" onclick="volver()">⬅ Volver</button>
-</div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio y después el periodo que quieres renovar. Se mostrarán las mismas categorías y tarifas que en la contratación.</p><button onclick="iniciarRenovacion('originalmas')">📺 ORIGINALMAS + VOD</button><button onclick="iniciarRenovacion('proxy')">🚀 OriginalMas + Proxy</button><button onclick="iniciarRenovacion('premium')">⭐ OriginalMas+</button><button onclick="iniciarRenovacion('emby')">🟣 Emby</button><button onclick="iniciarRenovacion('pack')">🔥 Pack Dúo</button><button class="back" onclick="volver()">⬅ Volver</button></div>
+</div><div id="renovar" class="hidden"><h2>🔄 RENOVAR</h2><p style="text-align:center;color:#aaa">Selecciona el servicio y después el periodo que quieres renovar. Se mostrarán las mismas categorías y tarifas que en la contratación.</p><button onclick="iniciarRenovacion('proxy')">🚀 OriginalMas + Proxy</button><button onclick="iniciarRenovacion('premium')">⭐ OriginalMas+</button><button onclick="iniciarRenovacion('emby')">🟣 Emby</button><button onclick="iniciarRenovacion('pack')">🔥 Pack Dúo</button><button class="back" onclick="volver()">⬅ Volver</button></div>
 </div><script>function contratarTelegram(id){
   var pantalla=document.getElementById(id);
   if(!pantalla) return;
   var info=window.originalmasOrderPricing && window.originalmasOrderPricing[id];
   var nombres={
-    "proxy-1":["OriginalMas + Proxy","1 mes"],"proxy-3":["OriginalMas + Proxy","3 meses"],"proxy-6":["OriginalMas + Proxy","6 meses"],"proxy-12":["OriginalMas + Proxy","12 meses"],"om-1":["ORIGINALMAS + VOD","1 mes"],"om-3":["ORIGINALMAS + VOD","3 meses"],"om-6":["ORIGINALMAS + VOD","6 meses"],"om-12":["ORIGINALMAS + VOD","12 meses"],
+    "proxy-1":["OriginalMas + Proxy","1 mes"],"proxy-3":["OriginalMas + Proxy","3 meses"],"proxy-6":["OriginalMas + Proxy","6 meses"],"proxy-12":["OriginalMas + Proxy","12 meses"],
     "omp-1":["OriginalMas Premium","1 mes"],"omp-3":["OriginalMas Premium","3 meses"],"omp-6":["OriginalMas Premium","6 meses"],"omp-12":["OriginalMas Premium","12 meses"],
     "emby-1":["Emby","1 mes"],"emby-3":["Emby","3 meses"],"emby-6":["Emby","6 meses"],"emby-12":["Emby","12 meses"],
     "duox-1":["OriginalMas + Proxy y Emby","1 mes"],"duox-3":["OriginalMas + Proxy y Emby","3 meses"],"duox-6":["OriginalMas + Proxy y Emby","6 meses"],"duox-12":["OriginalMas + Proxy y Emby","12 meses"],
-    "duoom-1":["ORIGINALMAS + VOD y Emby","1 mes"],"duoom-3":["ORIGINALMAS + VOD y Emby","3 meses"],"duoom-6":["ORIGINALMAS + VOD y Emby","6 meses"],"duoom-12":["ORIGINALMAS + VOD y Emby","12 meses"],
+    
     "duop-1":["OriginalMas+ y Emby","1 mes"],"duop-3":["OriginalMas+ y Emby","3 meses"],"duop-6":["OriginalMas+ y Emby","6 meses"],"duop-12":["OriginalMas+ y Emby","12 meses"]
   };
   var seleccion=nombres[id];
@@ -1213,78 +1177,7 @@ function actualizarBotonesPagoOm12(){
   if(telegram){telegram.classList.toggle("hidden",!listo);var whatsapp=document.getElementById(telegram.id.replace("-telegram","-whatsapp"));var correo=document.getElementById(telegram.id.replace("-telegram","-correo"));if(whatsapp)whatsapp.classList.toggle("hidden",!listo);if(correo)correo.classList.toggle("hidden",!listo);}
   if(aviso)aviso.classList.toggle("hidden",!listo);
 }
-function actualizarBotonesPagoDuoOm1(){
-  var pagar=document.getElementById("duoom1-pagar");
-  var telegram=document.getElementById("duoom1-telegram");
-  var aviso=document.getElementById("duoom1-pago-aviso");
-  var listo=false;
-  try{listo=sessionStorage.getItem("originalmas_pago_duoom1_listo")==="1"}catch(e){}
-  if(pagar)pagar.classList.toggle("hidden",listo);
-  if(telegram){telegram.classList.toggle("hidden",!listo);var whatsapp=document.getElementById(telegram.id.replace("-telegram","-whatsapp"));var correo=document.getElementById(telegram.id.replace("-telegram","-correo"));if(whatsapp)whatsapp.classList.toggle("hidden",!listo);if(correo)correo.classList.toggle("hidden",!listo);}
-  if(aviso)aviso.classList.toggle("hidden",!listo);
-}
-function pagarDuoOm1Mes(){
-  var url="";
-  try{
-    sessionStorage.setItem("originalmas_pago_duoom1_pendiente","1");
-    sessionStorage.setItem("originalmas_pago_duoom1_listo","0");
-  }catch(e){}
-  window.open(url,"_blank","noopener");
-}
-function actualizarBotonesPagoDuoOm3(){
-  var pagar=document.getElementById("duoom3-pagar");
-  var telegram=document.getElementById("duoom3-telegram");
-  var aviso=document.getElementById("duoom3-pago-aviso");
-  var listo=false;
-  try{listo=sessionStorage.getItem("originalmas_pago_duoom3_listo")==="1"}catch(e){}
-  if(pagar)pagar.classList.toggle("hidden",listo);
-  if(telegram){telegram.classList.toggle("hidden",!listo);var whatsapp=document.getElementById(telegram.id.replace("-telegram","-whatsapp"));var correo=document.getElementById(telegram.id.replace("-telegram","-correo"));if(whatsapp)whatsapp.classList.toggle("hidden",!listo);if(correo)correo.classList.toggle("hidden",!listo);}
-  if(aviso)aviso.classList.toggle("hidden",!listo);
-}
-function pagarDuoOm3Meses(){
-  var url="";
-  try{
-    sessionStorage.setItem("originalmas_pago_duoom3_pendiente","1");
-    sessionStorage.setItem("originalmas_pago_duoom3_listo","0");
-  }catch(e){}
-  window.open(url,"_blank","noopener");
-}
-function actualizarBotonesPagoDuoOm6(){
-  var pagar=document.getElementById("duoom6-pagar");
-  var telegram=document.getElementById("duoom6-telegram");
-  var aviso=document.getElementById("duoom6-pago-aviso");
-  var listo=false;
-  try{listo=sessionStorage.getItem("originalmas_pago_duoom6_listo")==="1"}catch(e){}
-  if(pagar)pagar.classList.toggle("hidden",listo);
-  if(telegram){telegram.classList.toggle("hidden",!listo);var whatsapp=document.getElementById(telegram.id.replace("-telegram","-whatsapp"));var correo=document.getElementById(telegram.id.replace("-telegram","-correo"));if(whatsapp)whatsapp.classList.toggle("hidden",!listo);if(correo)correo.classList.toggle("hidden",!listo);}
-  if(aviso)aviso.classList.toggle("hidden",!listo);
-}
-function pagarDuoOm6Meses(){
-  var url="";
-  try{
-    sessionStorage.setItem("originalmas_pago_duoom6_pendiente","1");
-    sessionStorage.setItem("originalmas_pago_duoom6_listo","0");
-  }catch(e){}
-  window.open(url,"_blank","noopener");
-}
-function actualizarBotonesPagoDuoOm12(){
-  var pagar=document.getElementById("duoom12-pagar");
-  var telegram=document.getElementById("duoom12-telegram");
-  var aviso=document.getElementById("duoom12-pago-aviso");
-  var listo=false;
-  try{listo=sessionStorage.getItem("originalmas_pago_duoom12_listo")==="1"}catch(e){}
-  if(pagar)pagar.classList.toggle("hidden",listo);
-  if(telegram){telegram.classList.toggle("hidden",!listo);var whatsapp=document.getElementById(telegram.id.replace("-telegram","-whatsapp"));var correo=document.getElementById(telegram.id.replace("-telegram","-correo"));if(whatsapp)whatsapp.classList.toggle("hidden",!listo);if(correo)correo.classList.toggle("hidden",!listo);}
-  if(aviso)aviso.classList.toggle("hidden",!listo);
-}
-function pagarDuoOm12Meses(){
-  var url="";
-  try{
-    sessionStorage.setItem("originalmas_pago_duoom12_pendiente","1");
-    sessionStorage.setItem("originalmas_pago_duoom12_listo","0");
-  }catch(e){}
-  window.open(url,"_blank","noopener");
-}
+
 function actualizarBotonesPagoDuoPremiumEmby12(){
   var pagar=document.getElementById("duop12-pagar");
   var telegram=document.getElementById("duop12-telegram");
@@ -1383,7 +1276,7 @@ function contactarTelegramOferta(){
 function mostrarTelegramAlVolverDePago(){
   if(document.visibilityState && document.visibilityState!=="visible")return;
   var actualizado=false;
-  ["om1","om3","om6","om12","omp1","omp3","omp6","omp12","emby1","emby3","emby6","emby12","duoom1","duoom3","duoom6","duoom12","duop1","duop3","duop6","duop12","oferta"].forEach(function(plan){
+  ["omp1","omp3","omp6","omp12","emby1","emby3","emby6","emby12","duoom1","duoom3","duoom6","duoom12","duop1","duop3","duop6","duop12","oferta"].forEach(function(plan){
     var pendiente=false;
     try{pendiente=sessionStorage.getItem("originalmas_pago_"+plan+"_pendiente")==="1"}catch(e){}
     if(!pendiente)return;
@@ -1406,10 +1299,6 @@ function mostrarTelegramAlVolverDePago(){
     actualizarBotonesPagoOm3();
     actualizarBotonesPagoOm6();
     actualizarBotonesPagoOm12();
-    actualizarBotonesPagoDuoOm1();
-    actualizarBotonesPagoDuoOm3();
-    actualizarBotonesPagoDuoOm6();
-    actualizarBotonesPagoDuoOm12();
     actualizarBotonesPagoDuoPremiumEmby1();
     actualizarBotonesPagoDuoPremiumEmby3();
     actualizarBotonesPagoDuoPremiumEmby6();
@@ -1419,24 +1308,6 @@ function mostrarTelegramAlVolverDePago(){
 }
 window.addEventListener("focus",mostrarTelegramAlVolverDePago);
 document.addEventListener("visibilitychange",mostrarTelegramAlVolverDePago);
-function contactarTelegramPagoOm1(){
-  var mensaje="Hola, OriginalMas. He hecho el pago de este servicio:\\n\\nServicio: ORIGINALMAS + VOD\\nDuración: 1 mes\\nPrecio: 10€\\n\\n¿Me puedes pasar los datos de mi cuenta?";
-  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
-}
-function contactarTelegramPagoOm3(){
-  var mensaje="Hola, OriginalMas. He hecho el pago de este servicio:\\n\\nServicio: ORIGINALMAS + VOD\\nDuración: 3 meses\\nPrecio: 27€\\n\\n¿Me puedes pasar los datos de mi cuenta?";
-  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
-}
-
-function contactarTelegramPagoOm6(){
-  var mensaje="Hola, OriginalMas. He hecho el pago de este servicio:\\n\\nServicio: ORIGINALMAS + VOD\\nDuración: 6 meses\\nPrecio: 40€\\n\\n¿Me puedes pasar los datos de mi cuenta?";
-  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
-}
-
-function contactarTelegramPagoOm12(){
-  var mensaje="Hola, OriginalMas. He hecho el pago de este servicio:\\n\\nServicio: ORIGINALMAS + VOD\\nDuración: 12 meses\\nPrecio: 60€\\n\\n¿Me puedes pasar los datos de mi cuenta?";
-  window.location.href="https://t.me/OriginalMas?text="+encodeURIComponent(mensaje);
-}
 
 function pagarOriginalMas1Mes(){
   var url="";
@@ -1649,56 +1520,7 @@ function mostrar(id){
     }
     actualizarBotonesPagoDuoPremiumEmby12();
   }
-  if(id==="duoom-1"){
-    if(actual!=="duoom-1"){
-      try{
-        sessionStorage.setItem("originalmas_pago_duoom1_pendiente","0");
-        sessionStorage.setItem("originalmas_pago_duoom1_listo","0");
-      }catch(e){}
-    }
-    actualizarBotonesPagoDuoOm1();
-  }
-  if(id==="duoom-3"){
-    if(actual!=="duoom-3"){
-      try{
-        sessionStorage.setItem("originalmas_pago_duoom3_pendiente","0");
-        sessionStorage.setItem("originalmas_pago_duoom3_listo","0");
-      }catch(e){}
-    }
-    actualizarBotonesPagoDuoOm3();
-  }
-  if(id==="duoom-6"){
-    if(actual!=="duoom-6"){
-      try{
-        sessionStorage.setItem("originalmas_pago_duoom6_pendiente","0");
-        sessionStorage.setItem("originalmas_pago_duoom6_listo","0");
-      }catch(e){}
-    }
-    actualizarBotonesPagoDuoOm6();
-  }
-  if(id==="duoom-12"){
-    if(actual!=="duoom-12"){
-      try{
-        sessionStorage.setItem("originalmas_pago_duoom12_pendiente","0");
-        sessionStorage.setItem("originalmas_pago_duoom12_listo","0");
-      }catch(e){}
-    }
-    actualizarBotonesPagoDuoOm12();
-  }
-  if(id==="om-1"){
-    if(actual!=="om-1"){
-      try{
-        sessionStorage.setItem("originalmas_pago_om1_pendiente","0");
-        sessionStorage.setItem("originalmas_pago_om1_listo","0");
-      }catch(e){}
-    }
-    actualizarBotonesPagoOm1();
-  }
-  if(id==="om-3")actualizarBotonesPagoOm3();
-  if(id==="om-6")actualizarBotonesPagoOm6();
-  if(id==="om-12")actualizarBotonesPagoOm12();
-
-  if(conservarScrollRevendedores){
+if(conservarScrollRevendedores){
     requestAnimationFrame(function(){
       window.scrollTo({top:scrollRevendedores,behavior:"auto"});
     });
@@ -2212,17 +2034,17 @@ function cargarTarifasWeb(){
     }
 
     var precios=(data.pricing && data.pricing["1 conexión"]) ? data.pricing["1 conexión"] : data.pricing;
-    precios["ORIGINALMAS + VOD"]={"1 mes":10,"3 meses":27,"6 meses":40,"12 meses":60};
+
     precios["OriginalMas + Proxy"]={"1 mes":10,"3 meses":23,"6 meses":30,"12 meses":50};
     var promociones=data.discounts && Array.isArray(data.discounts.promotions)
       ? data.discounts.promotions
       : [];
 
     var pantallas={
-      "om-1":["ORIGINALMAS + VOD","1 mes"],"om-3":["ORIGINALMAS + VOD","3 meses"],"om-6":["ORIGINALMAS + VOD","6 meses"],"om-12":["ORIGINALMAS + VOD","12 meses"],
+      
       "omp-1":["OriginalMas Premium","1 mes"],"omp-3":["OriginalMas Premium","3 meses"],"omp-6":["OriginalMas Premium","6 meses"],"omp-12":["OriginalMas Premium","12 meses"],
       "emby-1":["Emby","1 mes"],"emby-3":["Emby","3 meses"],"emby-6":["Emby","6 meses"],"emby-12":["Emby","12 meses"],
-      "duoom-1":["ORIGINALMAS + VOD y Emby","1 mes"],"duoom-3":["ORIGINALMAS + VOD y Emby","3 meses"],"duoom-6":["ORIGINALMAS + VOD y Emby","6 meses"],"duoom-12":["ORIGINALMAS + VOD y Emby","12 meses"],
+      
       "duop-1":["OriginalMas+ y Emby","1 mes"],"duop-3":["OriginalMas+ y Emby","3 meses"],"duop-6":["OriginalMas+ y Emby","6 meses"],"duop-12":["OriginalMas+ y Emby","12 meses"]
     };
 
@@ -2351,7 +2173,7 @@ function cargarTarifasWeb(){
     });
 
     var menus=[
-      ["originalmas-con-vod","ORIGINALMAS + VOD"],["proxy","OriginalMas + Proxy"],
+["proxy","OriginalMas + Proxy"],
       ["premium","OriginalMas Premium"],
       ["emby","Emby"],
       ["duo-premium","OriginalMas+ y Emby"]
