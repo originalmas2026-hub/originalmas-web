@@ -758,6 +758,7 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
     <h2>🎁 MÁS OPCIONES</h2>
     <div class="square-grid plans-grid">
       <button type="button" onclick="mostrar('vendedor-emby')">🤝<span>Quiero ser vendedor de Emby</span></button>
+      <button type="button" onclick="mostrar('vendedor-iptv')">📺<span>Quiero ser vendedor de IPTV</span></button>
     </div>
   </div>
 </div>
@@ -767,6 +768,14 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button type="button" onclick="contactarVendedorEmby('telegram')">✈️ Contactar por Telegram</button>
   <button type="button" onclick="contactarVendedorEmby('whatsapp')">💬 Contactar por WhatsApp</button>
   <button type="button" onclick="contactarVendedorEmby('correo')">✉️ Contactar por correo electrónico</button>
+  <button class="back" onclick="volver()">⬅ Volver</button>
+</div>
+<div id="vendedor-iptv" class="hidden offer-section">
+  <h2>📺 QUIERO SER VENDEDOR DE IPTV</h2>
+  <p class="offer-intro">Si estás interesado en vender nuestros servicios IPTV, elige cómo quieres contactar con nosotros.</p>
+  <button type="button" onclick="contactarVendedorIPTV('telegram')">✈️ Contactar por Telegram</button>
+  <button type="button" onclick="contactarVendedorIPTV('whatsapp')">💬 Contactar por WhatsApp</button>
+  <button type="button" onclick="contactarVendedorIPTV('correo')">✉️ Contactar por correo electrónico</button>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="revendedores" class="hidden offer-section" style="display:none">
@@ -1788,6 +1797,16 @@ function contactarVendedorEmby(canal){
     window.open("https://wa.me/34614062846?text="+encodeURIComponent(mensaje),"_blank","noopener");
   }else if(canal==="correo"){
     window.location.href="mailto:originalmas2026@gmail.com?subject="+encodeURIComponent("Quiero ser vendedor de Emby")+"&body="+encodeURIComponent(mensaje);
+  }
+}
+function contactarVendedorIPTV(canal){
+  var mensaje="Hola, OriginalMas. Estoy interesado en ser vendedor de IPTV. ¿Podéis facilitarme información?";
+  if(canal==="telegram"){
+    window.open("https://t.me/OriginalMas","_blank","noopener");
+  }else if(canal==="whatsapp"){
+    window.open("https://wa.me/34614062846?text="+encodeURIComponent(mensaje),"_blank","noopener");
+  }else if(canal==="correo"){
+    window.location.href="mailto:originalmas2026@gmail.com?subject="+encodeURIComponent("Quiero ser vendedor de IPTV")+"&body="+encodeURIComponent(mensaje);
   }
 }
 function contactarPrueba(servicio){var mensaje="Hola, OriginalMas. Quiero solicitar una prueba gratuita de "+servicio+".";window.open("https://t.me/OriginalMas?text="+encodeURIComponent(mensaje),"_blank","noopener");}
