@@ -730,7 +730,6 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <div class="menu-block trial-block">
     <div class="square-grid plans-grid">
       <button onclick="mostrar('pruebas')">🎁<span>Solicitar prueba</span></button>
-      <button onclick="mostrar('ofertas')">🔥<span>Ofertas Black Friday</span></button>
     </div>
   </div>
   <div class="menu-block plans-block">
@@ -812,23 +811,6 @@ button.support-quick-button span{display:block;margin-top:7px;color:#fff;font-si
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-m3u-servicio-seleccionado').textContent,'telegram')">✈️ Contactar por Telegram</button>
   
   <button type="button" onclick="contactarRevendedor(document.getElementById('revendedores-m3u-servicio-seleccionado').textContent,'correo')">✉️ Contactar por correo electrónico</button>
-  <button class="back" onclick="volver()">⬅ Volver</button>
-</div>
-<div id="ofertas" class="hidden offer-section">
-  <h2>🔥 OFERTA ESPECIAL · ORIGINALMAS+ Y EMBY</h2>
-  <p class="offer-intro">Disfruta de OriginalMas+ y Emby juntos con estos precios especiales. Selecciona la duración y paga de forma segura mediante Stripe (Bizum o tarjeta).</p>
-  <div class="offer-card" style="margin-bottom:12px">
-    <h3>✨ PACK DÚO ORIGINALMAS+ Y EMBY</h3>
-    <p>Elige la duración de tu oferta:</p>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px">
-      <button type="button" onclick="pagarConStripe(18)">💳 1 mes — 18€</button>
-      <button type="button" onclick="pagarConStripe(30)">💳 3 meses — 30€</button>
-      <button type="button" onclick="pagarConStripe(45)">💳 6 meses — 45€</button>
-      <button type="button" onclick="pagarConStripe(75)">💳 12 meses — 75€</button>
-    </div>
-    <p style="margin:12px 0 0;color:#aaa;font-size:12px">En Stripe, introduce manualmente el importe exacto de la duración elegida.</p>
-  </div>
-  <p style="text-align:center;color:#aaa;font-size:12px">Esta oferta corresponde únicamente al pack OriginalMas+ y Emby. Los precios generales de contratación y renovación permanecen intactos.</p>
   <button class="back" onclick="volver()">⬅ Volver</button>
 </div>
 <div id="soporte" class="hidden offer-section">
